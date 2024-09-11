@@ -1,0 +1,14 @@
+/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py:43: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:233.)
+  tf = lambda x: torch.FloatTensor(x).to(_dev[0])
+Traceback (most recent call last):
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 408, in <module>
+    main(args)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 388, in main
+    div_score = diversity(unique_states)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 341, in diversity
+    dists = [dist_func(*pair) for pair in itertools.combinations(data, 2)]
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 341, in <listcomp>
+    dists = [dist_func(*pair) for pair in itertools.combinations(data, 2)]
+TypeError: argument 1 must be str, not tuple
+Number of unique states: 11
+First few unique states: [(0, 1), (1, 2), (2, 1), (0, 0), (3, 1)]

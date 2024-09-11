@@ -20,24 +20,33 @@ import sys
 import tempfile
 import datetime
 from itertools import chain
+from collections import Counter
+from polyleven import levenshtein
+from collections import deque
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--device", default='cpu', type=str)
-parser.add_argument("--progress", action='store_true')
-parser.add_argument("--seed", default=0, type=int)
-parser.add_argument("--dir", default='./results', type=str)
-parser.add_argument("--mbsize", default=16, help="Minibatch size", type=int)
-parser.add_argument("--lr", default=0.001, help="Learning rate", type=float)
-parser.add_argument("--n_hid", default=256, type=int)
-parser.add_argument("--n_layers", default=2, type=int)
-parser.add_argument("--n_train_steps", default=2000, type=int)
-parser.add_argument("--dynamics_lr", default=1e-4, help="Learning rate", type=float)
-parser.add_argument("--dynamics_hid_dim", default=256, type=int)
-parser.add_argument("--horizon", default=8, type=int)
-parser.add_argument("--ndim", default=2, type=int)
-parser.add_argument("--stick", default=0.25, type=float) 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--device", default='cpu', type=str)
+    parser.add_argument("--progress", action='store_true')
+    parser.add_argument("--seed", default=0, type=int)
+    parser.add_argument("--dir", default='./results', type=str)
+    parser.add_argument("--mbsize", default=16, help="Minibatch size", type=int)
+    parser.add_argument("--lr", default=0.001, help="Learning rate", type=float)
+    parser.add_argument("--n_hid", default=256, type=int)
+    parser.add_argument("--n_layers", default=2, type=int)
+    parser.add_argument("--n_train_steps", default=2000, type=int)
+    parser.add_argument("--dynamics_lr", default=1e-4, help="Learning rate", type=float)
+    parser.add_argument("--dynamics_hid_dim", default=256, type=int)
+    parser.add_argument("--horizon", default=8, type=int)
+    parser.add_argument("--action_dim", default=2, type=int)
+    parser.add_argument("--state_dim", default=2, type=int)
+    parser.add_argument("--stick", default=0.25, type=float)
+    parser.add_argument('--dev', type=str, default='cpu', help='Device to run on (e.g., "cuda" or "cpu")')
+    
+    args = parser.parse_args()
+    return args
 
-_dev = [torch.device('cuda')]
+_dev = [torch.device('cpu')]
 tf = lambda x: torch.FloatTensor(x).to(_dev[0])
 tl = lambda x: torch.LongTensor(x).to(_dev[0])
 
@@ -143,18 +152,18 @@ class TransitionModel(nn.Module):
 
 class StochasticGFN:
     def __init__(self, args, envs):
-        assert args.ndim == 2 and args.stick > 0.
+        assert args.state_dim == 2 and args.stick > 0.
 
-        out_dim = args.ndim + 1 + args.ndim * args.ndim + 1
-        self.model = make_mlp([args.horizon * args.ndim] + [args.n_hid] * args.n_layers + [out_dim])
+        out_dim = args.state_dim + 1 + args.state_dim * args.state_dim + 1
+        self.model = make_mlp([args.horizon * args.state_dim] + [args.n_hid] * args.n_layers + [out_dim])
         self.model.to(args.dev)
 
-        self.forward_dynamics = TransitionModel(args.horizon * args.ndim, args.ndim + 1, args.dynamics_hid_dim, args.ndim + 1, args.dev)
+        self.forward_dynamics = TransitionModel(args.horizon * args.state_dim, args.state_dim + 1, args.dynamics_hid_dim, args.state_dim + 1, args.dev)
         self.forward_dynamics.to(args.dev)
 
         self.stick = args.stick
         self.envs = envs
-        self.ndim = args.ndim
+        self.state_dim = args.state_dim
         self.horizon = args.horizon
         
         self.dev = args.dev
@@ -184,7 +193,7 @@ class StochasticGFN:
                 z[:, 1] -= self.horizon
 
                 edge_mask = torch.cat([(z == self.horizon - 1).float(), torch.zeros((len(done) - sum(done), 1), device=args.dev)], 1)
-                logits = (pred[..., : args.ndim + 1] - inf * edge_mask).log_softmax(1)
+                logits = (pred[..., : args.state_dim + 1] - inf * edge_mask).log_softmax(1)
 
                 sample_ins_probs = logits.softmax(1)
                 acts = sample_ins_probs.multinomial(1)
@@ -192,7 +201,7 @@ class StochasticGFN:
 
             formatted_s = torch.where(s == 1)[1].reshape(-1, 2)
             formatted_s[:, 1] -= self.horizon
-            noisy_acts = sticky_based_action_modification(formatted_s, acts, self.stick, self.dev, self.ndim + 1, args.horizon)
+            noisy_acts = sticky_based_action_modification(formatted_s, acts, self.stick, self.dev, self.state_dim + 1, args.horizon)
 
             step = [i.step(a) for i, a in zip([e for d, e in zip(done, self.envs) if not d], noisy_acts)]
 
@@ -309,11 +318,11 @@ class StochasticGFN:
             pred = self.model(curr_states_onehot)
 
             edge_mask = torch.cat([(curr_states == self.horizon - 1).float(), torch.zeros((curr_states.shape[0], 1), device=self.dev)], 1)
-            logits = (pred[..., :self.ndim + 1] - inf * edge_mask).log_softmax(1) 
+            logits = (pred[..., :self.state_dim + 1] - inf * edge_mask).log_softmax(1) 
 
             init_edge_mask = (curr_states == 0).float() 
-            init_edge_mask = init_edge_mask.repeat(1, self.ndim) 
-            backward_model_logits = (pred[..., self.ndim + 1:-1] - inf * init_edge_mask).log_softmax(1)
+            init_edge_mask = init_edge_mask.repeat(1, self.state_dim) 
+            backward_model_logits = (pred[..., self.state_dim + 1:-1] - inf * init_edge_mask).log_softmax(1)
             back_transitted_sa_idxs = self.convert_sa_labels(states=curr_states[:-2], actions=curr_actions[:-1], next_states=curr_states[1:-1]).unsqueeze(-1) 
             backward_model_logits = backward_model_logits[1:-1].gather(1, back_transitted_sa_idxs).squeeze(1) 
             
@@ -335,23 +344,23 @@ class StochasticGFN:
 
         return loss
 
+def diversity(data, dist_func=levenshtein):
+    dists = [dist_func(''.join(map(str, pair[0])), ''.join(map(str, pair[1]))) for pair in itertools.combinations(data, 2)]
+    n = len(data)
+    return sum(dists) / (n*(n-1)) if n > 1 else 0
+
 def main(args):
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    torch.cuda.manual_seed_all(args.seed)
-    random.seed(args.seed)
+    wandb.init(project="Stoch_DIM", config=args, name=f"Env_a{args.action_dim}_s{args.state_dim}_seed{args.seed}")
 
-    args.dev = torch.device(args.device)
-    set_device(args.dev)
-
-    envs = [GridEnv(args.horizon, args.ndim, func=func_corners) for i in range(args.mbsize)]
-
+    # Modify your environment and agent initialization to use the new dimensions
+    envs = [GridEnv(args.horizon, args.state_dim, func=func_corners) for i in range(args.mbsize)]
     agent = StochasticGFN(args, envs)
 
     opt = torch.optim.Adam([{'params': agent.parameters(), 'lr': args.lr}])
     dynamics_opt = torch.optim.Adam([{'params': agent.transition_models_parameters(), 'lr': args.dynamics_lr}])
+
+    novelty_buffer = deque(maxlen=200000)
+    top_k_buffer = []
 
     all_visited = []
     for i in tqdm(range(args.n_train_steps + 1), disable=not args.progress):
@@ -371,9 +380,90 @@ def main(args):
             emp_dist = np.bincount(all_visited[-200000:], minlength=len(envs[0].true_density)).astype(float)
             emp_dist /= emp_dist.sum()
             l1 = np.abs(envs[0].true_density - emp_dist).mean()
-            print (i, l1)
             
+            # Calculate improved diversity score
+            unique_states = [s[0].cpu().numpy() for s in data[0]]
+            div_score = improved_diversity(unique_states)
+            
+            # Calculate improved novelty
+            novelty = improved_novelty(data[2], novelty_buffer)
+            
+            # Update top-k performance
+            top_k = update_top_k(data[2], top_k_buffer, k=10)
+            
+            # Log metrics
+            wandb.log({
+                "iteration": i,
+                "num_visited_states": len(set(all_visited)),
+                "loss": loss.item(),
+                "dynamics_loss": dynamics_loss.item(),
+                "l1_error": l1,
+                "diversity_score": div_score,
+                "novelty": novelty,
+                "top_k_performance": np.mean(top_k)
+            })
+            
+            print(f"Iteration {i}, L1: {l1:.4f}, Diversity: {div_score:.4f}, Novelty: {novelty:.4f}, Top-k: {np.mean(top_k):.4f}")
+
+    wandb.finish()
+
+def improved_diversity(states, n_bins=10):
+    flat_states = np.array(states).reshape(-1, 2)
+    min_vals = flat_states.min(axis=0)
+    max_vals = flat_states.max(axis=0)
+    normalized_states = (flat_states - min_vals) / (max_vals - min_vals + 1e-8)
+    
+    hist, _ = np.histogramdd(normalized_states, bins=n_bins)
+    
+    prob = hist / hist.sum()
+    entropy = -np.sum(prob * np.log(prob + 1e-10))
+    
+    max_entropy = np.log(n_bins**2)
+    diversity = entropy / max_entropy
+    
+    return diversity
+
+def improved_novelty(returns, buffer, n_bins=20):
+    buffer.extend(returns)
+    
+    hist, _ = np.histogram(buffer, bins=n_bins)
+    
+    prob = hist / hist.sum()
+    entropy = -np.sum(prob * np.log(prob + 1e-10))
+    
+    max_entropy = np.log(n_bins)
+    novelty = entropy / max_entropy
+    
+    return novelty
+
+def update_top_k(returns, buffer, k=10):
+    for r in returns:
+        r = r.item() if torch.is_tensor(r) else r
+        if len(buffer) < k:
+            heapq.heappush(buffer, r)
+        elif r > buffer[0]:
+            heapq.heapreplace(buffer, r)
+    return buffer
+
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--device", default='cpu', type=str)
+    parser.add_argument("--progress", action='store_true')
+    parser.add_argument("--seed", default=0, type=int)
+    parser.add_argument("--dir", default='./results', type=str)
+    parser.add_argument("--mbsize", default=16, help="Minibatch size", type=int)
+    parser.add_argument("--lr", default=0.001, help="Learning rate", type=float)
+    parser.add_argument("--n_hid", default=256, type=int)
+    parser.add_argument("--n_layers", default=2, type=int)
+    parser.add_argument("--n_train_steps", default=2000, type=int)
+    parser.add_argument("--dynamics_lr", default=1e-4, help="Learning rate", type=float)
+    parser.add_argument("--dynamics_hid_dim", default=256, type=int)
+    parser.add_argument("--horizon", default=8, type=int)
+    parser.add_argument("--action_dim", default=2, type=int)
+    parser.add_argument("--state_dim", default=2, type=int)
+    parser.add_argument("--stick", default=0.25, type=float)
+    parser.add_argument('--dev', type=str, default='cpu', help='Device to run on (e.g., "cuda" or "cpu")')
+    
     args = parser.parse_args()
     torch.set_num_threads(1)
     main(args)

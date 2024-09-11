@@ -1,0 +1,175 @@
+2024-09-11 18:45:39,022 INFO    StreamThr :61191 [internal.py:wandb_internal():86] W&B internal server running at pid: 61191, started at: 2024-09-11 18:45:39.022029
+2024-09-11 18:45:39,023 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: status
+2024-09-11 18:45:39,025 INFO    WriterThread:61191 [datastore.py:open_for_write():85] open: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/run-ue5p1ef5.wandb
+2024-09-11 18:45:39,026 DEBUG   SenderThread:61191 [sender.py:send():375] send: header
+2024-09-11 18:45:39,082 DEBUG   SenderThread:61191 [sender.py:send():375] send: run
+2024-09-11 18:45:39,310 INFO    SenderThread:61191 [dir_watcher.py:__init__():219] watching files in: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files
+2024-09-11 18:45:39,310 INFO    SenderThread:61191 [sender.py:_start_run_threads():1124] run started: ue5p1ef5 with start time 1726094739.021597
+2024-09-11 18:45:39,311 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: summary_record
+2024-09-11 18:45:39,311 INFO    SenderThread:61191 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-11 18:45:39,320 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: check_version
+2024-09-11 18:45:39,321 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: check_version
+2024-09-11 18:45:39,459 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: run_start
+2024-09-11 18:45:39,504 DEBUG   HandlerThread:61191 [system_info.py:__init__():31] System info init
+2024-09-11 18:45:39,504 DEBUG   HandlerThread:61191 [system_info.py:__init__():46] System info init done
+2024-09-11 18:45:39,504 INFO    HandlerThread:61191 [system_monitor.py:start():181] Starting system monitor
+2024-09-11 18:45:39,505 INFO    SystemMonitor:61191 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2024-09-11 18:45:39,505 INFO    HandlerThread:61191 [system_monitor.py:probe():201] Collecting system info
+2024-09-11 18:45:39,506 DEBUG   HandlerThread:61191 [system_info.py:probe():195] Probing system
+2024-09-11 18:45:39,506 INFO    SystemMonitor:61191 [interfaces.py:start():190] Started cpu monitoring
+2024-09-11 18:45:39,507 INFO    SystemMonitor:61191 [interfaces.py:start():190] Started disk monitoring
+2024-09-11 18:45:39,507 INFO    SystemMonitor:61191 [interfaces.py:start():190] Started memory monitoring
+2024-09-11 18:45:39,508 INFO    SystemMonitor:61191 [interfaces.py:start():190] Started network monitoring
+2024-09-11 18:45:39,526 DEBUG   HandlerThread:61191 [system_info.py:_probe_git():180] Probing git
+2024-09-11 18:45:39,597 DEBUG   HandlerThread:61191 [system_info.py:_probe_git():188] Probing git done
+2024-09-11 18:45:39,597 DEBUG   HandlerThread:61191 [system_info.py:probe():240] Probing system done
+2024-09-11 18:45:39,597 DEBUG   HandlerThread:61191 [system_monitor.py:probe():210] {'os': 'macOS-10.16-x86_64-i386-64bit', 'python': '3.10.14', 'heartbeatAt': '2024-09-11T22:45:39.506786', 'startedAt': '2024-09-11T22:45:39.007148', 'docker': None, 'cuda': None, 'args': ('--action_dim', '2', '--state_dim', '2', '--seed', '0', '--progress'), 'state': 'running', 'program': '/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py', 'codePath': 'grid/main.py', 'git': {'remote': 'https://github.com/vincehass/Stochastic-Environments-for-Sequential-Decision-Making.git', 'commit': 'c2df231b6f3669a2c42ff775a022811e7d176a5f'}, 'email': 'nadhir.hassen@polymtl.ca', 'root': '/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making', 'host': '6200L-210250-M.local', 'username': 'nhassen', 'executable': '/Users/nhassen/opt/anaconda3/envs/gfn-stochEnv/bin/python', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 2400, 'min': 2400, 'max': 2400}, 'cpu_freq_per_core': [{'current': 2400, 'min': 2400, 'max': 2400}], 'disk': {'total': 460.4317207336426, 'used': 9.565597534179688}, 'memory': {'total': 16.0}}
+2024-09-11 18:45:39,597 INFO    HandlerThread:61191 [system_monitor.py:probe():211] Finished collecting system info
+2024-09-11 18:45:39,597 INFO    HandlerThread:61191 [system_monitor.py:probe():214] Publishing system info
+2024-09-11 18:45:39,597 DEBUG   HandlerThread:61191 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-09-11 18:45:39,598 DEBUG   HandlerThread:61191 [system_info.py:_save_pip():67] Saving pip packages done
+2024-09-11 18:45:39,598 DEBUG   HandlerThread:61191 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-09-11 18:45:40,317 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-summary.json
+2024-09-11 18:45:40,318 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/conda-environment.yaml
+2024-09-11 18:45:40,318 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/requirements.txt
+2024-09-11 18:45:43,124 DEBUG   HandlerThread:61191 [system_info.py:_save_conda():86] Saving conda packages done
+2024-09-11 18:45:43,124 INFO    HandlerThread:61191 [system_monitor.py:probe():216] Finished publishing system info
+2024-09-11 18:45:43,131 DEBUG   SenderThread:61191 [sender.py:send():375] send: files
+2024-09-11 18:45:43,131 INFO    SenderThread:61191 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2024-09-11 18:45:43,135 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: stop_status
+2024-09-11 18:45:43,135 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: stop_status
+2024-09-11 18:45:43,325 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/conda-environment.yaml
+2024-09-11 18:45:43,326 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-metadata.json
+2024-09-11 18:45:43,488 DEBUG   SenderThread:61191 [sender.py:send():375] send: telemetry
+2024-09-11 18:45:43,490 DEBUG   SenderThread:61191 [sender.py:send():375] send: exit
+2024-09-11 18:45:43,490 INFO    SenderThread:61191 [sender.py:send_exit():598] handling exit code: 1
+2024-09-11 18:45:43,491 INFO    SenderThread:61191 [sender.py:send_exit():600] handling runtime: 3
+2024-09-11 18:45:43,492 INFO    SenderThread:61191 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-11 18:45:43,492 INFO    SenderThread:61191 [sender.py:send_exit():606] send defer
+2024-09-11 18:45:43,493 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,493 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 0
+2024-09-11 18:45:43,494 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,494 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 0
+2024-09-11 18:45:43,494 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 1
+2024-09-11 18:45:43,494 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,494 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 1
+2024-09-11 18:45:43,495 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,495 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 1
+2024-09-11 18:45:43,495 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 2
+2024-09-11 18:45:43,495 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,495 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 2
+2024-09-11 18:45:43,495 INFO    HandlerThread:61191 [system_monitor.py:finish():190] Stopping system monitor
+2024-09-11 18:45:43,495 INFO    HandlerThread:61191 [interfaces.py:finish():202] Joined cpu monitor
+2024-09-11 18:45:43,496 INFO    HandlerThread:61191 [interfaces.py:finish():202] Joined disk monitor
+2024-09-11 18:45:43,496 DEBUG   SystemMonitor:61191 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2024-09-11 18:45:43,496 DEBUG   SystemMonitor:61191 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2024-09-11 18:45:43,496 DEBUG   SystemMonitor:61191 [system_monitor.py:_start():170] Publishing last batch of metrics
+2024-09-11 18:45:43,497 INFO    HandlerThread:61191 [interfaces.py:finish():202] Joined memory monitor
+2024-09-11 18:45:43,497 INFO    HandlerThread:61191 [interfaces.py:finish():202] Joined network monitor
+2024-09-11 18:45:43,497 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,497 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 2
+2024-09-11 18:45:43,498 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 3
+2024-09-11 18:45:43,498 DEBUG   SenderThread:61191 [sender.py:send():375] send: stats
+2024-09-11 18:45:43,498 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,498 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 3
+2024-09-11 18:45:43,498 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,499 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 3
+2024-09-11 18:45:43,499 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 4
+2024-09-11 18:45:43,499 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,499 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 4
+2024-09-11 18:45:43,499 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,499 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 4
+2024-09-11 18:45:43,499 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 5
+2024-09-11 18:45:43,499 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,499 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 5
+2024-09-11 18:45:43,500 DEBUG   SenderThread:61191 [sender.py:send():375] send: summary
+2024-09-11 18:45:43,500 INFO    SenderThread:61191 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-11 18:45:43,500 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,500 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 5
+2024-09-11 18:45:43,500 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 6
+2024-09-11 18:45:43,501 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,501 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 6
+2024-09-11 18:45:43,501 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,501 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 6
+2024-09-11 18:45:43,506 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: status_report
+2024-09-11 18:45:43,524 INFO    wandb-upload_0:61191 [upload_job.py:push():137] Uploaded file /var/folders/cc/c9ny_j392s36zshkgk0y07100000gn/T/tmp8ybp_d71wandb/blhipfqf-wandb-metadata.json
+2024-09-11 18:45:43,719 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 7
+2024-09-11 18:45:43,719 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:43,719 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 7
+2024-09-11 18:45:43,719 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:43,720 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 7
+2024-09-11 18:45:44,170 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: poll_exit
+2024-09-11 18:45:44,333 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/config.yaml
+2024-09-11 18:45:44,334 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-summary.json
+2024-09-11 18:45:44,334 INFO    Thread-12 :61191 [dir_watcher.py:_on_file_created():278] file/dir created: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/output.log
+2024-09-11 18:45:45,498 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 8
+2024-09-11 18:45:45,498 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: poll_exit
+2024-09-11 18:45:45,499 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:45,499 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 8
+2024-09-11 18:45:45,499 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:45,499 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 8
+2024-09-11 18:45:45,507 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 9
+2024-09-11 18:45:45,507 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:45,507 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 9
+2024-09-11 18:45:45,507 DEBUG   SenderThread:61191 [sender.py:send():375] send: artifact
+2024-09-11 18:45:45,871 INFO    SenderThread:61191 [sender.py:send_artifact():1474] sent artifact job-https___github.com_vincehass_Stochastic-Environments-for-Sequential-Decision-Making.git_grid_main.py - {'id': 'QXJ0aWZhY3Q6MTIxNzI3NTI0Mw==', 'digest': 'd7a5746c03baff8442364647faabbb98', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_vincehass_Stochastic-Environments-for-Sequential-Decision-Making.git_grid_main.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_vincehass_Stochastic-Environments-for-Sequential-Decision-Making.git_grid_main.py', 'alias': 'v3'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQ0Nzc3Nzg4MQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTIxNzI3NTI0Mw==', 'versionIndex': 3}}, 'version': 'v3'}
+2024-09-11 18:45:45,871 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:45,871 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 9
+2024-09-11 18:45:45,871 INFO    SenderThread:61191 [dir_watcher.py:finish():365] shutting down directory watcher
+2024-09-11 18:45:46,344 INFO    SenderThread:61191 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/output.log
+2024-09-11 18:45:46,346 INFO    SenderThread:61191 [dir_watcher.py:finish():395] scan: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files
+2024-09-11 18:45:46,347 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/requirements.txt requirements.txt
+2024-09-11 18:45:46,347 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/output.log output.log
+2024-09-11 18:45:46,352 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/config.yaml config.yaml
+2024-09-11 18:45:46,353 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-summary.json wandb-summary.json
+2024-09-11 18:45:46,356 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/conda-environment.yaml conda-environment.yaml
+2024-09-11 18:45:46,360 INFO    SenderThread:61191 [dir_watcher.py:finish():409] scan save: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-metadata.json wandb-metadata.json
+2024-09-11 18:45:46,360 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 10
+2024-09-11 18:45:46,364 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:46,364 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 10
+2024-09-11 18:45:46,367 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:46,367 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 10
+2024-09-11 18:45:46,367 INFO    SenderThread:61191 [file_pusher.py:finish():167] shutting down file pusher
+2024-09-11 18:45:46,728 INFO    wandb-upload_3:61191 [upload_job.py:push():137] Uploaded file /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/wandb-summary.json
+2024-09-11 18:45:46,778 INFO    wandb-upload_0:61191 [upload_job.py:push():137] Uploaded file /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/requirements.txt
+2024-09-11 18:45:46,793 INFO    wandb-upload_4:61191 [upload_job.py:push():137] Uploaded file /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/conda-environment.yaml
+2024-09-11 18:45:46,793 INFO    wandb-upload_1:61191 [upload_job.py:push():137] Uploaded file /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/output.log
+2024-09-11 18:45:46,824 INFO    wandb-upload_2:61191 [upload_job.py:push():137] Uploaded file /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/files/config.yaml
+2024-09-11 18:45:47,030 INFO    Thread-11 (_thread_body):61191 [sender.py:transition_state():626] send defer: 11
+2024-09-11 18:45:47,032 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:47,032 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 11
+2024-09-11 18:45:47,033 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:47,033 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 11
+2024-09-11 18:45:47,033 INFO    SenderThread:61191 [file_pusher.py:join():172] waiting for file pusher
+2024-09-11 18:45:47,033 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 12
+2024-09-11 18:45:47,034 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:47,034 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 12
+2024-09-11 18:45:47,034 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:47,034 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 12
+2024-09-11 18:45:47,197 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 13
+2024-09-11 18:45:47,198 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:47,198 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 13
+2024-09-11 18:45:47,199 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:47,199 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 13
+2024-09-11 18:45:47,200 INFO    SenderThread:61191 [sender.py:transition_state():626] send defer: 14
+2024-09-11 18:45:47,200 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: defer
+2024-09-11 18:45:47,201 INFO    HandlerThread:61191 [handler.py:handle_request_defer():170] handle defer: 14
+2024-09-11 18:45:47,201 DEBUG   SenderThread:61191 [sender.py:send():375] send: final
+2024-09-11 18:45:47,201 DEBUG   SenderThread:61191 [sender.py:send():375] send: footer
+2024-09-11 18:45:47,201 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: defer
+2024-09-11 18:45:47,202 INFO    SenderThread:61191 [sender.py:send_request_defer():622] handle sender defer: 14
+2024-09-11 18:45:47,202 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: poll_exit
+2024-09-11 18:45:47,203 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: poll_exit
+2024-09-11 18:45:47,203 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: server_info
+2024-09-11 18:45:47,204 DEBUG   SenderThread:61191 [sender.py:send_request():402] send_request: server_info
+2024-09-11 18:45:47,206 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: get_summary
+2024-09-11 18:45:47,208 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: sampled_history
+2024-09-11 18:45:47,265 INFO    MainThread:61191 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2024-09-11 18:45:47,266 INFO    MainThread:61191 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2024-09-11 18:45:47,266 INFO    MainThread:61191 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2024-09-11 18:45:47,267 DEBUG   HandlerThread:61191 [handler.py:handle_request():144] handle_request: shutdown
+2024-09-11 18:45:47,267 INFO    HandlerThread:61191 [handler.py:finish():842] shutting down handler
+2024-09-11 18:45:48,209 INFO    WriterThread:61191 [datastore.py:close():298] close: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_184539-ue5p1ef5/run-ue5p1ef5.wandb
+2024-09-11 18:45:48,265 INFO    SenderThread:61191 [sender.py:finish():1550] shutting down sender
+2024-09-11 18:45:48,266 INFO    SenderThread:61191 [file_pusher.py:finish():167] shutting down file pusher
+2024-09-11 18:45:48,266 INFO    SenderThread:61191 [file_pusher.py:join():172] waiting for file pusher

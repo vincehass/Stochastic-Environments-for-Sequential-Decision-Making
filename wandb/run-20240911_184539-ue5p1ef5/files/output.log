@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 784, in <module>
+    main(args)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 673, in main
+    agent = StochasticGFN(args, envs)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 471, in __init__
+    assert args.ndim == 2 and args.stick > 0.
+AttributeError: 'Namespace' object has no attribute 'ndim'

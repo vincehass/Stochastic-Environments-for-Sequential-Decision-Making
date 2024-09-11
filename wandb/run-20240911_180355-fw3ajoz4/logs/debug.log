@@ -1,0 +1,28 @@
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Current SDK version is 0.15.3
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Configure stats pid to 52351
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Loading settings from /Users/nhassen/.config/wandb/settings
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Loading settings from /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/settings
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-09-11 18:03:55,506 INFO    MainThread:52351 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'grid/main.py', 'program': '/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py'}
+2024-09-11 18:03:55,507 INFO    MainThread:52351 [wandb_init.py:_log_setup():507] Logging user logs to /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_180355-fw3ajoz4/logs/debug.log
+2024-09-11 18:03:55,507 INFO    MainThread:52351 [wandb_init.py:_log_setup():508] Logging internal logs to /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240911_180355-fw3ajoz4/logs/debug-internal.log
+2024-09-11 18:03:55,507 INFO    MainThread:52351 [wandb_init.py:init():547] calling init triggers
+2024-09-11 18:03:55,507 INFO    MainThread:52351 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'device': 'cpu', 'progress': False, 'seed': 0, 'dir': './results', 'mbsize': 16, 'lr': 0.001, 'n_hid': 256, 'n_layers': 2, 'n_train_steps': 2000, 'dynamics_lr': 0.0001, 'dynamics_hid_dim': 256, 'horizon': 8, 'ndim': 2, 'stick': 0.25, 'dev': device(type='cpu')}
+2024-09-11 18:03:55,508 INFO    MainThread:52351 [wandb_init.py:init():596] starting backend
+2024-09-11 18:03:55,508 INFO    MainThread:52351 [wandb_init.py:init():600] setting up manager
+2024-09-11 18:03:55,514 INFO    MainThread:52351 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2024-09-11 18:03:55,519 INFO    MainThread:52351 [wandb_init.py:init():606] backend started and connected
+2024-09-11 18:03:55,525 INFO    MainThread:52351 [wandb_init.py:init():700] updated telemetry
+2024-09-11 18:03:55,579 INFO    MainThread:52351 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2024-09-11 18:03:55,819 INFO    MainThread:52351 [wandb_run.py:_on_init():2177] communicating current version
+2024-09-11 18:03:55,926 INFO    MainThread:52351 [wandb_run.py:_on_init():2186] got version response upgrade_message: "wandb version 0.18.0 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-09-11 18:03:55,926 INFO    MainThread:52351 [wandb_init.py:init():787] starting run threads in backend
+2024-09-11 18:03:59,397 INFO    MainThread:52351 [wandb_run.py:_console_start():2158] atexit reg
+2024-09-11 18:03:59,398 INFO    MainThread:52351 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2024-09-11 18:03:59,398 INFO    MainThread:52351 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2024-09-11 18:03:59,398 INFO    MainThread:52351 [wandb_run.py:_redirect():2103] Redirects installed.
+2024-09-11 18:03:59,399 INFO    MainThread:52351 [wandb_init.py:init():829] run started, returning control to user process
+2024-09-11 18:04:05,725 WARNING MsgRouterThr:52351 [router.py:message_loop():77] message_loop has been closed

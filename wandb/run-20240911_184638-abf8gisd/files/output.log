@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 467, in <module>
+    main(args)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 356, in main
+    agent = StochasticGFN(args, envs)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 158, in __init__
+    self.model.to(args.dev)
+AttributeError: 'Namespace' object has no attribute 'dev'

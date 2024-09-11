@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 454, in <module>
+    main(args)
+  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 365, in main
+    novelty_buffer = deque(maxlen=200000)
+NameError: name 'deque' is not defined

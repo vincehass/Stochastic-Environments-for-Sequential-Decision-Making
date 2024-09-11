@@ -23,7 +23,7 @@ conda activate gfn-stochEnv
 
 ## Environment Setup
 
-To install dependecies, please run the command `pip install -r requirement.txt`.
+To install dependecies, please run the command `pip install -r requirements.txt`.
 Note that python version should be < 3.8 for running RNA-Binding tasks. You should install `pyg` with the following command
 
 ```

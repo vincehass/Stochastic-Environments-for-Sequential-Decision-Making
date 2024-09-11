@@ -15,5 +15,5 @@ flexs==0.2.8
 polyleven==0.8
 networkx==2.6.3
 wandb==0.15.3
-viennarna==2.4.18
+viennarna
 torch==1.13.1
