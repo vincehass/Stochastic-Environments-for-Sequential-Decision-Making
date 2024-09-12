@@ -8,3 +8,12 @@ __pycache__
 !clamp_common_eval/training/model/D2_title_MLP_best_Layer_1024.pt
 .vscode
 *.egg-info
+
+# Ignore wandb folder
+wandb/
+
+# Ignore .DS_Store files (macOS specific)
+.DS_Store
+
+# Ignore .DS_Store files in all subdirectories
+**/.DS_Store

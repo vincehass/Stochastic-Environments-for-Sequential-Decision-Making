@@ -7,7 +7,7 @@ action_dims = [4]#[2, 3, 4]
 state_dims = [2, 3, 4]
 
 # Define the range for stick values
-stick_values = np.arange(0.25, 0.95, 0.05).round(2)
+stick_values = np.arange(0.25, 1.0, 0.25).round(2)
 
 # Define the number of seeds for each configuration
 num_seeds = 1

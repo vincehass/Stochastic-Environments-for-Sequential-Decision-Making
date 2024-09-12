@@ -25,3 +25,10 @@ config: {'device': 'cpu', 'progress': True, 'seed': 0, 'dir': './results', 'mbsi
 2024-09-12 14:33:00,752 INFO    MainThread:8726 [wandb_run.py:_redirect():2078] Wrapping output streams.
 2024-09-12 14:33:00,752 INFO    MainThread:8726 [wandb_run.py:_redirect():2103] Redirects installed.
 2024-09-12 14:33:00,753 INFO    MainThread:8726 [wandb_init.py:init():829] run started, returning control to user process
+2024-09-12 14:34:31,377 INFO    MainThread:8726 [wandb_run.py:_finish():1893] finishing run deep-genom/Stoch_Grid/3simmk4u
+2024-09-12 14:34:31,377 INFO    MainThread:8726 [wandb_run.py:_atexit_cleanup():2127] got exitcode: 0
+2024-09-12 14:34:31,377 INFO    MainThread:8726 [wandb_run.py:_restore():2110] restore
+2024-09-12 14:34:31,377 INFO    MainThread:8726 [wandb_run.py:_restore():2116] restore done
+2024-09-12 14:34:37,221 INFO    MainThread:8726 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2024-09-12 14:34:37,226 INFO    MainThread:8726 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2024-09-12 14:34:37,233 INFO    MainThread:8726 [wandb_run.py:_footer_sync_info():3428] logging synced files

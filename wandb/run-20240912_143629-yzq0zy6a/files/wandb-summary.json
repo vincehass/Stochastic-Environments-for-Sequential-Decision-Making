@@ -1,0 +1,1 @@
+{"iteration": 2000, "num_visited_states": 62, "loss": 0.0014482905389741063, "dynamics_loss": 0.3206931948661804, "l1_error": 0.004182188389433271, "diversity_score": -2.171472589076118e-11, "novelty": 0.24698911479532723, "top_k_performance": 2.5010000000000003, "_timestamp": 1726166282.9671092, "_runtime": 93.59798121452332, "_step": 200, "_wandb": {"runtime": 93}}
