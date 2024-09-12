@@ -770,3 +770,36 @@
 2024-09-12 14:34:08,366 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
 2024-09-12 14:34:08,366 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
 2024-09-12 14:34:08,367 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:08,913 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:08,914 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:08,914 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:08,914 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:09,248 INFO    Thread-12 :8740 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240912_143256-3simmk4u/files/wandb-summary.json
+2024-09-12 14:34:09,248 INFO    Thread-12 :8740 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240912_143256-3simmk4u/files/output.log
+2024-09-12 14:34:09,351 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:09,352 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:09,352 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:09,352 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:09,788 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:09,788 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:09,788 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:09,789 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:10,253 INFO    Thread-12 :8740 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240912_143256-3simmk4u/files/wandb-summary.json
+2024-09-12 14:34:10,254 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:10,255 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:10,255 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:10,255 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:10,667 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:10,668 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:10,668 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:10,669 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:11,111 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:11,111 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:11,112 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:11,112 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-09-12 14:34:11,256 INFO    Thread-12 :8740 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240912_143256-3simmk4u/files/wandb-summary.json
+2024-09-12 14:34:11,256 INFO    Thread-12 :8740 [dir_watcher.py:_on_file_modified():295] file/dir modified: /Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/wandb/run-20240912_143256-3simmk4u/files/output.log
+2024-09-12 14:34:11,546 DEBUG   HandlerThread:8740 [handler.py:handle_request():144] handle_request: partial_history
+2024-09-12 14:34:11,547 DEBUG   SenderThread:8740 [sender.py:send():375] send: history
+2024-09-12 14:34:11,547 DEBUG   SenderThread:8740 [sender.py:send_request():402] send_request: summary_record
+2024-09-12 14:34:11,547 INFO    SenderThread:8740 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end

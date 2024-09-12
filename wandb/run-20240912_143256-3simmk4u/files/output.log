@@ -178,3 +178,14 @@ Iteration 1400, L1: 0.0047, Diversity: -0.0000, Novelty: 0.2572, Top-k: 2.5010
 Iteration 1420, L1: 0.0046, Diversity: -0.0000, Novelty: 0.2568, Top-k: 2.5010
 Iteration 1430, L1: 0.0046, Diversity: -0.0000, Novelty: 0.2567, Top-k: 2.5010
 Iteration 1440, L1: 0.0046, Diversity: -0.0000, Novelty: 0.2565, Top-k: 2.5010
+
+ 75%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                      | 1495/2001 [01:07<00:23, 21.48it/s]
+Iteration 1460, L1: 0.0045, Diversity: -0.0000, Novelty: 0.2562, Top-k: 2.5010
+Iteration 1470, L1: 0.0045, Diversity: -0.0000, Novelty: 0.2561, Top-k: 2.5010
+Iteration 1480, L1: 0.0045, Diversity: -0.0000, Novelty: 0.2559, Top-k: 2.5010
+Iteration 1490, L1: 0.0044, Diversity: -0.0000, Novelty: 0.2558, Top-k: 2.5010
+
+ 77%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                                  | 1540/2001 [01:09<00:19, 23.75it/s]
+Iteration 1510, L1: 0.0044, Diversity: -0.0000, Novelty: 0.2556, Top-k: 2.5010
+Iteration 1520, L1: 0.0044, Diversity: -0.0000, Novelty: 0.2555, Top-k: 2.5010
+Iteration 1530, L1: 0.0043, Diversity: -0.0000, Novelty: 0.2553, Top-k: 2.5010
