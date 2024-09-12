@@ -1,0 +1,52 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-09-12T18:31:10.920132",
+    "startedAt": "2024-09-12T18:31:10.353846",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--action_dim",
+        "4",
+        "--state_dim",
+        "2",
+        "--stick",
+        "0.25",
+        "--seed",
+        "0",
+        "--progress"
+    ],
+    "state": "running",
+    "program": "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py",
+    "codePath": "grid/main.py",
+    "git": {
+        "remote": "https://github.com/vincehass/Stochastic-Environments-for-Sequential-Decision-Making.git",
+        "commit": "aa16db17ce725ed00e072dfb62584d293001d3fa"
+    },
+    "email": "nadhir.hassen@polymtl.ca",
+    "root": "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making",
+    "host": "6200L-210250-M.local",
+    "username": "nhassen",
+    "executable": "/Users/nhassen/opt/anaconda3/envs/gfn-stochEnv/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2400,
+        "min": 2400,
+        "max": 2400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400,
+            "min": 2400,
+            "max": 2400
+        }
+    ],
+    "disk": {
+        "total": 460.4317207336426,
+        "used": 9.565597534179688
+    },
+    "memory": {
+        "total": 16.0
+    }
+}

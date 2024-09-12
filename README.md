@@ -70,10 +70,10 @@ pip --no-cache-dir install torch-geometric
 
 ```
 
-## Running the code
+## Running the code with all experiments
 
 ```sh
-python grid/main.py
+python grid/run_experiments.py
 ```
 
 ### Sequential Decision Making

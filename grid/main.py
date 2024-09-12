@@ -350,7 +350,7 @@ def diversity(data, dist_func=levenshtein):
     return sum(dists) / (n*(n-1)) if n > 1 else 0
 
 def main(args):
-    wandb.init(project="Stoch_DIM", config=args, name=f"Env_a{args.action_dim}_s{args.state_dim}_seed{args.seed}")
+    wandb.init(project="Stoch_Grid", config=args, name=f"Env_a{args.action_dim}_s{args.state_dim}_stick{args.stick}_seed{args.seed}")
 
     # Modify your environment and agent initialization to use the new dimensions
     envs = [GridEnv(args.horizon, args.state_dim, func=func_corners) for i in range(args.mbsize)]
