@@ -116,3 +116,82 @@ The performance of the GFlowNet is evaluated by:
 - **Efficiency**: The speed and efficiency at which the model discovers high-binding sequences compared to baselines like reinforcement learning or random search.
 
 This experiment shows the effectiveness of GFlowNets in efficiently exploring large combinatorial spaces (like DNA sequences) and optimizing for specific objectives such as binding affinity, while also maintaining diversity in the discovered solutions.
+
+### Running the TFBind8 experiment
+
+Create Fake Dataset
+
+```
+python tfb/lib/dataset/preprocess.py
+```
+
+Result:
+
+```
+Sequence: ACCGACGC
+Score: 0.7000
+Reasoning:
+- Found 2 CG motif(s): +1.40
+- Found 1 GC motif(s): +0.60
+- Found 1 adjacent repeat(s): +0.10
+
+Sequence: GAGGCTCC
+Score: 0.2667
+Reasoning:
+- Found 1 GC motif(s): +0.60
+- Found 2 adjacent repeat(s): +0.20
+
+Sequence: ATAATGAC
+Score: 0.5000
+Reasoning:
+- Found 2 AT motif(s): +1.00
+- Found 1 TA motif(s): +0.40
+- Found 1 adjacent repeat(s): +0.10
+
+Sequence: AGATTTGC
+Score: 0.4333
+Reasoning:
+- Found 1 AT motif(s): +0.50
+- Found 1 GC motif(s): +0.60
+- Found 2 adjacent repeat(s): +0.20
+
+Sequence: TAAAAACT
+Score: 0.2667
+Reasoning:
+- Found 1 TA motif(s): +0.40
+- Found 4 adjacent repeat(s): +0.40
+
+Sequence: TTCGGATA
+Score: 0.6000
+Reasoning:
+- Found 1 AT motif(s): +0.50
+- Found 1 CG motif(s): +0.70
+- Found 1 TA motif(s): +0.40
+- Found 2 adjacent repeat(s): +0.20
+
+Sequence: GATAAAGA
+Score: 0.3667
+Reasoning:
+- Found 1 AT motif(s): +0.50
+- Found 1 TA motif(s): +0.40
+- Found 2 adjacent repeat(s): +0.20
+
+Sequence: CAACATGC
+Score: 0.4000
+Reasoning:
+- Found 1 AT motif(s): +0.50
+- Found 1 GC motif(s): +0.60
+- Found 1 adjacent repeat(s): +0.10
+
+Sequence: CGGCGAGC
+Score: 0.9000
+Reasoning:
+- Found 2 CG motif(s): +1.40
+- Found 2 GC motif(s): +1.20
+- Found 1 adjacent repeat(s): +0.10
+
+Sequence: GTCTGGGG
+Score: 0.1000
+Reasoning:
+- Found 3 adjacent repeat(s): +0.30
+```

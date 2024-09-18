@@ -1,23 +1,15 @@
 import numpy as np
-from clamp_gen_data.clamp_common_eval.defaults import get_test_oracle
-#from clamp_common_eval.defaults import get_test_oracle
-import design_bench
-
-from tqdm import tqdm
-
-
-def get_oracle(args):
-    if args.task == "tfbind":
-        return TFBind8Wrapper(args)
-
+from tfbind8_simplified import SimplifiedTFBind8
 
 class TFBind8Wrapper:
     def __init__(self, args):
-        self.task = design_bench.make('TFBind8-Exact-v0')
+        self.task = SimplifiedTFBind8()
+        self.dataset = self.task.generate_dataset(10000)  # Generate a large dataset
+        self.sequence_to_score = {item['sequence']: item['score'] for item in self.dataset}
 
     def __call__(self, x, batch_size=256):
         scores = []
-        for i in range(int(np.ceil(len(x) / batch_size))):
-            s = self.task.predict(np.array(x[i*batch_size:(i+1)*batch_size]))
-            scores += s.tolist()
+        for sequence in x:
+            score = self.sequence_to_score.get(sequence, 0)  # Default to 0 if sequence not found
+            scores.append(score)
         return np.array(scores)
