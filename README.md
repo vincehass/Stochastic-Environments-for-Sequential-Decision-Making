@@ -119,7 +119,7 @@ This experiment shows the effectiveness of GFlowNets in efficiently exploring la
 
 ### Running the TFBind8 experiment
 
-Create Fake Dataset
+Create TFBIND8 Dataset
 
 ```
 python tfb/lib/dataset/preprocess.py
