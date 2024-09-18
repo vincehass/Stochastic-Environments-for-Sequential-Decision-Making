@@ -81,3 +81,5 @@ python grid/run_experiments.py
 ```sh
 python tfb/run_tfbind.py
 ```
+
+# Update model
