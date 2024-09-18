@@ -1,10 +1,10 @@
+import json
 import numpy as np
-from tfbind8_simplified import SimplifiedTFBind8
 
 class TFBind8Wrapper:
     def __init__(self, args):
-        self.task = SimplifiedTFBind8()
-        self.dataset = self.task.generate_dataset(10000)  # Generate a large dataset
+        with open("tfbind8_simplified_dataset.json", 'r') as f:
+            self.dataset = json.load(f)
         self.sequence_to_score = {item['sequence']: item['score'] for item in self.dataset}
 
     def __call__(self, x, batch_size=256):
