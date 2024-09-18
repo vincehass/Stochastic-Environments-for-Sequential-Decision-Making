@@ -53,7 +53,7 @@ You can change `pytorch-cuda=11.8` with `pytorch-cuda=XX.X` to match your versio
 pip install -r requirements.txt
 ```
 
--_(Optional)_ Install dependencies for molecule experiemtns
+-_(Optional)_ Install dependencies for molecule experiemnts
 
 ```sh
 pip install -r requirements_mols.txt
@@ -70,16 +70,49 @@ pip --no-cache-dir install torch-geometric
 
 ```
 
-## Running the code with all experiments
+## Running the grid-search with all experiments
 
 ```sh
 python grid/run_experiments.py
 ```
 
-### Sequential Decision Making
+### Molecule Generation for Drug Discovery
 
-```sh
-python tfb/run_tfbind.py
-```
+#### TF8-Binding
 
-# Update model
+The TF8Bind experiment using GFlowNets is designed to model the process of discovering DNA sequences that bind strongly to a transcription factor (TF). Here's an overview of how the experiment typically works:
+
+### Objective
+
+TF8Bind focuses on discovering optimal DNA sequences of length 8 (hence the "8") that maximize binding affinity to a given transcription factor. The goal is to model the process of exploring the vast sequence space of DNA (comprising 4 possible nucleotides for each position) and efficiently finding sequences with high binding affinity.
+
+### Experiment Design
+
+1. **Sequence Space Representation**:
+   DNA sequences are represented as strings of length 8, where each position can take one of four nucleotides (A, C, G, T). This creates a search space of \(4^8 = 65536\) possible sequences.
+
+2. **GFlowNet Framework**:
+   GFlowNets are used to explore the sequence space in a directed manner, by learning a generative policy that favors high-binding-affinity sequences while ensuring good coverage of the space.
+
+   - **States**: Partial or full sequences of DNA (e.g., starting from an empty sequence and growing it nucleotide by nucleotide).
+   - **Actions**: Adding a nucleotide (A, C, G, or T) to the growing sequence.
+   - **Reward**: The reward for generating a complete DNA sequence is proportional to the binding affinity of that sequence to the transcription factor, as predicted by a binding affinity model (e.g., TFBind model).
+
+3. **Binding Affinity Prediction**:
+   The experiment uses a pre-trained or known model to predict the binding affinity of any given 8-mer sequence. The reward for each sequence is derived from this prediction, and the GFlowNet is trained to generate sequences with higher rewards.
+
+4. **Training Process**:
+   - The GFlowNet is trained to generate sequences with high binding affinity using the reward model. During training, the GFlowNet explores the sequence space and receives feedback based on the predicted binding affinity.
+   - **Detailed Balance (DB)** or **Trajectory Balance (TB)** loss functions are used to optimize the generative policy. These losses ensure that the flow through each state-action pair matches the target distribution of the sequences proportional to their binding affinity.
+5. **Exploration vs. Exploitation**:
+   GFlowNets balance exploration and exploitation by ensuring that sequences with high rewards are favored while still covering diverse parts of the sequence space. Unlike other methods like reinforcement learning, which may over-exploit certain regions, GFlowNets encourage broader exploration while still focusing on promising sequences.
+
+### Evaluation
+
+The performance of the GFlowNet is evaluated by:
+
+- **Binding Affinity**: How well the generated sequences perform in terms of binding affinity to the transcription factor.
+- **Diversity**: The diversity of high-affinity sequences found, to ensure that the method is not just finding a small number of similar sequences.
+- **Efficiency**: The speed and efficiency at which the model discovers high-binding sequences compared to baselines like reinforcement learning or random search.
+
+This experiment shows the effectiveness of GFlowNets in efficiently exploring large combinatorial spaces (like DNA sequences) and optimizing for specific objectives such as binding affinity, while also maintaining diversity in the discovered solutions.
