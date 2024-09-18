@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 469, in <module>
-    main(args)
-  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 357, in main
-    agent = StochasticGFN(args, envs)
-  File "/Users/nhassen/Documents/MLOPS/code/gihub/Stochastic-Environments-for-Sequential-Decision-Making/grid/main.py", line 155, in __init__
-    assert args.state_dim == 2 and args.stick > 0.
-AssertionError
