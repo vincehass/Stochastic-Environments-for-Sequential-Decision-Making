@@ -24,7 +24,7 @@ class DBGFlowNetGenerator(GeneratorBase):
         self.out_coef = args.gen_output_coef
         self.reward_exp_min = args.reward_exp_min
         self.num_tokens = args.vocab_size
-        self.max_len = args.gen_max_len
+        self.max_len = args.max_len
         self.tokenizer = tokenizer
         self.pad_tok = 1
         
@@ -33,7 +33,7 @@ class DBGFlowNetGenerator(GeneratorBase):
         self.model = MLP(
             num_tokens=self.num_tokens, 
             num_outputs=num_outputs, 
-            num_hid=args.gen_num_hidden,
+            num_hid=args.num_hid,
             num_layers=args.gen_num_layers,
             max_len=self.max_len,
             dropout=0,
@@ -169,7 +169,7 @@ class StochasticDBGFlowNetGenerator(GeneratorBase):
         self.out_coef = args.gen_output_coef
         self.reward_exp_min = args.reward_exp_min
         self.num_tokens = args.vocab_size
-        self.max_len = args.gen_max_len
+        self.max_len = args.max_len
         self.tokenizer = tokenizer
         self.pad_tok = 1
         

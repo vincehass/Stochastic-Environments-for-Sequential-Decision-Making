@@ -19,7 +19,7 @@ from lib.logging import get_logger
 from lib.oracle_wrapper import get_oracle
 from lib.proxy import get_proxy_model
 from lib.utils.distance import is_similar, edit_dist
-from lib.utils.env import get_tokenizer
+from lib.utils.env import get_tokenizer, StochasticGFNEnvironment
 
 import os, sys
 import tempfile
@@ -27,7 +27,7 @@ import datetime
 import shutil
 
 EXPERIMENT_NAME = "tfbind8_stochasticEnv"
-WANDB_ENTITY = "nadhirvincenthassen"
+WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
 parser = argparse.ArgumentParser()
 
@@ -38,9 +38,8 @@ parser.add_argument("--load_scores_path", default='.')
 parser.add_argument("--num_rounds", default=1, type=int)
 parser.add_argument("--task", default="tfbind", type=str)
 parser.add_argument("--num_sampled_per_round", default=2048, type=int) 
-parser.add_argument("--vocab_size", default=4)
-parser.add_argument("--max_len", default=8)
-parser.add_argument("--gen_max_len", default=8)
+parser.add_argument('--vocab_size', type=int, default=4)
+parser.add_argument('--max_len', type=int, default=8)
 parser.add_argument("--proxy_uncertainty", default="dropout")
 parser.add_argument("--save_scores_path", default=".")
 parser.add_argument("--save_scores", action="store_true")
@@ -56,7 +55,7 @@ parser.add_argument("--load_proxy_weights", type=str)
 parser.add_argument("--max_percentile", default=80, type=int)
 parser.add_argument("--filter_threshold", default=0.1, type=float)
 parser.add_argument("--filter_distance_type", default="edit", type=str)
-
+parser.add_argument('--stick', type=float, default=0.25, help='Stick parameter for StochasticDBGFlowNetGenerator')
 # Generator arguments
 parser.add_argument("--gen_learning_rate", default=1e-5, type=float)
 parser.add_argument("--gen_num_iterations", default=5000, type=int)
@@ -71,15 +70,38 @@ parser.add_argument("--gen_reward_exp_ramping", default=3, type=float)
 parser.add_argument("--gen_balanced_loss", default=1, type=float)
 parser.add_argument("--gen_output_coef", default=10, type=float)
 parser.add_argument("--gen_loss_eps", default=1e-5, type=float)
-
+parser.add_argument('--method', type=str, default='db', help='Method to use for generator (e.g., tb, db)')
+parser.add_argument('--num_tokens', type=int, default=4, help='Number of tokens in the vocabulary')
+parser.add_argument('--gen_num_hidden', type=int, default=64, help='Number of hidden units in the generator')
+parser.add_argument('--gen_num_layers', type=int, default=2, help='Number of layers in the generator')
+parser.add_argument('--gen_dropout', type=float, default=0.1, help='Dropout rate for the generator')
+parser.add_argument('--gen_partition_init', type=float, default=150.0, help='Partition initialization value for the generator')
+parser.add_argument('--gen_do_explicit_Z', action='store_true', help='Enable explicit Z for the generator')
+parser.add_argument('--gen_L2', type=float, default=0.0, help='L2 regularization coefficient for generator')
+parser.add_argument('--dynamics_num_hid', type=int, default=128, help='Number of hidden units in the dynamics network')
+parser.add_argument('--dynamics_num_layers', type=int, default=2, help='Number of layers in the dynamics network')
+parser.add_argument('--dynamics_dropout', type=float, default=0.1, help='Dropout rate for the dynamics network')
+parser.add_argument('--dynamics_partition_init', type=float, default=150.0, help='Partition initialization value for the dynamics network')
+parser.add_argument('--dynamics_do_explicit_Z', action='store_true', help='Enable explicit Z for the dynamics network')
+parser.add_argument('--dynamics_L2', type=float, default=0.0, help='L2 regularization coefficient for dynamics network')
+parser.add_argument('--dynamics_lr', type=float, default=1e-3, help='Learning rate for the dynamics network')
+parser.add_argument('--dynamics_clip', type=float, default=10.0, help='Clipping value for the dynamics network')
+parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
 # Proxy arguments
 parser.add_argument("--proxy_type", default="regression")
 parser.add_argument("--proxy_num_iterations", default=3000, type=int)
 parser.add_argument("--proxy_num_dropout_samples", default=25, type=int)
+parser.add_argument('--proxy_num_hid', type=int, default=128, help='Number of hidden units in the proxy model')
+parser.add_argument('--proxy_num_layers', type=int, default=2, help='Number of layers in the proxy model')
+parser.add_argument('--proxy_dropout', type=float, default=0.1, help='Dropout rate for the proxy model')
+parser.add_argument('--proxy_learning_rate', type=float, default=1e-3, help='Learning rate for the proxy model')
+parser.add_argument('--proxy_num_per_minibatch', type=int, default=32,
+                    help='Number of samples per minibatch for proxy training')
 
 # WandB arguments
 parser.add_argument("--wandb_project", default=EXPERIMENT_NAME, help="WandB project name")
 parser.add_argument("--wandb_run_name", default=None, help="WandB run name")
+parser.add_argument("--wandb_entity", default=WANDB_ENTITY, help="WandB entity (username or team name)")
 
 class MbStack:
     def __init__(self, f):
@@ -99,10 +121,14 @@ class MbStack:
         return zip(ys, idxs)
 
 class RolloutWorker:
-    def __init__(self, args, oracle, tokenizer):
+    def __init__(self, args, oracle, proxy, tokenizer, dataset):
+        # Initialize with all the arguments
+        self.args = args
         self.oracle = oracle
+        self.proxy = proxy
+        self.tokenizer = tokenizer
+        self.dataset = dataset
         self.max_len = args.max_len
-        self.max_len = args.gen_max_len
         self.episodes_per_step = args.gen_episodes_per_step
         self.random_action_prob = args.gen_random_action_prob
         self.reward_exp = args.gen_reward_exp
@@ -115,26 +141,50 @@ class RolloutWorker:
         self.leaf_coef = args.gen_leaf_coef
         self.exp_ramping_factor = args.gen_reward_exp_ramping
         
-        self.tokenizer = tokenizer
         if self.exp_ramping_factor > 0:
             self.l2r = lambda x, t=0: (x) ** (1 + (self.reward_exp - 1) * (1 - 1/(1 + t / self.exp_ramping_factor)))
         else:
             self.l2r = lambda x, t=0: (x) ** self.reward_exp
         self.device = args.device
-        self.args = args
         self.workers = MbStack(oracle)
 
-    def rollout(self, model, episodes, use_rand_policy=True):
+        # Create the stochastic environment
+        self.environment = StochasticGFNEnvironment(
+            tokenizer=self.tokenizer,
+            max_len=self.max_len,
+            oracle=self.oracle,
+            stick=args.stick
+        )
+
+    def rollout(self, model, num_episodes, use_rand_policy=False):
+        if model is None:
+            raise ValueError("Model passed to rollout is None")
+        model.eval()
         visited = []
-        states = [[] for _ in range(episodes)]
-        thought_states = [[] for _ in range(episodes)]
-        traj_states = [[[]] for _ in range(episodes)]
-        traj_actions = [[] for _ in range(episodes)]
-        traj_rewards = [[] for _ in range(episodes)]
-        traj_dones = [[] for _ in range(episodes)]
+        states = [self.environment.reset() for _ in range(num_episodes)]
+        thought_states = [[] for _ in range(num_episodes)]
+        traj_states = [[[]] for _ in range(num_episodes)]
+        traj_actions = [[] for _ in range(num_episodes)]
+        traj_rewards = [[] for _ in range(num_episodes)]
+        traj_dones = [[] for _ in range(num_episodes)]
+
+        print(f"Debug: Initial states = {states}")
+        print(f"Debug: Number of episodes = {num_episodes}")
+        print(f"Debug: Max length = {self.max_len}")
 
         for t in range(self.max_len):
-            x = self.tokenizer.process(states).to(self.device)
+            print(f"Debug: Timestep {t}")
+            print(f"Debug: States before processing = {states}")
+            print(f"Debug: Length of states = {len(states)}")
+            if len(states) > 0:
+                print(f"Debug: Length of first state = {len(states[0])}")
+            
+            try:
+                x = self.environment.tokenizer.process(states).to(self.device)
+            except IndexError as e:
+                print(f"Debug: IndexError occurred. States: {states}")
+                raise e
+
             with torch.no_grad():
                 logits = model(x, None)
             logits = logits[:, :self.args.vocab_size]
@@ -146,6 +196,7 @@ class RolloutWorker:
                 actions[rand_mask] = torch.randint(0, logits.shape[1], (rand_mask.sum(),)).to(self.device)
 
             for i, a in enumerate(actions):
+                print(f"Debug: Processing episode {i}, action {a.item()}")
                 if t == self.max_len - 1:
                     self.workers.push(states[i] + [a.item()], i)
                     r, d = 0, 1
@@ -157,11 +208,22 @@ class RolloutWorker:
                 traj_dones[i].append(d)
                 states[i].append(a.item())
                 thought_states[i].append(a.item())
+            
+            print(f"Debug: States after processing = {states}")
         
+        # After the rollout is complete, evaluate with the oracle
+        final_states = [s for s in states if len(s) == self.max_len]
+        if final_states:
+            oracle_scores = self.oracle(final_states)
+            for i, (state, score) in enumerate(zip(final_states, oracle_scores)):
+                visited.append((state, thought_states[i], score.item(), score.item()))
+
         return visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones
 
-    def execute_train_episode_batch(self, model, it=0, dataset=None, use_rand_policy=True):
-        visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones = self.rollout(model, self.episodes_per_step, use_rand_policy=use_rand_policy) 
+    def execute_train_episode_batch(self, generator, it, dataset, use_rand_policy=False):
+        print(f"Debug: generator in execute_train_episode_batch: {generator}")
+        visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones = self.rollout(generator, self.episodes_per_step, use_rand_policy=use_rand_policy)
+        print(f"Debug: Rollout completed. States: {states}")
         
         bulk_trajs = []
         for (r, mbidx) in self.workers.pop_all():
@@ -198,16 +260,23 @@ def calculate_novelty(new_sequences, reference_sequences):
     novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
     return novel_count / len(new_sequences)
 
-def train_generator(args, generator, oracle, tokenizer, dataset):
+def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
+    # Add this debug print
+    print("Debug: generator before rollout:", generator)
+    
+    print(f"Debug: generator type: {type(generator)}")
     print("Training generator")
     visited = []
-    rollout_worker = RolloutWorker(args, oracle, tokenizer)
-    
+    rollout_worker = RolloutWorker(args, oracle, proxy, tokenizer, dataset)
+    print(f"Debug: rollout_worker created: {rollout_worker}")
     unique_sequences = set()
     total_steps = 0
     
     for it in tqdm(range(args.gen_num_iterations + 1)):
-        rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset)
+        # Add this debug print
+        print(f"Debug: generator at iteration {it}:", generator)
+        
+        rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
         visited.extend(rollout_artifacts["visited"])
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
@@ -236,7 +305,7 @@ def train_generator(args, generator, oracle, tokenizer, dataset):
         if it % 5000 == 0:
             args.logger.save(args.save_path, args)
     
-    return rollout_worker, None
+    return rollout_worker, generator
 
 def filter_samples(args, samples, reference_set):
     filtered_samples = []
@@ -311,8 +380,14 @@ def train(args, oracle, dataset):
     tokenizer = get_tokenizer(args)
     proxy = construct_proxy(args, tokenizer, dataset=dataset)
     proxy.update(dataset)
+    
     generator = get_generator(args, tokenizer)
-    rollout_worker, _ = train_generator(args, generator, proxy, tokenizer, dataset)
+    
+    
+    if generator is None:
+        raise ValueError("Failed to initialize generator")
+    
+    rollout_worker, _ = train_generator(args, generator, oracle, proxy, tokenizer, dataset)
     batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
     args.logger.add_object("collected_seqs", batch[0])
     args.logger.add_object("collected_seqs_scores", batch[1])
@@ -332,7 +407,7 @@ def main(args):
     # Initialize wandb
     wandb.init(
         project=args.wandb_project,
-        entity=WANDB_ENTITY,
+        entity=args.wandb_entity,
         name=args.wandb_run_name,
         config=vars(args)
     )

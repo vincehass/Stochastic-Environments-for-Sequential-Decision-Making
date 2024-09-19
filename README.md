@@ -119,11 +119,7 @@ This experiment shows the effectiveness of GFlowNets in efficiently exploring la
 
 ### Running the TFBind8 experiment
 
-Create TFBIND8 Dataset
-
-```
-python tfb/lib/dataset/preprocess.py
-```
+The TFBIND8 Generated Data looks like this:
 
 Result:
 
@@ -216,4 +212,10 @@ python tfb/run_tfbind.py \
   --proxy_num_iterations 3000 \
   --wandb_project tfbind8_stochasticEnv \
   --wandb_run_name tfbind8_run_1
+```
+
+Run Experiments of TFBIND
+
+```
+python tfb/run_tfbind.py --max_len 8 --save_path results/tfbind8_stochasticEnv.pkl.gz --name tfbind8_stochasticEnv --num_rounds 1 --task tfbind --num_sampled_per_round 2048 --vocab_size 4 --proxy_uncertainty dropout --seed 0 --gen_learning_rate 1e-5 --gen_num_iterations 5000 --gen_episodes_per_step 16 --gen_reward_exp 3 --gen_reward_min 0 --gen_reward_norm 1 --gen_random_action_prob 0.001 --gen_sampling_temperature 2.0 --gen_leaf_coef 25 --gen_reward_exp_ramping 3 --gen_balanced_loss 1 --gen_output_coef 10 --gen_loss_eps 1e-5 --proxy_type regression --proxy_num_iterations 3000 --proxy_num_dropout_samples 25 --wandb_project tfbind8_stochasticEnv
 ```

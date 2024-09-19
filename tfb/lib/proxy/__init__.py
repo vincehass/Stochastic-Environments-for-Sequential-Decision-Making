@@ -1,4 +1,4 @@
-from lib.proxy.regression import DropoutRegressor, EnsembleRegressor
+from lib.proxy.regression import DropoutRegressor
 
 def get_proxy_model(args, tokenizer):
     if args.proxy_uncertainty == "dropout":
