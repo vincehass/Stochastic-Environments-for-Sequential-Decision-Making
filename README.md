@@ -192,28 +192,6 @@ Reasoning:
 - Found 3 adjacent repeat(s): +0.30
 ```
 
-Run the experiment
-
-```
-python tfb/run_tfbind.py \
-  --num_rounds 1 \
-  --task tfbind \
-  --num_sampled_per_round 2048 \
-  --vocab_size 4 \
-  --max_len 8 \
-  --gen_max_len 8 \
-  --proxy_uncertainty dropout \
-  --seed 42 \
-  --gen_num_iterations 5000 \
-  --gen_episodes_per_step 16 \
-  --gen_reward_exp 3 \
-  --gen_learning_rate 1e-5 \
-  --proxy_type regression \
-  --proxy_num_iterations 3000 \
-  --wandb_project tfbind8_stochasticEnv \
-  --wandb_run_name tfbind8_run_1
-```
-
 Run Experiments of TFBIND
 
 ```
