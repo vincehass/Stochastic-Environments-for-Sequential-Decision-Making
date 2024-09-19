@@ -1,36 +1,38 @@
-import pickle
+import os
 import gzip
-import copy
-import wandb
-
-def get_logger(args):
-    return Logger(args)
+import pickle
+import numpy as np
 
 class Logger:
     def __init__(self, args):
+        self.args = args
         self.data = {}
-        self.args = copy.deepcopy(vars(args))
-        self.context = ""
-        wandb.init(project=args.wandb_project, config=self.args, name=args.name)
 
-    def set_context(self, context):
-        self.context = context
+    def add_scalar(self, name, value, step):
+        if name not in self.data:
+            self.data[name] = []
+        self.data[name].append((step, value))
 
-    def add_scalar(self, key, value, use_context=True):
-        if use_context:
-            key = self.context + '/' + key
-        if key in self.data.keys():
-            self.data[key].append(value)
-        else:
-            self.data[key] = [value]
-        wandb.log({key: value})
-
-    def add_object(self, key, value, use_context=True):
-        if use_context:
-            key = self.context + '/' + key
-        self.data[key] = value
-        wandb.log({key: value})
+    def add_object(self, name, obj):
+        self.data[name] = obj
 
     def save(self, save_path, args):
+        # Create the directory if it doesn't exist
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        
         pickle.dump({'logged_data': self.data, 'args': self.args}, gzip.open(save_path, 'wb'))
-        wandb.finish()
+
+    def load(self, load_path):
+        with gzip.open(load_path, 'rb') as f:
+            loaded_data = pickle.load(f)
+        self.data = loaded_data['logged_data']
+        self.args = loaded_data['args']
+
+    def get_scalar(self, name):
+        return np.array(self.data[name])
+
+    def get_object(self, name):
+        return self.data[name]
+
+def get_logger(args):
+    return Logger(args)

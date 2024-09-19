@@ -384,4 +384,3 @@ class StochasticDBGFlowNetGenerator(GeneratorBase):
         out = self.model(inp, None, lens=lens, return_all=return_all) * self.out_coef
 
         return out    
-

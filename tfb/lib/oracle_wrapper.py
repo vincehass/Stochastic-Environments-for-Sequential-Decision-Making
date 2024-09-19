@@ -22,10 +22,12 @@ class TFBind8Wrapper:
         self.sequences = np.array(self.sequences)
         self.scores = np.array(self.scores)
 
-    def __call__(self, x: List[str], batch_size: int = 256) -> np.ndarray:
+    def __call__(self, x: List[List[int]], batch_size: int = 256) -> np.ndarray:
         scores = []
         for sequence in x:
-            score = self.sequence_to_score.get(sequence, 0)  # Default to 0 if sequence not found
+            # Convert the list of integers to a string sequence
+            sequence_str = ''.join([self.vocab[i] for i in sequence])
+            score = self.sequence_to_score.get(sequence_str, 0)  # Default to 0 if sequence not found
             scores.append(score)
         return np.array(scores)
 
@@ -61,4 +63,11 @@ if __name__ == "__main__":
     fitness_scores = oracle.get_fitness(sampled_sequences)
     print("\nSampled sequences and their fitness:")
     for seq, score in zip(sampled_sequences, fitness_scores):
+        print(f"{seq}: {score}")
+
+    # Test __call__ with list of integer sequences
+    int_sequences = [[0, 1, 2, 3, 0, 1, 2, 3], [3, 2, 1, 0, 3, 2, 1, 0]]
+    scores = oracle(int_sequences)
+    print("\nScores for integer sequences:")
+    for seq, score in zip(int_sequences, scores):
         print(f"{seq}: {score}")

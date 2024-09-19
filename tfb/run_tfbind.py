@@ -87,6 +87,8 @@ parser.add_argument('--dynamics_L2', type=float, default=0.0, help='L2 regulariz
 parser.add_argument('--dynamics_lr', type=float, default=1e-3, help='Learning rate for the dynamics network')
 parser.add_argument('--dynamics_clip', type=float, default=10.0, help='Clipping value for the dynamics network')
 parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
+parser.add_argument('--gen_data_sample_per_step', type=int, default=16, help='Number of data samples to generate per step')
+parser.add_argument('--gen_clip', type=float, default=10.0, help='Gradient clipping value for generator')
 # Proxy arguments
 parser.add_argument("--proxy_type", default="regression")
 parser.add_argument("--proxy_num_iterations", default=3000, type=int)
@@ -180,9 +182,14 @@ class RolloutWorker:
                 print(f"Debug: Length of first state = {len(states[0])}")
             
             try:
-                x = self.environment.tokenizer.process(states).to(self.device)
-            except IndexError as e:
-                print(f"Debug: IndexError occurred. States: {states}")
+                x = self.environment.tokenizer.process(states)
+                if x.numel() > 0:  # Check if tensor is not empty
+                    x = x.to(self.device)
+                else:
+                    print("Debug: Processed states resulted in an empty tensor")
+            except Exception as e:
+                print(f"Debug: Exception occurred: {e}")
+                print(f"Debug: States when exception occurred: {states}")
                 raise e
 
             with torch.no_grad():
@@ -261,7 +268,6 @@ def calculate_novelty(new_sequences, reference_sequences):
     return novel_count / len(new_sequences)
 
 def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
-    # Add this debug print
     print("Debug: generator before rollout:", generator)
     
     print(f"Debug: generator type: {type(generator)}")
@@ -273,14 +279,13 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
     total_steps = 0
     
     for it in tqdm(range(args.gen_num_iterations + 1)):
-        # Add this debug print
         print(f"Debug: generator at iteration {it}:", generator)
         
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
         visited.extend(rollout_artifacts["visited"])
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
-        print(it, loss, loss_info)
+        print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
 
         # Calculate metrics
         rewards = [i[-1] for i in rollout_artifacts["trajectories"]["traj_rewards"]]
@@ -291,21 +296,40 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         total_steps += sum(len(traj) for traj in rollout_artifacts["trajectories"]["traj_states"])
 
         # Log metrics to wandb
-        wandb.log({
+        wandb_log_dict = {
             "iteration": it,
             "loss": loss,
-            "dynamic_loss": loss_info.get("dynamic_loss", 0),
             "avg_reward": avg_reward,
             "diversity": diversity,
             "novelty": novelty,
             "unique_sequences": len(unique_sequences),
             "total_steps": total_steps,
-        })
+        }
+
+        # Handle different types of loss_info
+        if isinstance(loss_info, dict):
+            wandb_log_dict.update(loss_info)
+        elif isinstance(loss_info, (int, float)):
+            wandb_log_dict["dynamic_loss"] = loss_info
+        else:
+            print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
+
+        wandb.log(wandb_log_dict)
 
         if it % 5000 == 0:
             args.logger.save(args.save_path, args)
     
     return rollout_worker, generator
+
+# Make sure these functions are defined
+def calculate_diversity(sequences):
+    unique_sequences = set(tuple(seq) for seq in sequences)
+    return len(unique_sequences) / len(sequences)
+
+def calculate_novelty(new_sequences, reference_sequences):
+    reference_set = set(tuple(seq) for seq in reference_sequences)
+    novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
+    return novel_count / len(new_sequences)
 
 def filter_samples(args, samples, reference_set):
     filtered_samples = []
