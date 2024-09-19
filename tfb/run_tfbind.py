@@ -349,7 +349,7 @@ def sample_batch(args, rollout_worker, generator, current_dataset, oracle):
     scores = []
     
     while len(samples[0]) < args.num_sampled_per_round:
-        rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it=0, use_rand_policy=False)
+        rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it=0, dataset=current_dataset, use_rand_policy=False)
         states = rollout_artifacts["trajectories"]["states"]
         vals = oracle(states).reshape(-1)
         samples[0].extend(states)
