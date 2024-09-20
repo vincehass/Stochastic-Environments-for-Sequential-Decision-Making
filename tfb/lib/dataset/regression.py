@@ -44,21 +44,28 @@ class TFBind8Dataset(Dataset):
         return self.valid, self.valid_scores
 
     def add(self, batch):
-        samples, scores = batch
-        train, val = [], []
-        train_seq, val_seq = [], []
-        for x, score in zip(samples, scores):
-            if self.rng.random() < 0.1:
-                val_seq.append(x)
-                val.append(score)
-            else:
-                train_seq.append(x)
-                train.append(score)
-        self.train_scores = np.concatenate((self.train_scores, train)).reshape(-1)
-        self.valid_scores = np.concatenate((self.valid_scores, val)).reshape(-1)
+        train_seq, train_y = batch
+
+        # Ensure train_seq is 2-dimensional
+        if np.array(train_seq).ndim == 1:
+            train_seq = np.array(train_seq).reshape(-1, 1)
+        else:
+            train_seq = np.array(train_seq)
+
+        # Ensure self.train is 2-dimensional
+        if self.train.ndim == 1:
+            self.train = self.train.reshape(-1, 1)
+
         self.train = np.concatenate((self.train, train_seq))
-        self.valid = np.concatenate((self.valid, val_seq))
-    
+        self.y = np.concatenate((self.y, train_y))
+
+        # Update test set if necessary
+        if len(self.train) > self.n:
+            self.test = np.concatenate((self.test, self.train[self.n:]))
+            self.test_y = np.concatenate((self.test_y, self.y[self.n:]))
+            self.train = self.train[:self.n]
+            self.y = self.y[:self.n]
+
     def _tostr(self, seqs):
         return ["".join(map(str, x)) for x in seqs]
 

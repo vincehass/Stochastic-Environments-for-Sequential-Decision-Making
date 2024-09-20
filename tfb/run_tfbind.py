@@ -26,7 +26,7 @@ import tempfile
 import datetime
 import shutil
 
-EXPERIMENT_NAME = "tfbind8_stochasticEnv"
+EXPERIMENT_NAME = "tfbind8_stochasticEnvNN"
 WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
 parser = argparse.ArgumentParser()
@@ -170,14 +170,14 @@ class RolloutWorker:
         traj_rewards = [[] for _ in range(num_episodes)]
         traj_dones = [[] for _ in range(num_episodes)]
 
-        print(f"Debug: Initial states = {states}")
-        print(f"Debug: Number of episodes = {num_episodes}")
-        print(f"Debug: Max length = {self.max_len}")
+        # print(f"Debug: Initial states = {states}")
+        # print(f"Debug: Number of episodes = {num_episodes}")
+        # print(f"Debug: Max length = {self.max_len}")
 
         for t in range(self.max_len):
-            print(f"Debug: Timestep {t}")
-            print(f"Debug: States before processing = {states}")
-            print(f"Debug: Length of states = {len(states)}")
+            # print(f"Debug: Timestep {t}")
+            # print(f"Debug: States before processing = {states}")
+            # print(f"Debug: Length of states = {len(states)}")
             if len(states) > 0:
                 print(f"Debug: Length of first state = {len(states[0])}")
             
@@ -203,7 +203,7 @@ class RolloutWorker:
                 actions[rand_mask] = torch.randint(0, logits.shape[1], (rand_mask.sum(),)).to(self.device)
 
             for i, a in enumerate(actions):
-                print(f"Debug: Processing episode {i}, action {a.item()}")
+                #print(f"Debug: Processing episode {i}, action {a.item()}")
                 if t == self.max_len - 1:
                     self.workers.push(states[i] + [a.item()], i)
                     r, d = 0, 1
@@ -216,7 +216,7 @@ class RolloutWorker:
                 states[i].append(a.item())
                 thought_states[i].append(a.item())
             
-            print(f"Debug: States after processing = {states}")
+            #print(f"Debug: States after processing = {states}")
         
         # After the rollout is complete, evaluate with the oracle
         final_states = [s for s in states if len(s) == self.max_len]
@@ -228,9 +228,9 @@ class RolloutWorker:
         return visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones
 
     def execute_train_episode_batch(self, generator, it, dataset, use_rand_policy=False):
-        print(f"Debug: generator in execute_train_episode_batch: {generator}")
+        #print(f"Debug: generator in execute_train_episode_batch: {generator}")
         visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones = self.rollout(generator, self.episodes_per_step, use_rand_policy=use_rand_policy)
-        print(f"Debug: Rollout completed. States: {states}")
+        #print(f"Debug: Rollout completed. States: {states}")
         
         bulk_trajs = []
         for (r, mbidx) in self.workers.pop_all():
@@ -268,18 +268,18 @@ def calculate_novelty(new_sequences, reference_sequences):
     return novel_count / len(new_sequences)
 
 def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
-    print("Debug: generator before rollout:", generator)
+    #print("Debug: generator before rollout:", generator)
     
-    print(f"Debug: generator type: {type(generator)}")
+    #print(f"Debug: generator type: {type(generator)}")
     print("Training generator")
     visited = []
     rollout_worker = RolloutWorker(args, oracle, proxy, tokenizer, dataset)
-    print(f"Debug: rollout_worker created: {rollout_worker}")
+    #print(f"Debug: rollout_worker created: {rollout_worker}")
     unique_sequences = set()
     total_steps = 0
     
     for it in tqdm(range(args.gen_num_iterations + 1)):
-        print(f"Debug: generator at iteration {it}:", generator)
+        #print(f"Debug: generator at iteration {it}:", generator)
         
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
         visited.extend(rollout_artifacts["visited"])
