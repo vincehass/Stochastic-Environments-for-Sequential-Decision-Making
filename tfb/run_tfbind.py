@@ -26,7 +26,7 @@ import tempfile
 import datetime
 import shutil
 
-EXPERIMENT_NAME = "tfbind8_stochasticEnvNN"
+EXPERIMENT_NAME = "tfbind8_StochReg"
 WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
 parser = argparse.ArgumentParser()
@@ -413,8 +413,13 @@ def train(args, oracle, dataset):
     
     rollout_worker, _ = train_generator(args, generator, oracle, proxy, tokenizer, dataset)
     batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
-    args.logger.add_object("collected_seqs", batch[0])
-    args.logger.add_object("collected_seqs_scores", batch[1])
+    
+    # Debug prints
+    print(f"Debug: dataset.train shape: {dataset.train.shape}")
+    print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
+    print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
+    print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
+
     dataset.add(batch)
     curr_round_infos = log_overall_metrics(args, dataset, collected=True)
     print(curr_round_infos)

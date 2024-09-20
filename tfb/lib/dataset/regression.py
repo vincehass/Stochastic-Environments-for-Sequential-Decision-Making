@@ -46,28 +46,48 @@ class TFBind8Dataset(Dataset):
     def add(self, batch):
         train_seq, train_y = batch
 
+        # Convert train_seq and train_y to numpy arrays if they're not already
+        train_seq = np.array(train_seq)
+        train_y = np.array(train_y)
+
+        # Print shapes for debugging
+        print(f"Debug: self.train shape: {self.train.shape}")
+        print(f"Debug: train_seq shape: {train_seq.shape}")
+        print(f"Debug: self.train_scores shape: {self.train_scores.shape}")
+        print(f"Debug: train_y shape: {train_y.shape}")
+
+        # If self.train is empty, initialize it with the same shape as train_seq
+        if self.train.size == 0:
+            self.train = np.empty((0, train_seq.shape[1] if train_seq.ndim > 1 else 1), dtype=train_seq.dtype)
+
         # Ensure train_seq is 2-dimensional
-        if np.array(train_seq).ndim == 1:
-            train_seq = np.array(train_seq).reshape(-1, 1)
-        else:
-            train_seq = np.array(train_seq)
+        if train_seq.ndim == 1:
+            train_seq = train_seq.reshape(-1, 1)
 
         # Ensure self.train is 2-dimensional
         if self.train.ndim == 1:
             self.train = self.train.reshape(-1, 1)
 
-        self.train = np.concatenate((self.train, train_seq))
-        self.y = np.concatenate((self.y, train_y))
+        # If self.train has only one column and train_seq has multiple columns, reshape self.train
+        if self.train.shape[1] == 1 and train_seq.shape[1] > 1:
+            self.train = np.repeat(self.train, train_seq.shape[1], axis=1)
 
-        # Update test set if necessary
-        if len(self.train) > self.n:
-            self.test = np.concatenate((self.test, self.train[self.n:]))
-            self.test_y = np.concatenate((self.test_y, self.y[self.n:]))
-            self.train = self.train[:self.n]
-            self.y = self.y[:self.n]
+        # Ensure the second dimension matches
+        if self.train.shape[1] != train_seq.shape[1]:
+            raise ValueError(f"Mismatch in sequence length. self.train has length {self.train.shape[1]}, but new data has length {train_seq.shape[1]}")
+
+        self.train = np.concatenate((self.train, train_seq))
+        self.train_scores = np.concatenate((self.train_scores, train_y))
+
+        # Print final shapes for debugging
+        print(f"Debug: Final self.train shape: {self.train.shape}")
+        print(f"Debug: Final self.train_scores shape: {self.train_scores.shape}")
 
     def _tostr(self, seqs):
-        return ["".join(map(str, x)) for x in seqs]
+        if seqs.ndim == 2:
+            return ["".join(map(str, seq)) for seq in seqs]
+        else:
+            return "".join(map(str, seqs))
 
     def _top_k(self, data, k):
         indices = np.argsort(data[1])[::-1][:k]
@@ -76,13 +96,69 @@ class TFBind8Dataset(Dataset):
         return self._tostr(topk_prots), topk_scores
 
     def top_k(self, k):
-        data = (np.concatenate((self.train, self.valid)), np.concatenate((self.train_scores, self.valid_scores)))
-        return self._top_k(data, k)
+        # Ensure self.train and self.valid are 2D
+        train = self.train if self.train.ndim == 2 else self.train.reshape(-1, 1)
+        valid = self.valid if self.valid.ndim == 2 else self.valid.reshape(-1, 1)
+
+        # Ensure train_scores and valid_scores are 1D
+        train_scores = self.train_scores.flatten()
+        valid_scores = self.valid_scores.flatten()
+
+        # Print shapes for debugging
+        print(f"Debug: train shape: {train.shape}")
+        print(f"Debug: valid shape: {valid.shape}")
+        print(f"Debug: train_scores shape: {train_scores.shape}")
+        print(f"Debug: valid_scores shape: {valid_scores.shape}")
+
+        # Ensure train and valid have the same number of columns
+        max_cols = max(train.shape[1], valid.shape[1])
+        if train.shape[1] < max_cols:
+            train = np.pad(train, ((0, 0), (0, max_cols - train.shape[1])), mode='constant')
+        if valid.shape[1] < max_cols:
+            valid = np.pad(valid, ((0, 0), (0, max_cols - valid.shape[1])), mode='constant')
+
+        # Concatenate the data
+        all_sequences = np.concatenate((train, valid))
+        all_scores = np.concatenate((train_scores, valid_scores))
+
+        # Sort and get top k
+        indices = np.argsort(all_scores)[::-1][:k]
+        topk_scores = all_scores[indices]
+        topk_sequences = all_sequences[indices]
+
+        return self._tostr(topk_sequences), topk_scores
 
     def top_k_collected(self, k):
-        scores = np.concatenate((self.train_scores[self.train_added:], self.valid_scores[self.val_added:]))
-        seqs = np.concatenate((self.train[self.train_added:], self.valid[self.val_added:]))
-        data = (seqs, scores)
-        return self._top_k(data, k)
+        # Ensure self.train and self.valid are 2D
+        train = self.train[self.train_added:] if self.train[self.train_added:].ndim == 2 else self.train[self.train_added:].reshape(-1, 1)
+        valid = self.valid[self.val_added:] if self.valid[self.val_added:].ndim == 2 else self.valid[self.val_added:].reshape(-1, 1)
+
+        # Ensure train_scores and valid_scores are 1D
+        train_scores = self.train_scores[self.train_added:].flatten()
+        valid_scores = self.valid_scores[self.val_added:].flatten()
+
+        # Print shapes for debugging
+        print(f"Debug: train shape: {train.shape}")
+        print(f"Debug: valid shape: {valid.shape}")
+        print(f"Debug: train_scores shape: {train_scores.shape}")
+        print(f"Debug: valid_scores shape: {valid_scores.shape}")
+
+        # Ensure train and valid have the same number of columns
+        max_cols = max(train.shape[1], valid.shape[1])
+        if train.shape[1] < max_cols:
+            train = np.pad(train, ((0, 0), (0, max_cols - train.shape[1])), mode='constant')
+        if valid.shape[1] < max_cols:
+            valid = np.pad(valid, ((0, 0), (0, max_cols - valid.shape[1])), mode='constant')
+
+        # Concatenate the data
+        seqs = np.concatenate((train, valid))
+        scores = np.concatenate((train_scores, valid_scores))
+
+        # Sort and get top k
+        indices = np.argsort(scores)[::-1][:k]
+        topk_scores = scores[indices]
+        topk_seqs = seqs[indices]
+
+        return self._tostr(topk_seqs), topk_scores
 
 
