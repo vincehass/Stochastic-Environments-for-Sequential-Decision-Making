@@ -89,6 +89,7 @@ parser.add_argument('--dynamics_clip', type=float, default=10.0, help='Clipping 
 parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
 parser.add_argument('--gen_data_sample_per_step', type=int, default=16, help='Number of data samples to generate per step')
 parser.add_argument('--gen_clip', type=float, default=10.0, help='Gradient clipping value for generator')
+
 # Proxy arguments
 parser.add_argument("--proxy_type", default="regression")
 parser.add_argument("--proxy_num_iterations", default=3000, type=int)
@@ -331,6 +332,11 @@ def calculate_novelty(new_sequences, reference_sequences):
     novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
     return novel_count / len(new_sequences)
 
+def calculate_dists(sequences):
+    # Implement your distance calculation here
+    # This could be the average pairwise distance between sequences
+    return sum(len(set(a) ^ set(b)) for a in sequences for b in sequences) / (len(sequences) * (len(sequences) - 1))
+
 def filter_samples(args, samples, reference_set):
     filtered_samples = []
     for sample in samples:
@@ -376,29 +382,30 @@ def mean_pairwise_distances(args, seqs):
         dists.append(edit_dist(*pair))
     return np.mean(dists)
 
-def log_overall_metrics(args, dataset, collected=False, k=100):
+def log_overall_metrics(args, dataset, collected=False):
+    k = 100
     top100 = dataset.top_k(k)
-    wandb.log({"top-{}-scores".format(k): np.mean(top100[1])})
-    dist100 = mean_pairwise_distances(args, top100[0])
-    wandb.log({"top-{}-dists".format(k): dist100})
-    print("Score", np.mean(top100[1]))
-    print("Dist", dist100)
-    
-    infos = [np.mean(top100[1]), dist100]
+    top100_collected = dataset.top_k_collected(k) if collected else top100
 
-    if collected:
-        top100_collected = dataset.top_k_collected(k)
-        wandb.log({
-            "top-{}-collected-scores".format(k): np.mean(top100_collected[1]),
-            "max-{}-collected-scores".format(k): np.max(top100_collected[1])
-        })
-        dist100_collected = mean_pairwise_distances(args, top100_collected[0])
-        infos.extend([np.mean(top100_collected[1]), dist100_collected, np.max(top100_collected[1]), np.percentile(top100_collected[1], 50)])
-        wandb.log({"top-{}-collected-dists".format(k): dist100_collected})
-        print("Collected Scores: mean={}, max={}, 50_percentile={}".format(np.mean(top100_collected[1]), np.max(top100_collected[1]), np.percentile(top100_collected[1], 50)))
-        print("Collected Dist", dist100_collected)
+    # Get all sequences from the dataset to use as reference
+    all_sequences = np.concatenate((dataset.train, dataset.valid))
 
-    return infos
+    # Calculate metrics
+    max_100_collected_scores = np.max(top100_collected[1])
+    novelty = calculate_novelty(top100_collected[0], all_sequences)  # Pass all_sequences as reference
+    top_100_collected_dists = calculate_dists(top100_collected[0])
+    top_100_collected_scores = np.mean(top100_collected[1])
+    top_100_dists = calculate_dists(top100[0])
+    top_100_scores = np.mean(top100[1])
+
+    return {
+        'max-100-collected-scores': max_100_collected_scores,
+        'novelty': novelty,
+        'top-100-collected-dists': top_100_collected_dists,
+        'top-100-collected-scores': top_100_collected_scores,
+        'top-100-dists': top_100_dists,
+        'top-100-scores': top_100_scores
+    }
 
 def train(args, oracle, dataset):
     tokenizer = get_tokenizer(args)
@@ -407,22 +414,34 @@ def train(args, oracle, dataset):
     
     generator = get_generator(args, tokenizer)
     
-    
     if generator is None:
         raise ValueError("Failed to initialize generator")
     
     rollout_worker, _ = train_generator(args, generator, oracle, proxy, tokenizer, dataset)
-    batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
-    
-    # Debug prints
-    print(f"Debug: dataset.train shape: {dataset.train.shape}")
-    print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
-    print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
-    print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
 
-    dataset.add(batch)
-    curr_round_infos = log_overall_metrics(args, dataset, collected=True)
-    print(curr_round_infos)
+    for step in range(args.gen_num_iterations):
+        batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
+    
+        # Debug prints
+        print(f"Debug: dataset.train shape: {dataset.train.shape}")
+        print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
+        print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
+        print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
+
+        dataset.add(batch)
+        curr_round_infos = log_overall_metrics(args, dataset, collected=True)
+        print(curr_round_infos)
+        
+        wandb.log({
+            "step": step,
+            "max_100_collected_scores": curr_round_infos['max-100-collected-scores'],
+            "novelty": curr_round_infos['novelty'],
+            "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
+            "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
+            "top_100_dists": curr_round_infos['top-100-dists'],
+            "top_100_scores": curr_round_infos['top-100-scores']
+        })
+        
     args.logger.save(args.save_path, args)
 
 def main(args):
