@@ -328,9 +328,17 @@ def calculate_diversity(sequences):
     return len(unique_sequences) / len(sequences)
 
 def calculate_novelty(new_sequences, reference_sequences):
-    reference_set = set(tuple(seq) for seq in reference_sequences)
-    novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
+    new_set = set(tuple(seq) for seq in new_sequences)
+    ref_set = set(tuple(seq) for seq in reference_sequences)
+    novel_count = sum(1 for seq in new_set if seq not in ref_set)
     return novel_count / len(new_sequences)
+
+def calculate_dists(sequences):
+    # Implement your distance calculation here
+    # This is a placeholder implementation
+    return np.mean([np.sum(np.abs(sequences[i] - sequences[j])) 
+                    for i in range(len(sequences)) 
+                    for j in range(i+1, len(sequences))])
 
 def calculate_dists(sequences):
     # Implement your distance calculation here
@@ -387,12 +395,23 @@ def log_overall_metrics(args, dataset, collected=False):
     top100 = dataset.top_k(k)
     top100_collected = dataset.top_k_collected(k) if collected else top100
 
-    # Get all sequences from the dataset to use as reference
-    all_sequences = np.concatenate((dataset.train, dataset.valid))
+    # Ensure dataset.train and dataset.valid are 2D
+    train = dataset.train if dataset.train.ndim == 2 else dataset.train.reshape(-1, 1)
+    valid = dataset.valid if dataset.valid.ndim == 2 else dataset.valid.reshape(-1, 1)
+
+    # Ensure train and valid have the same number of columns
+    max_cols = max(train.shape[1], valid.shape[1])
+    if train.shape[1] < max_cols:
+        train = np.pad(train, ((0, 0), (0, max_cols - train.shape[1])), mode='constant')
+    if valid.shape[1] < max_cols:
+        valid = np.pad(valid, ((0, 0), (0, max_cols - valid.shape[1])), mode='constant')
+
+    # Concatenate the data
+    all_sequences = np.concatenate((train, valid))
 
     # Calculate metrics
     max_100_collected_scores = np.max(top100_collected[1])
-    novelty = calculate_novelty(top100_collected[0], all_sequences)  # Pass all_sequences as reference
+    novelty = calculate_novelty(top100_collected[0], all_sequences)
     top_100_collected_dists = calculate_dists(top100_collected[0])
     top_100_collected_scores = np.mean(top100_collected[1])
     top_100_dists = calculate_dists(top100[0])
