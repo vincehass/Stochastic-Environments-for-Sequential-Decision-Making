@@ -377,3 +377,99 @@ Both approaches aim to quantify the diversity of generated molecules, but they u
 [1]: https://folinoid.com/w/gflownet/
 [2]: https://github.com/zdhNarsil/Distributional-GFlowNets/blob/main/mols/metrics.py
 [3]: https://github.com/zdhNarsil/Distributional-GFlowNets/blob/main/mols/metrics.py
+
+## Novelty:
+
+Novelty is a measure of how many of the sequences in the generated set have not been seen before. It is calculated as the percentage of sequences in the generated set that are not present in the training set.
+
+Novelty = (Number of unique sequences in generated set) / (Total number of sequences in generated set) \* 100
+
+In the context of the GFlowNet algorithm for TFBind, novelty is calculated as follows:
+
+1. Generate a set of sequences using the GFlowNet.
+
+2. Calculate the edit distance between each generated sequence and the training set.
+
+3. Count the number of generated sequences that have an edit distance of 0 (i.e., they are identical to a sequence in the training set).
+
+4. Calculate the novelty as the percentage of sequences in the generated set that have an edit distance of 0.
+
+5. Return the novelty value.
+
+The novelty metric helps assess the diversity of the generated sequences. A higher novelty value indicates that the generated sequences are more diverse and less likely to be seen before.
+
+## More Detailed Explanation:
+
+In the current `tfb/run_tfbind.py` file, novelty is calculated using a simple set-based approach. Here's how it's implemented:
+
+```python
+def calculate_novelty(new_sequences, reference_sequences):
+    reference_set = set(tuple(seq) for seq in reference_sequences)
+    novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
+    return novel_count / len(new_sequences)
+```
+
+This method:
+
+1. Converts the reference sequences into a set of tuples for efficient lookup.
+2. Counts how many sequences in the new set are not present in the reference set.
+3. Returns the fraction of novel sequences.
+
+In contrast, the novelty calculation in the Distributional GFlowNets repository [1] is more sophisticated:
+
+```python
+def novelty(gen_smiles, train_smiles):
+    return 1 - (len(set(gen_smiles) & set(train_smiles)) / len(set(gen_smiles)))
+```
+
+Key differences:
+
+1. The Distributional GFlowNets version uses SMILES representations of molecules, which are string-based encodings of molecular structures.
+2. It calculates novelty as 1 minus the fraction of generated molecules that are also in the training set.
+3. It uses set operations to efficiently compute the intersection of generated and training molecules.
+
+The main conceptual difference is that the Distributional GFlowNets version focuses on the uniqueness of the entire generated set compared to the training set, while the current `tfb/run_tfbind.py` version calculates the fraction of individual sequences that are novel.
+
+Both methods aim to quantify how different the generated samples are from the reference/training set, but they approach it from slightly different angles. The Distributional GFlowNets version might be more suitable for molecular generation tasks where the overall novelty of the generated set is of interest, while the current `tfb/run_tfbind.py` version provides a more granular view of novelty on a per-sequence basis.
+
+[1] https://github.com/zdhNarsil/Distributional-GFlowNets/blob/main/mols/metrics.py
+
+## Top-k Scores:
+
+Top-k scores are a measure of the quality of the generated sequences. It is calculated as the average score of the top k sequences in the generated set.
+
+Top-k Scores = (Sum of scores of top k sequences) / k
+
+In the context of the GFlowNet algorithm for TFBind, top-k scores are calculated as follows:
+
+1. Generate a set of sequences using the GFlowNet.
+
+2. Evaluate the quality of each generated sequence using the oracle.
+
+3. Select the top k sequences based on their scores.
+
+4. Calculate the average score of these top k sequences.
+
+5. Return the top-k scores value.
+
+The top-k scores metric helps assess the quality of the generated sequences. A higher top-k scores value indicates that the generated sequences are of higher quality and score well according to the oracle.
+
+## Top-k Distances:
+
+Top-k distances are a measure of the diversity of the generated sequences. It is calculated as the average distance between the top k sequences in the generated set.
+
+Top-k Distances = (Sum of distances between top k sequences) / k
+
+In the context of the GFlowNet algorithm for TFBind, top-k distances are calculated as follows:
+
+1. Generate a set of sequences using the GFlowNet.
+
+2. Calculate the edit distance between each pair of generated sequences.
+
+3. Select the top k sequences based on their scores.
+
+4. Calculate the average distance between these top k sequences.
+
+5. Return the top-k distances value.
+
+The top-k distances metric helps assess the diversity of the generated sequences. A lower top-k distances value indicates that the generated sequences are more diverse and less likely to be similar to each other.

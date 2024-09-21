@@ -26,6 +26,8 @@ import tempfile
 import datetime
 import shutil
 
+from scipy.spatial.distance import pdist, squareform
+
 EXPERIMENT_NAME = "tfbind8_SGN"
 WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
@@ -416,6 +418,10 @@ def log_overall_metrics(args, dataset, collected=False):
     top_100_collected_scores = np.mean(top100_collected[1])
     top_100_dists = calculate_dists(top100[0])
     top_100_scores = np.mean(top100[1])
+    
+    # Calculate number of modes
+    num_modes_collected = calculate_num_modes(top100_collected[0])
+    num_modes_all = calculate_num_modes(top100[0])
 
     return {
         'max-100-collected-scores': max_100_collected_scores,
@@ -423,8 +429,25 @@ def log_overall_metrics(args, dataset, collected=False):
         'top-100-collected-dists': top_100_collected_dists,
         'top-100-collected-scores': top_100_collected_scores,
         'top-100-dists': top_100_dists,
-        'top-100-scores': top_100_scores
+        'top-100-scores': top_100_scores,
+        'num-modes-collected': num_modes_collected,
+        'num-modes-all': num_modes_all
     }
+
+def calculate_num_modes(sequences, distance_threshold=2):
+    # Convert sequences to string representation
+    seq_strings = [''.join(map(str, seq)) for seq in sequences]
+    
+    # Calculate pairwise edit distances
+    distances = squareform(pdist(seq_strings, metric='hamming'))
+    
+    # Initialize modes
+    modes = []
+    for i, seq in enumerate(seq_strings):
+        if not any(distances[i, j] <= distance_threshold for j in modes):
+            modes.append(i)
+    
+    return len(modes)
 
 def train(args, oracle, dataset):
     tokenizer = get_tokenizer(args)
@@ -458,7 +481,9 @@ def train(args, oracle, dataset):
             "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
             "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
             "top_100_dists": curr_round_infos['top-100-dists'],
-            "top_100_scores": curr_round_infos['top-100-scores']
+            "top_100_scores": curr_round_infos['top-100-scores'],
+            "num_modes_collected": curr_round_infos['num-modes-collected'],
+            "num_modes_all": curr_round_infos['num-modes-all']
         })
         
     args.logger.save(args.save_path, args)
