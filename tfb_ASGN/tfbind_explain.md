@@ -1,4 +1,4 @@
-Certainly! I'll provide a detailed explanation of the algorithm in `tfb/run_tfbind.py`, covering the main components you've mentioned. Let's break it down step by step:
+Explanation of the algorithm in `tfb/run_tfbind.py`:
 
 1. Data Preprocessing:
 
