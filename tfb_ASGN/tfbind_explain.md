@@ -1,4 +1,4 @@
-Explanation of the algorithm in `tfb/run_tfbind.py`:
+## Explanation of the algorithm in `tfb/run_tfbind.py`:
 
 1. Data Preprocessing:
 
@@ -331,7 +331,7 @@ import numpy as np
 
 After making these changes, the number of modes will be calculated and logged along with the other metrics at each step of the training process. This will allow you to track how the diversity of the generated sequences changes over time.
 
-Number of modes in the generated sequences:
+## Number of modes in the generated sequences for Stochastic Rewards:
 
 The approach to calculating modes in the GFlowNet implementation with Stochastic Rewards is different from the one described in the original GFlowNet paper. Let's compare the two:
 
