@@ -435,16 +435,30 @@ def log_overall_metrics(args, dataset, collected=False):
     }
 
 def calculate_num_modes(sequences, distance_threshold=2):
-    # Convert sequences to string representation
-    seq_strings = [''.join(map(str, seq)) for seq in sequences]
+    # Ensure sequences is a 2D numpy array
+    sequences = np.array(sequences)
+    if sequences.ndim == 1:
+        sequences = sequences.reshape(-1, 1)
     
-    # Calculate pairwise edit distances
-    distances = squareform(pdist(seq_strings, metric='hamming'))
+    # If sequences are strings, convert to integer representation
+    if sequences.dtype.kind in ['U', 'S']:  # Unicode or byte string
+        unique_chars = np.unique(sequences.ravel())
+        char_to_int = {char: i for i, char in enumerate(unique_chars)}
+        int_sequences = np.array([[char_to_int[char] for char in seq] for seq in sequences])
+    else:
+        int_sequences = sequences
+    
+    # Ensure int_sequences is 2D
+    if int_sequences.ndim == 1:
+        int_sequences = int_sequences.reshape(-1, 1)
+    
+    # Calculate pairwise Hamming distances
+    distances = squareform(pdist(int_sequences, metric='hamming'))
     
     # Initialize modes
     modes = []
-    for i, seq in enumerate(seq_strings):
-        if not any(distances[i, j] <= distance_threshold for j in modes):
+    for i in range(len(sequences)):
+        if not any(distances[i, j] <= distance_threshold / len(sequences[0]) for j in modes):
             modes.append(i)
     
     return len(modes)

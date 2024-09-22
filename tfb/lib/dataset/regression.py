@@ -44,8 +44,15 @@ class TFBind8Dataset(Dataset):
         return self.valid, self.valid_scores
 
     def add(self, batch):
-        train_seq, train_y = batch
-
+        if isinstance(batch, tuple) and len(batch) == 2:
+            train_seq, train_y = batch
+        elif isinstance(batch, list):
+            # Assuming each item in the list is a tuple of (seq, y)
+            train_seq = [item[0] for item in batch]
+            train_y = [item[1] for item in batch]
+        else:
+            raise ValueError("Unexpected batch format")
+        
         # Convert train_seq and train_y to numpy arrays if they're not already
         train_seq = np.array(train_seq)
         train_y = np.array(train_y)
