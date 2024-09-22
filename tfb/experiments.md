@@ -1,4 +1,6 @@
-I apologize for the oversight. You're right, we should base our implementation on the existing `StochasticDBGFlowNetGenerator` class. Let's create a more robust implementation that builds upon the existing structure in the `generator` folder and `gfn.py`. Here's a revised approach:
+## Run experiments with different generators
+
+### How to add more generators
 
 1. First, let's update the base `Generator` class in `tfb/lib/generator/base_generator.py`:
 
@@ -28,7 +30,7 @@ class Generator(nn.Module):
         self.load_state_dict(torch.load(path))
 ```
 
-2. Now, let's modify the `StochasticDBGFlowNetGenerator` in `tfb/lib/generator/gfn.py` to inherit from our base `Generator` class:
+2. Now, modify the `StochasticDBGFlowNetGenerator` in `tfb/lib/generator/gfn.py` to inherit from our base `Generator` class:
 
 ```python:tfb/lib/generator/gfn.py
 from .base_generator import Generator
