@@ -26,6 +26,8 @@ import tempfile
 import datetime
 import shutil
 
+from scipy.spatial.distance import pdist, squareform
+
 EXPERIMENT_NAME = "tfbind8_SGN"
 WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
@@ -171,14 +173,7 @@ class RolloutWorker:
         traj_rewards = [[] for _ in range(num_episodes)]
         traj_dones = [[] for _ in range(num_episodes)]
 
-        # print(f"Debug: Initial states = {states}")
-        # print(f"Debug: Number of episodes = {num_episodes}")
-        # print(f"Debug: Max length = {self.max_len}")
-
         for t in range(self.max_len):
-            # print(f"Debug: Timestep {t}")
-            # print(f"Debug: States before processing = {states}")
-            # print(f"Debug: Length of states = {len(states)}")
             if len(states) > 0:
                 print(f"Debug: Length of first state = {len(states[0])}")
             
@@ -204,7 +199,6 @@ class RolloutWorker:
                 actions[rand_mask] = torch.randint(0, logits.shape[1], (rand_mask.sum(),)).to(self.device)
 
             for i, a in enumerate(actions):
-                #print(f"Debug: Processing episode {i}, action {a.item()}")
                 if t == self.max_len - 1:
                     self.workers.push(states[i] + [a.item()], i)
                     r, d = 0, 1
@@ -216,8 +210,6 @@ class RolloutWorker:
                 traj_dones[i].append(d)
                 states[i].append(a.item())
                 thought_states[i].append(a.item())
-            
-            #print(f"Debug: States after processing = {states}")
         
         # After the rollout is complete, evaluate with the oracle
         final_states = [s for s in states if len(s) == self.max_len]
@@ -229,9 +221,7 @@ class RolloutWorker:
         return visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones
 
     def execute_train_episode_batch(self, generator, it, dataset, use_rand_policy=False):
-        #print(f"Debug: generator in execute_train_episode_batch: {generator}")
         visited, states, thought_states, traj_states, traj_actions, traj_rewards, traj_dones = self.rollout(generator, self.episodes_per_step, use_rand_policy=use_rand_policy)
-        #print(f"Debug: Rollout completed. States: {states}")
         
         bulk_trajs = []
         for (r, mbidx) in self.workers.pop_all():
@@ -268,22 +258,38 @@ def calculate_novelty(new_sequences, reference_sequences):
     novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
     return novel_count / len(new_sequences)
 
+def count_elements(iterable):
+    return sum(1 for _ in iterable)
+
+def is_iterable(obj):
+    try:
+        iter(obj)
+        return True
+    except TypeError:
+        return False
+
 def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
-    #print("Debug: generator before rollout:", generator)
-    
-    #print(f"Debug: generator type: {type(generator)}")
     print("Training generator")
     visited = []
     rollout_worker = RolloutWorker(args, oracle, proxy, tokenizer, dataset)
-    #print(f"Debug: rollout_worker created: {rollout_worker}")
     unique_sequences = set()
     total_steps = 0
-    
+    total_states_visited = set()  # To track unique states visited
+
     for it in tqdm(range(args.gen_num_iterations + 1)):
-        #print(f"Debug: generator at iteration {it}:", generator)
-        
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
         visited.extend(rollout_artifacts["visited"])
+
+        # Check if all_visited is iterable
+        all_visited = rollout_artifacts["trajectories"]["states"]
+        if not is_iterable(all_visited):
+            raise ValueError("Expected 'all_visited' to be iterable, but got: {}".format(type(all_visited)))
+        
+        # Count elements in all_visited
+        all_visited_count = count_elements(all_visited)
+        print("Number of elements in all_visited:", all_visited_count)
+        
+        total_states_visited.update(tuple(seq) for seq in all_visited)
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
         print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
@@ -305,6 +311,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             "novelty": novelty,
             "unique_sequences": len(unique_sequences),
             "total_steps": total_steps,
+            "total_states_visited": count_elements(total_states_visited)  # Use count_elements instead of len
         }
 
         # Handle different types of loss_info
@@ -322,27 +329,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
     
     return rollout_worker, generator
 
-# Make sure these functions are defined
-def calculate_diversity(sequences):
-    unique_sequences = set(tuple(seq) for seq in sequences)
-    return len(unique_sequences) / len(sequences)
-
-def calculate_novelty(new_sequences, reference_sequences):
-    new_set = set(tuple(seq) for seq in new_sequences)
-    ref_set = set(tuple(seq) for seq in reference_sequences)
-    novel_count = sum(1 for seq in new_set if seq not in ref_set)
-    return novel_count / len(new_sequences)
-
 def calculate_dists(sequences):
-    # Implement your distance calculation here
-    # This is a placeholder implementation
-    return np.mean([np.sum(np.abs(sequences[i] - sequences[j])) 
-                    for i in range(len(sequences)) 
-                    for j in range(i+1, len(sequences))])
-
-def calculate_dists(sequences):
-    # Implement your distance calculation here
-    # This could be the average pairwise distance between sequences
     return sum(len(set(a) ^ set(b)) for a in sequences for b in sequences) / (len(sequences) * (len(sequences) - 1))
 
 def filter_samples(args, samples, reference_set):
@@ -416,6 +403,10 @@ def log_overall_metrics(args, dataset, collected=False):
     top_100_collected_scores = np.mean(top100_collected[1])
     top_100_dists = calculate_dists(top100[0])
     top_100_scores = np.mean(top100[1])
+    
+    # Calculate number of modes
+    num_modes_collected = calculate_num_modes(top100_collected[0])
+    num_modes_all = calculate_num_modes(top100[0])
 
     return {
         'max-100-collected-scores': max_100_collected_scores,
@@ -423,8 +414,39 @@ def log_overall_metrics(args, dataset, collected=False):
         'top-100-collected-dists': top_100_collected_dists,
         'top-100-collected-scores': top_100_collected_scores,
         'top-100-dists': top_100_dists,
-        'top-100-scores': top_100_scores
+        'top-100-scores': top_100_scores,
+        'num-modes-collected': num_modes_collected,
+        'num-modes-all': num_modes_all
     }
+
+def calculate_num_modes(sequences, distance_threshold=2):
+    # Ensure sequences is a 2D numpy array
+    sequences = np.array(sequences)
+    if sequences.ndim == 1:
+        sequences = sequences.reshape(-1, 1)
+    
+    # If sequences are strings, convert to integer representation
+    if sequences.dtype.kind in ['U', 'S']:  # Unicode or byte string
+        unique_chars = np.unique(sequences.ravel())
+        char_to_int = {char: i for i, char in enumerate(unique_chars)}
+        int_sequences = np.array([[char_to_int[char] for char in seq] for seq in sequences])
+    else:
+        int_sequences = sequences
+    
+    # Ensure int_sequences is 2D
+    if int_sequences.ndim == 1:
+        int_sequences = int_sequences.reshape(-1, 1)
+    
+    # Calculate pairwise Hamming distances
+    distances = squareform(pdist(int_sequences, metric='hamming'))
+    
+    # Initialize modes
+    modes = []
+    for i in range(len(sequences)):
+        if not any(distances[i, j] <= distance_threshold / len(sequences[0]) for j in modes):
+            modes.append(i)
+    
+    return len(modes)
 
 def train(args, oracle, dataset):
     tokenizer = get_tokenizer(args)
@@ -458,7 +480,9 @@ def train(args, oracle, dataset):
             "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
             "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
             "top_100_dists": curr_round_infos['top-100-dists'],
-            "top_100_scores": curr_round_infos['top-100-scores']
+            "top_100_scores": curr_round_infos['top-100-scores'],
+            "num_modes_collected": curr_round_infos['num-modes-collected'],
+            "num_modes_all": curr_round_infos['num-modes-all']
         })
         
     args.logger.save(args.save_path, args)
