@@ -197,3 +197,9 @@ Run Experiments of TFBIND
 ```
 python tfb/run_tfbind.py --gen_num_iterations 5000 --gen_episodes_per_step 16 --gen_reward_exp 3 --gen_reward_min 0 --gen_reward_norm 1 --gen_random_action_prob 0.001 --gen_sampling_temperature 2.0 --gen_leaf_coef 25 --gen_reward_exp_ramping 3 --gen_balanced_loss 1 --gen_output_coef 10 --gen_loss_eps 1e-5 --method db --num_tokens 4 --gen_num_hidden 64 --gen_num_layers 2 --gen_dropout 0.1 --gen_partition_init 150.0 --gen_do_explicit_Z --gen_L2 0.0 --dynamics_num_hid 128 --dynamics_num_layers 2 --dynamics_dropout 0.1 --dynamics_partition_init 150.0 --dynamics_do_explicit_Z --dynamics_L2 0.0 --dynamics_lr 1e-3 --dynamics_clip 10.0 --dynamics_off_pol 0.0 --gen_data_sample_per_step 16 --proxy_num_iterations 3000 --proxy_num_dropout_samples 25 --proxy_num_hid 128 --proxy_num_layers 2 --proxy_dropout 0.1 --proxy_learning_rate 1e-3 --proxy_num_per_minibatch 32 --stick 0.25
 ```
+
+# Run experiments of TFBIND
+
+```
+python tfb/run_experiments.py --config config.yaml --methods db mh random
+```
