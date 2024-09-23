@@ -486,13 +486,7 @@ The top-k distances metric helps assess the diversity of the generated sequences
 
 ## Possible Issues:
 
-1. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-2. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-3. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-4. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-5. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-6. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
-7. The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
+The number of modes in the generated sequences is not a good metric to measure the diversity of the generated sequences.
 
 The number of modes not changing over iterations in a machine learning or simulation context can be due to several reasons. Here are some common factors to consider:
 
