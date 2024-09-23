@@ -479,10 +479,6 @@ The top-k distances metric helps assess the diversity of the generated sequences
 1. Use a more sophisticated clustering algorithm to identify modes in the generated sequences.
 2. Use a more sophisticated distance metric to measure the diversity of the generated sequences.
 3. Use a more sophisticated method to evaluate the quality of the generated sequences.
-4. Use a more sophisticated method to evaluate the diversity of the generated sequences.
-5. Use a more sophisticated method to evaluate the quality of the generated sequences.
-6. Use a more sophisticated method to evaluate the diversity of the generated sequences.
-7. Use a more sophisticated method to evaluate the quality of the generated sequences.
 
 ## Possible Issues:
 
