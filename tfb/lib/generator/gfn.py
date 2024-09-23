@@ -384,3 +384,58 @@ class StochasticDBGFlowNetGenerator(GeneratorBase):
         out = self.model(inp, None, lens=lens, return_all=return_all) * self.out_coef
 
         return out    
+    
+
+class TrajectoryBalanceGFlowNetGenerator(GeneratorBase):
+    def __init__(self, num_quantiles=100, *args, **kwargs):
+        super().__init__(*args, **kwargs)  # Initialize the base class
+        self.num_quantiles = num_quantiles
+        self.quantiles = np.linspace(-1, 1, num_quantiles)  # Define quantile values
+        self.quantile_counts = np.zeros(num_quantiles)  # Count of rewards in each quantile
+        self.total_count = 0  # Total count of rewards for normalization
+
+    def update_quantiles(self, reward):
+        # Update the quantile counts based on the received reward
+        bin_index = np.digitize(reward, self.quantiles) - 1
+        if 0 <= bin_index < self.num_quantiles:
+            self.quantile_counts[bin_index] += 1  # Increment count for the quantile
+            self.total_count += 1  # Increment total count
+
+    def sample_reward(self):
+        # Sample a reward based on the quantile distribution
+        probabilities = self.quantile_counts / self.total_count if self.total_count > 0 else np.ones(self.num_quantiles) / self.num_quantiles
+        return np.random.choice(self.quantiles, p=probabilities)
+
+    def calculate_trajectory_balance(self, trajectories):
+        # Implement your logic to calculate the trajectory balance
+        # This is a placeholder for the actual trajectory balance calculation
+        balance = np.mean([np.sum(trajectory) for trajectory in trajectories])  # Example calculation
+        return balance
+
+    def calculate_reward(self, state, action, trajectories):
+        # Calculate the reward based on the trajectory balance
+        balance = self.calculate_trajectory_balance(trajectories)
+        reward = calculate_acquisition(state, action) + balance  # Combine acquisition and balance
+        return reward  # Return the combined value as the reward
+
+    def trajectory_balance_loss(self, state, action, trajectories):
+        # Example of how to integrate trajectory balance into the loss function
+        reward = self.calculate_reward(state, action, trajectories)
+
+        # Update the quantiles with the new reward
+        self.update_quantiles(reward)
+
+        # Sample a stochastic reward from the quantile distribution
+        stochastic_reward = self.sample_reward()
+
+        # Return the reward and the sampled stochastic reward
+        return reward, stochastic_reward
+
+# # Example usage
+# if __name__ == "__main__":
+#     generator = TrajectoryBalanceGFlowNetGenerator(num_quantiles=100)
+#     state = np.random.rand(10)  # Example state
+#     action = np.random.choice([0, 1])  # Example action
+#     trajectories = [np.random.rand(5) for _ in range(10)]  # Example trajectories
+#     reward, stochastic_reward = generator.trajectory_balance_loss(state, action, trajectories)
+#     print(f"Reward: {reward}, Stochastic Reward: {stochastic_reward}")    
