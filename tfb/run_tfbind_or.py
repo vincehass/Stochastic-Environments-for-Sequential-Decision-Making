@@ -28,81 +28,85 @@ import shutil
 
 from scipy.spatial.distance import pdist, squareform
 
-# EXPERIMENT_NAME = "tfbind8_SGN"
-# WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
+EXPERIMENT_NAME = "tfbind8_SGN"
+WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
 
-# parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser()
 
-# # Arguments
-# parser.add_argument("--save_path", default=f'results/{EXPERIMENT_NAME}.pkl.gz')
-# parser.add_argument("--name", default=EXPERIMENT_NAME)
-# parser.add_argument("--load_scores_path", default='.')
-# parser.add_argument("--num_rounds", default=1, type=int)
-# parser.add_argument("--task", default="tfbind", type=str)
-# parser.add_argument("--num_sampled_per_round", default=2048, type=int) 
-# parser.add_argument('--vocab_size', type=int, default=4)
-# parser.add_argument('--max_len', type=int, default=8)
-# parser.add_argument("--proxy_uncertainty", default="dropout")
-# parser.add_argument("--save_scores_path", default=".")
-# parser.add_argument("--save_scores", action="store_true")
-# parser.add_argument("--seed", default=0, type=int)
-# parser.add_argument("--run", default=-1, type=int)
-# parser.add_argument("--noise_params", action="store_true")
-# parser.add_argument("--save_proxy_weights", action="store_true")
-# parser.add_argument("--use_uncertainty", action="store_true")
-# parser.add_argument("--filter", action="store_true")
-# parser.add_argument("--kappa", default=0.1, type=float)
-# parser.add_argument("--acq_fn", default="none", type=str)
-# parser.add_argument("--load_proxy_weights", type=str)
-# parser.add_argument("--max_percentile", default=80, type=int)
-# parser.add_argument("--filter_threshold", default=0.1, type=float)
-# parser.add_argument("--filter_distance_type", default="edit", type=str)
-# parser.add_argument('--stick', type=float, default=0.25, help='Stick parameter for StochasticDBGFlowNetGenerator')
-# # Generator arguments
-# parser.add_argument("--gen_learning_rate", default=1e-5, type=float)
-# parser.add_argument("--gen_num_iterations", default=5000, type=int)
-# parser.add_argument("--gen_episodes_per_step", default=16, type=int)
-# parser.add_argument("--gen_reward_exp", default=3, type=float)
-# parser.add_argument("--gen_reward_min", default=0, type=float)
-# parser.add_argument("--gen_reward_norm", default=1, type=float)
-# parser.add_argument("--gen_random_action_prob", default=0.001, type=float)
-# parser.add_argument("--gen_sampling_temperature", default=2., type=float)
-# parser.add_argument("--gen_leaf_coef", default=25, type=float)
-# parser.add_argument("--gen_reward_exp_ramping", default=3, type=float)
-# parser.add_argument("--gen_balanced_loss", default=1, type=float)
-# parser.add_argument("--gen_output_coef", default=10, type=float)
-# parser.add_argument("--gen_loss_eps", default=1e-5, type=float)
-# parser.add_argument('--method', type=str, default='db', help='Method to use for generator (e.g., tb, db)')
-# parser.add_argument('--num_tokens', type=int, default=4, help='Number of tokens in the vocabulary')
-# parser.add_argument('--gen_num_hidden', type=int, default=64, help='Number of hidden units in the generator')
-# parser.add_argument('--gen_num_layers', type=int, default=2, help='Number of layers in the generator')
-# parser.add_argument('--gen_dropout', type=float, default=0.1, help='Dropout rate for the generator')
-# parser.add_argument('--gen_partition_init', type=float, default=150.0, help='Partition initialization value for the generator')
-# parser.add_argument('--gen_do_explicit_Z', action='store_true', help='Enable explicit Z for the generator')
-# parser.add_argument('--gen_L2', type=float, default=0.0, help='L2 regularization coefficient for generator')
-# parser.add_argument('--dynamics_num_hid', type=int, default=128, help='Number of hidden units in the dynamics network')
-# parser.add_argument('--dynamics_num_layers', type=int, default=2, help='Number of layers in the dynamics network')
-# parser.add_argument('--dynamics_dropout', type=float, default=0.1, help='Dropout rate for the dynamics network')
-# parser.add_argument('--dynamics_partition_init', type=float, default=150.0, help='Partition initialization value for the dynamics network')
-# parser.add_argument('--dynamics_do_explicit_Z', action='store_true', help='Enable explicit Z for the dynamics network')
-# parser.add_argument('--dynamics_L2', type=float, default=0.0, help='L2 regularization coefficient for dynamics network')
-# parser.add_argument('--dynamics_lr', type=float, default=1e-3, help='Learning rate for the dynamics network')
-# parser.add_argument('--dynamics_clip', type=float, default=10.0, help='Clipping value for the dynamics network')
-# parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
-# parser.add_argument('--gen_data_sample_per_step', type=int, default=16, help='Number of data samples to generate per step')
-# parser.add_argument('--gen_clip', type=float, default=10.0, help='Gradient clipping value for generator')
+# Arguments
+parser.add_argument("--save_path", default=f'results/{EXPERIMENT_NAME}.pkl.gz')
+parser.add_argument("--name", default=EXPERIMENT_NAME)
+parser.add_argument("--load_scores_path", default='.')
+parser.add_argument("--num_rounds", default=1, type=int)
+parser.add_argument("--task", default="tfbind", type=str)
+parser.add_argument("--num_sampled_per_round", default=2048, type=int) 
+parser.add_argument('--vocab_size', type=int, default=4)
+parser.add_argument('--max_len', type=int, default=8)
+parser.add_argument("--proxy_uncertainty", default="dropout")
+parser.add_argument("--save_scores_path", default=".")
+parser.add_argument("--save_scores", action="store_true")
+parser.add_argument("--seed", default=0, type=int)
+parser.add_argument("--run", default=-1, type=int)
+parser.add_argument("--noise_params", action="store_true")
+parser.add_argument("--save_proxy_weights", action="store_true")
+parser.add_argument("--use_uncertainty", action="store_true")
+parser.add_argument("--filter", action="store_true")
+parser.add_argument("--kappa", default=0.1, type=float)
+parser.add_argument("--acq_fn", default="none", type=str)
+parser.add_argument("--load_proxy_weights", type=str)
+parser.add_argument("--max_percentile", default=80, type=int)
+parser.add_argument("--filter_threshold", default=0.1, type=float)
+parser.add_argument("--filter_distance_type", default="edit", type=str)
+parser.add_argument('--stick', type=float, default=0.25, help='Stick parameter for StochasticDBGFlowNetGenerator')
+# Generator arguments
+parser.add_argument("--gen_learning_rate", default=1e-5, type=float)
+parser.add_argument("--gen_num_iterations", default=5000, type=int)
+parser.add_argument("--gen_episodes_per_step", default=16, type=int)
+parser.add_argument("--gen_reward_exp", default=3, type=float)
+parser.add_argument("--gen_reward_min", default=0, type=float)
+parser.add_argument("--gen_reward_norm", default=1, type=float)
+parser.add_argument("--gen_random_action_prob", default=0.001, type=float)
+parser.add_argument("--gen_sampling_temperature", default=2., type=float)
+parser.add_argument("--gen_leaf_coef", default=25, type=float)
+parser.add_argument("--gen_reward_exp_ramping", default=3, type=float)
+parser.add_argument("--gen_balanced_loss", default=1, type=float)
+parser.add_argument("--gen_output_coef", default=10, type=float)
+parser.add_argument("--gen_loss_eps", default=1e-5, type=float)
+parser.add_argument('--method', type=str, default='db', help='Method to use for generator (e.g., tb, db)')
+parser.add_argument('--num_tokens', type=int, default=4, help='Number of tokens in the vocabulary')
+parser.add_argument('--gen_num_hidden', type=int, default=64, help='Number of hidden units in the generator')
+parser.add_argument('--gen_num_layers', type=int, default=2, help='Number of layers in the generator')
+parser.add_argument('--gen_dropout', type=float, default=0.1, help='Dropout rate for the generator')
+parser.add_argument('--gen_partition_init', type=float, default=150.0, help='Partition initialization value for the generator')
+parser.add_argument('--gen_do_explicit_Z', action='store_true', help='Enable explicit Z for the generator')
+parser.add_argument('--gen_L2', type=float, default=0.0, help='L2 regularization coefficient for generator')
+parser.add_argument('--dynamics_num_hid', type=int, default=128, help='Number of hidden units in the dynamics network')
+parser.add_argument('--dynamics_num_layers', type=int, default=2, help='Number of layers in the dynamics network')
+parser.add_argument('--dynamics_dropout', type=float, default=0.1, help='Dropout rate for the dynamics network')
+parser.add_argument('--dynamics_partition_init', type=float, default=150.0, help='Partition initialization value for the dynamics network')
+parser.add_argument('--dynamics_do_explicit_Z', action='store_true', help='Enable explicit Z for the dynamics network')
+parser.add_argument('--dynamics_L2', type=float, default=0.0, help='L2 regularization coefficient for dynamics network')
+parser.add_argument('--dynamics_lr', type=float, default=1e-3, help='Learning rate for the dynamics network')
+parser.add_argument('--dynamics_clip', type=float, default=10.0, help='Clipping value for the dynamics network')
+parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
+parser.add_argument('--gen_data_sample_per_step', type=int, default=16, help='Number of data samples to generate per step')
+parser.add_argument('--gen_clip', type=float, default=10.0, help='Gradient clipping value for generator')
 
-# # Proxy arguments
-# parser.add_argument("--proxy_type", default="regression")
-# parser.add_argument("--proxy_num_iterations", default=3000, type=int)
-# parser.add_argument("--proxy_num_dropout_samples", default=25, type=int)
-# parser.add_argument('--proxy_num_hid', type=int, default=128, help='Number of hidden units in the proxy model')
-# parser.add_argument('--proxy_num_layers', type=int, default=2, help='Number of layers in the proxy model')
-# parser.add_argument('--proxy_dropout', type=float, default=0.1, help='Dropout rate for the proxy model')
-# parser.add_argument('--proxy_learning_rate', type=float, default=1e-3, help='Learning rate for the proxy model')
-# parser.add_argument('--proxy_num_per_minibatch', type=int, default=32,
-#                     help='Number of samples per minibatch for proxy training')
+# Proxy arguments
+parser.add_argument("--proxy_type", default="regression")
+parser.add_argument("--proxy_num_iterations", default=3000, type=int)
+parser.add_argument("--proxy_num_dropout_samples", default=25, type=int)
+parser.add_argument('--proxy_num_hid', type=int, default=128, help='Number of hidden units in the proxy model')
+parser.add_argument('--proxy_num_layers', type=int, default=2, help='Number of layers in the proxy model')
+parser.add_argument('--proxy_dropout', type=float, default=0.1, help='Dropout rate for the proxy model')
+parser.add_argument('--proxy_learning_rate', type=float, default=1e-3, help='Learning rate for the proxy model')
+parser.add_argument('--proxy_num_per_minibatch', type=int, default=32,
+                    help='Number of samples per minibatch for proxy training')
 
+# WandB arguments
+parser.add_argument("--wandb_project", default=EXPERIMENT_NAME, help="WandB project name")
+parser.add_argument("--wandb_run_name", default=None, help="WandB run name")
+parser.add_argument("--wandb_entity", default=WANDB_ENTITY, help="WandB entity (username or team name)")
 
 class MbStack:
     def __init__(self, f):
@@ -483,31 +487,31 @@ def train(args, oracle, dataset):
         
     args.logger.save(args.save_path, args)
 
-# def main(args):
-#     torch.manual_seed(args.seed)
-#     np.random.seed(args.seed)
+def main(args):
+    torch.manual_seed(args.seed)
+    np.random.seed(args.seed)
 
-#     # Use the experiment name in the wandb run name if not provided
-#     if args.wandb_run_name is None:
-#         args.wandb_run_name = f"{EXPERIMENT_NAME}_{args.seed}"
+    # Use the experiment name in the wandb run name if not provided
+    if args.wandb_run_name is None:
+        args.wandb_run_name = f"{EXPERIMENT_NAME}_{args.seed}"
 
-#     # Initialize wandb
-#     wandb.init(
-#         project=args.wandb_project,
-#         entity=args.wandb_entity,
-#         name=args.wandb_run_name,
-#         config=vars(args)
-#     )
+    # Initialize wandb
+    wandb.init(
+        project=args.wandb_project,
+        entity=args.wandb_entity,
+        name=args.wandb_run_name,
+        config=vars(args)
+    )
 
-#     args.logger = get_logger(args)
-#     args.device = torch.device('cpu')
-#     oracle = get_oracle(args)
-#     dataset = get_dataset(args, oracle)
-#     train(args, oracle, dataset)
+    args.logger = get_logger(args)
+    args.device = torch.device('cpu')
+    oracle = get_oracle(args)
+    dataset = get_dataset(args, oracle)
+    train(args, oracle, dataset)
 
-#     # Close wandb run
-#     wandb.finish()
+    # Close wandb run
+    wandb.finish()
 
-# if __name__ == "__main__":
-#     args = parser.parse_args()
-#     main(args)
+if __name__ == "__main__":
+    args = parser.parse_args()
+    main(args)

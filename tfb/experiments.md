@@ -163,9 +163,7 @@ This implementation:
 To run experiments with different generators, you would use the `--method` argument:
 
 ```
-python run_tfbind.py --method db
-python run_tfbind.py --method mars
-python run_tfbind.py --method ppo
+python tfb/run_experiments.py --config tfb/config.yaml --methods stochastic_dbg another_method --task tfbind
 ```
 
 This structure provides a more robust and consistent interface for all generators while maintaining compatibility with the existing codebase.

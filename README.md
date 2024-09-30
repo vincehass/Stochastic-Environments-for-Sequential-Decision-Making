@@ -201,5 +201,11 @@ python tfb/run_tfbind.py --gen_num_iterations 5000 --gen_episodes_per_step 16 --
 # Run experiments of TFBIND
 
 ```
-python tfb/run_experiments.py --config config.yaml --methods db mh random
+python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_dbg  --task tfbind
+```
+
+# Run experiments of TFBIND with MH
+
+```
+python tfb/run_experiments.py --config tfb/config.yaml --method mh --task tfbind
 ```
