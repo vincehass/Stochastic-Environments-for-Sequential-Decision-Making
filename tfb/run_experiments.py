@@ -8,7 +8,7 @@ import numpy as np
 # Ensure the 'tfb' module is in the PYTHONPATH
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from tfb.run_tfbind import train  # Import the train function
-from tfb.lib.generator import StochasticDBGFlowNetGenerator, MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
+from tfb.lib.generator import StochasticDBGFlowNetGenerator, DeterminsticDBGFlowNetGenerator,MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
 from tfb.lib.oracle_wrapper import get_oracle
 from tfb.lib.dataset import get_dataset
 from lib.oracle_wrapper import get_oracle
@@ -16,6 +16,7 @@ from lib.logging import get_logger
 # Mapping of method names to generator classes
 generator_map = {
     'stochastic_dbg': StochasticDBGFlowNetGenerator,
+    'deterministic_dbg': DeterminsticDBGFlowNetGenerator,
     'mars': MARSGenerator,
     'mh': MHGenerator,
     'ppo': PPOGenerator,
@@ -23,12 +24,12 @@ generator_map = {
     'random_traj': RandomTrajGenerator
 }
 
-EXPERIMENT_NAME = "tfbind8_SGN"
+EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
 
-def run_experiment(args):
+def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
-    wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=args.wandb_run_name)
+    wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)
     
     oracle = get_oracle(args)
     dataset = get_dataset(args, oracle)
@@ -95,7 +96,8 @@ def main_loop(config_file, methods_to_run, args):  # Added args parameter
             if generator_class is None:
                 raise ValueError(f"Unknown method: {experiment['method']}")
 
-           
+            
+            
 
 def main():
     parser = argparse.ArgumentParser()
@@ -145,7 +147,6 @@ def main():
     parser.add_argument("--gen_balanced_loss", default=1, type=float)
     parser.add_argument("--gen_output_coef", default=10, type=float)
     parser.add_argument("--gen_loss_eps", default=1e-5, type=float)
-    # parser.add_argument('--method', type=str, default='db', help='Method to use for generator (e.g., tb, db)')
     parser.add_argument('--num_tokens', type=int, default=4, help='Number of tokens in the vocabulary')
     parser.add_argument('--gen_num_hidden', type=int, default=64, help='Number of hidden units in the generator')
     parser.add_argument('--gen_num_layers', type=int, default=2, help='Number of layers in the generator')
@@ -178,19 +179,18 @@ def main():
     args = parser.parse_args()
     print(args)
     methods_to_run = args.method
-    args.device = torch.device('cpu')
-    main_loop(args.config, methods_to_run, args)  # Pass args to main_loop
-    # Run the experiment
     args.logger = get_logger(args)
     args.device = torch.device('cpu')
+    
+    
+    
+    # Call run_experiment before main_loop
+    for method in methods_to_run:
+        run_experiment(args, f"{method}_experiment")  # Pass the experiment name
 
-    run_experiment(args)
+    main_loop(args.config, methods_to_run, args)  # Pass args to main_loop
 
-
-
-
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
+    
 
     # Use the experiment name in the wandb run name if not provided
     if args.wandb_run_name is None:
@@ -203,7 +203,6 @@ def main():
         name=args.wandb_run_name,
         config=vars(args)
     )
-    
     
 
 
