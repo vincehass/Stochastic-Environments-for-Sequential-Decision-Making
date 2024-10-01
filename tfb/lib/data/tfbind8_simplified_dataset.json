@@ -1,0 +1,8435 @@
+[
+  {
+    "sequence": "AGACCCCT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTCAAAGA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATCCGAGT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGATGTC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "TTGTCGTT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCGAAATG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATATGGTT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTCGAAT",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATCTGAGG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGGCCTC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAAGTTAG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGTAGGAG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTGATTAA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATCTTTAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCGAGTC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTCTCAGT",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "ATCCATCC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTCCAAG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTAACATC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGACGGC",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCAGAACA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGAAGTCC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTGTAGG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCTTATC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTATCAG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGTGACTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAATCACG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTGTATAG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGTACGGC",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGTAACTG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCGCGAGC",
+    "score": 1,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 3 GC motif(s): +1.80"
+    ]
+  },
+  {
+    "sequence": "GCAGTTTT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AATAAGCA",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCGTTGCC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAATGGTC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGAGGGA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTGGCCAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGACAAGC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGATAAGA",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCGCATAG",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTATGCC",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATTTTGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCCTGTCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTAACCC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGAGTATC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACAAGAAT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAGGTCA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAGTTGAT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CATACTTG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCCAACT",
+    "score": 0.36666666666666664,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAAATCGT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TAGTTACG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAGATGCG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AGTGCATA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GAACTACG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATTCTGGC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTAAATAC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TATCTTGT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGGTGATC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACACAGC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CAGGTAGA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTGCCGCC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACTGAGTC",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "GGCGGCAA",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CATCATTG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAACGAAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGATGTGT",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "TGAAGCAT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCAATTTG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTCCTAT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTCGAGC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAAGAGGA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGCTGGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACCTGCAT",
+    "score": 0.5000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGAGCAG",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "ACGATTGT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGAGGCG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCCATGTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGGTACTC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCGTAAGG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CATGGATG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTATTACA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTTCTAG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCCCCCTT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GTGAAGCC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTGACGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTCGGCCC",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AGGAAGGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AATAAGGA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GATTGAGC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAGTCCGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTTATAT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATCTACAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGCGAAGT",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGGCTTAT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACAAGCTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TATGCGAA",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTCGGTT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGGTGCGT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGGCCTCT",
+    "score": 0.36666666666666664,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTGCAGT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAATGTGG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTCAGAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AATGCTCT",
+    "score": 0.5000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGGGAAT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTATAAAG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGCTTGGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGTTATAC",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGGCCTC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACAAGCG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGACAAT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGGACTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCACCAA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGTATTAG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCGCCGC",
+    "score": 1,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 3 GC motif(s): +1.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTAAATC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCTCCCAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTAAGGG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TGATCGGG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATACTCT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "CAAATGGC",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTATTTGC",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACGTATG",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGATGAT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00"
+    ]
+  },
+  {
+    "sequence": "GTTCAAAA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACGCGACG",
+    "score": 0.8999999999999999,
+    "reasoning": [
+      "Found 3 CG motif(s): +2.10",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TCTCCGCT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGCGGGGT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCGAATGC",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTTGCTT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGGCCCCC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "CAGTAAAA",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TAGTCGTT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGTTGCCA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTCTTGG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAAGACAA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTATGAAC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGCTTAAG",
+    "score": 0.6333333333333332,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGAGCCT",
+    "score": 0.5000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CATACTCT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CATTAACA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGAAAAG",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TGAAAACT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACCTAAAT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AAGAAGGA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGCTGAAG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATCGGCC",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATTAGTT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAGAGTCG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCTCTTCA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCACGGCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTACCACA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGGGGCT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTGCCGCC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGAACTTC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCTCTAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCCCGGGA",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCTCAGCC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACGGCGGA",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAGTGAAG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGTGAAA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATCATCA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00"
+    ]
+  },
+  {
+    "sequence": "ACCTGGAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTCGTTT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTTAGGT",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTCTGGGT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTAGAGG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCCCACTG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGCTGCCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AACGGCTT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GAGTCGTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGCGGCCA",
+    "score": 0.9333333333333332,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCAGTACT",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCCCTATG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCGCTTAG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCATGCA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AACTACTA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTGGCACT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTAAAATG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTGATCAC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "TTCGGGGG",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GGGAAACC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "CGGAAGAT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCGACGT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTTTGTC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGATCGCG",
+    "score": 1,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 CG motif(s): +2.10",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "GACGGGAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGACCAAG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCAAGAAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATTATCG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACAGCACG",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TAGGCTCC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGCCTCA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGTGTGTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTGATACC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTATCGAA",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTGATGG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATAAAGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGCCGAG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTCACGG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTGGCGA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACTCCCG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAACATAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTTGAAA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GAAGTACT",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTCGAGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATATTTAT",
+    "score": 0.9333333333333332,
+    "reasoning": [
+      "Found 3 AT motif(s): +1.50",
+      "Found 2 TA motif(s): +0.80",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTTGTGT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCAGGCGA",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGCAGCCT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGAGGTTC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTAAACTG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATGTAAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCTCTTAA",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGATAAAA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCGCATCA",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CATCTCCG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAATGCTG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAAAGGCC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AATGGGTC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGCTGGTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAGCTTCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TACGTTCG",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTGTCCC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTATAAA",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGCATCTC",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AAACGAGC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCACAATC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCTAAAA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGCTTGGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAATAGAA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCACGCAT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTTAAATC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GATAAGAT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTGGGTAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCCCCCC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 6 adjacent repeat(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CGTGCCGT",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAAAATAA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCGCGCAT",
+    "score": 1,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 CG motif(s): +1.40",
+      "Found 3 GC motif(s): +1.80"
+    ]
+  },
+  {
+    "sequence": "GCTTTGAA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGCACTGT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "CGGCCGTC",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGCTCAA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AATCAGCG",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCCCGAG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACGTGGGC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACGTTTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACTCAGG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAGGTGCT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATCGGGAC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTTTTCC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 6 adjacent repeat(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TCCTCTTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGTTTAGC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGTGCGAT",
+    "score": 0.6999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "CTAGGTTA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATTTTTG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCAAAGAC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACCTCGCC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTAAGAC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCGTTCAC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGTAAATG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATATTCCG",
+    "score": 0.7666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTAGGGCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCGATGTA",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CTCTAGAA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCGCCAA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTGCGGAG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTAGCAAC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CAATTGGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCCGGTTT",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GTGCGTCT",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AAGTTGCC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTCTAATT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AAGGCAAG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGGGGAGT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGCAGAGA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TATATGCG",
+    "score": 1,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "GATTCACG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCTAGTA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTAGCGAT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAGGCGTA",
+    "score": 0.7333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCGTGCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTCAAGTT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCCGTACT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGAATTA",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTGTCAGG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAGCCTTT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TAGTTGTG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACTTATA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTGGTTT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCATTGCA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACAATCG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGTGGGTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGAACAA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACAAGCG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGGGGTAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCGACGCG",
+    "score": 1,
+    "reasoning": [
+      "Found 3 CG motif(s): +2.10",
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "TGCGCTCT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "GTGCGACC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AACGCAGG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GATAGTCT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TACCCAAT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTCTACCA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAACGCTC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CAAGACTA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAACACCG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCACTTTT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TGGGGAAC",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AGTGCAGG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCGAATG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGTGGACA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCAGTTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGCCAAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TATTGCCT",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATCTGGA",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCCCCAT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TACGGGCA",
+    "score": 0.6333333333333332,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGATAGCT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACGCAGTC",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "GACCCAGG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTAAGGG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ATACCCTG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGACCGGT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGACTTT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTAAGCCT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AACAGACG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCTGGTTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTATTGT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCAAGAAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCCAAGCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGGCGCT",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTGGCCC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAATTGCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTCCATC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCATTAAT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATACAAGG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGAAGCT",
+    "score": 0.5000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTAGAATA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCATTGA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAAGGCTT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACTGGGAG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GATTCGCC",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCCGTTA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCAGGTGG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTCAGTC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTAACCT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GATAACAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCATAGAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCGCCGGG",
+    "score": 0.9666666666666665,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 2 GC motif(s): +1.20",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTACCTTG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AATCTGTA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACCTATA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACAACTGT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTTAGCA",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGTTCACC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACGACGGT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTAAGACA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGTGTGC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACGGAATG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTCTAAGC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGGCGTGG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTCTAAAT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATAAGAT",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAACCGCG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGGCCGCA",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGCTGCTG",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "GCGACAGT",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TGACTGAT",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "CCTAGCTA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTATCCG",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATCTGTCG",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "TTAACGTA",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAGAGGTG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTTCCGC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTACACT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CATGCATG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TCAAAGGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTCTGGAT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCTTCTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGAACGGC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAAAGTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGATGTG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00"
+    ]
+  },
+  {
+    "sequence": "GCCTGTCT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCCAATGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTTAAATT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "TTAGGAGC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TACACGCA",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACGCGTGA",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AACTTGGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCCTAGAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACACAAT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAGCGGAT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCGCAGGG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCACTTGC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGCTCAC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCATTACC",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGTCGCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "GGGCGCTT",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGTCTAAC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAACGACC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTTGGGAA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGGTGTTT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGGTACAC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTACAGAG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACCCCGT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACTGACAA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCTGGATT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACTCGGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAGCTCAC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TCGGATGT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAGTGCAT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TATGCCGT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TATTTCGA",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTCACGTC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "ACTTGGGA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATGATTAC",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCTCAAC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAAGTGT",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCCCCAAG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ATAACTCA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCAAGTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACTAGAAG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATTGCGA",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGGGTCAT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACACATGC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "ACGACGTT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTAACCGA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCAGCAAA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGTCGAC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCAGAATC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATAAAACT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GAACCGCG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAATATT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCGAGTCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "ACAAAGAT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATTGAAA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCGATGCG",
+    "score": 0.8666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGCCACA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTACGAAC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCTTGTA",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGAATTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CACACCCT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTAAACT",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGATAGGC",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACAACAA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTCCATTC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATCGCTA",
+    "score": 0.7333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAGTGAGC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "ATCTCCGG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCGTGAGA",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TCGAACAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGGTCAGC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCTGCTAG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TCGCGGGT",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGTGACA",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "GTTTACAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAGGGTGG",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCTTATAC",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCGAGAT",
+    "score": 0.6999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "ACCCCCGG",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "TGACTGTC",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "CTGGTGTG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAGATTTT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTATGTC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TACTTATT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGCCAAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGGCAATG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TACGCAGG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGAGGGTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGCATTCC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATAAAAC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACCCCATG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TAGGATTT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATCTTGAC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAATCTAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CAGAAGTC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGGGTCAG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTAAAGGC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCCTGAAA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CACCTAGA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTAAGGA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGACGGCA",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACGTCTC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "CGGGAACC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AGGGACGG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTGCAATT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGATTTTG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGAGTATA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGCCTGAG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTTACAC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTCTGTT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCACATTT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGGGACG",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TACATAGT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "CTGGACTC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCCTACTT",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCCTATTA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTACTCGA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCGGTAGC",
+    "score": 0.6333333333333332,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGATCGGG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCGACTCC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAGTCCCA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGTTTGGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTAAAAA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "CCACGTAT",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGCGCAGG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAATTGTT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTTGCCGG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTCCTTTG",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AGTTAGAA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGGCCTAC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTCTCGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACATTTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGAGGCCA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTCCGCAA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TACAGTTT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGGATCT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGTAACC",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAGGTTAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGCTGCTA",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ATAGCTAT",
+    "score": 0.9,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "GTATCGCG",
+    "score": 0.9666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GACAATGG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTTCGTC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCATAGTA",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "CCCATGGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATCTACTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "CCTCATCG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTTCACC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CACATGAC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "TCGCCACA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCAATCGG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCATCGTG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGAGTACA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGAAGGCT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTCACCG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGCCATCG",
+    "score": 0.8666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGGGCCT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGGTTTGA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGGGGCTT",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAACGGCA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGATCCT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTGGCCTT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GACTCCGC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTTGGTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTGCACA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCACTAGA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCTGCTTG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCCCATA",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTCGAAGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGACAACC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCGATTG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACGAACAT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTGACTCC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTTTCGG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ATTACCCG",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCGACAGC",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "AGTGGGCG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCCGCAT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTACGGGG",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGCCGCGA",
+    "score": 0.8999999999999999,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACACGTCC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCTGTTAC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATCCCAC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAGGGGT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GAGTGCCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGATATGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGCAGGTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACATCGTA",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TGGCTCCC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAACGTTT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATGGGTAA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGCATCGG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACAAAAC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATACGCTG",
+    "score": 0.7333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CACTTCAG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACATCTT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCTGAGAG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGCGCCGA",
+    "score": 1,
+    "reasoning": [
+      "Found 3 CG motif(s): +2.10",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCCAATCG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCCATTCA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTGGGTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGCCTGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAAAGCTA",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGAAGTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGATTCA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTATAACT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACACAGC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTTGGCCA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGGACACA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGCACCCA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACCAGCC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGTCGACT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "TCCAAAGA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACATTTCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTCGGCAC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAGGCATC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGATGGCC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAGCAGCA",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "ATATGCAG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACGAGTTG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTTCCGT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGTTAAAA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTTTTAGT",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGATAGCG",
+    "score": 0.7333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CTCATCCA",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTCCCCAG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTCTAAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATAGGGTG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCAGGATG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCTTGGC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGCACCT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGCCCCGG",
+    "score": 0.7999999999999999,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACTCAGGG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGGGTAA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGTCTAGA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGATGAGC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CCCAACAT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AAGGGTGT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCAGTATT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGCGATA",
+    "score": 0.7999999999999999,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCAGTGGA",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATGTGGC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CATATCCC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACCTACG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GATGGACT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCTCCTGA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAAAGCTC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCCGACAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCTTTCCT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCTAGAAC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTAAAGGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TCCACAAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGCAAAG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACCGTCC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGTGCCTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGACCGTG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACTGTGA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTTGCTTT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGAACCGT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTAATTCT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGCTTGG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAAACCAA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTTGCATA",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAGGTAAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCAGCTGT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "GGGACCAT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTTGGCAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CACTAACA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCGTAAC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGGCTGC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGAGCTAC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCTCCAGT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAGCCTGT",
+    "score": 0.36666666666666664,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGTAATGA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTAAGTG",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAACAATA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AAACAGTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGGTGGTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATCTTTG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGAATGTC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGCGAATT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGGGAGA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTTCCGGC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GACCCCCC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "ACTTATAC",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTGGCGTG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTGATAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATGTCCT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTTGCCG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTGCGGGA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACCTGATG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCGAAGT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTACATA",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "GGGTTTTC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GAAGAGCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGCTTGG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTGTTAA",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGAGTCAA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAAGCGCT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGGGTTAA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "AAGCTTTC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGATCATC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00"
+    ]
+  },
+  {
+    "sequence": "CTACTTAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCTCCCG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTCAACTT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TTGATGTG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGATTCCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGTTTTT",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GTGACAAG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATGCAGCA",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 GC motif(s): +1.20"
+    ]
+  },
+  {
+    "sequence": "TGCCTCAG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGTAGTAA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GACTAGAG",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAAGACGC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTATTGTT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACTCACG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATTGTCA",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGAGTTGA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATCCTTGT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGAGAACA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCTATAA",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCTCTGA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGTACGA",
+    "score": 0.6,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GAAGCGGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATAGGGGT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGATGAAG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACTTGGTC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATATGGCT",
+    "score": 0.7999999999999999,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCAGACTG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTTGATGA",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCACAGAC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGATGTTG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GAAGCTGA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AACGTGTC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACTGTGA",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "TGTTACGC",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATCCGAAT",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTTAGGG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACTCGCGT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "AGGAGCCT",
+    "score": 0.36666666666666664,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGGGTCT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTTGTAT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCTCCTTA",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAGTCCAG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTAGTAGA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTCGGTAG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAACTCGA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTGGTCG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACCAGCGG",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGCTCCG",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCTGCGTC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCATTCA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCGGGCG",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCGAACGC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTAAACA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAAATTTC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TAGCTTAG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAATCGGC",
+    "score": 0.6999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGCTGTGT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "TATCGCGT",
+    "score": 0.9666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ACCCAACA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AATATACG",
+    "score": 0.8666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGTCTTCT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGATACGT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCTGTCTA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGTGCTTA",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATATGTTG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCAACATA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACACACA",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "GGGGTATC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GACAGCCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGAATTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCGTCATC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "AATTTAGT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CATCGTTA",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACGCCTTA",
+    "score": 0.6333333333333332,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCTATAGC",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "TGACCCGG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTGGCACC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTCGTTAT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACCTCTC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AATATCTC",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCTTAGCC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATGCAGGC",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGGGGGGA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "CTGTGACC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACGTCCTG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCTGGGT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCTGCCCA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACCTAATA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCCGGAAC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TGGTCTGC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TATACATT",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAGTGTTC",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCCGAAGT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATCAACCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCATGGTG",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACGCTAC",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GAGAGCTA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTAGAGAT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CAACATCG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGAGGAAG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAATGAAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCTAGTTT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GATAAGCC",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTTGGGA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AAATCCTT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCGACGCC",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GATCACGA",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "AGACAGGT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATACGTTA",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CATGTATC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "ATCGCCCA",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCGGGCCG",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTATTCCC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATGACAGC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CAATATTT",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACCCTTTG",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCGTAGAC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCCCCGA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTGGTTTT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTATCGTT",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACCTATA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCGCTGAC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACCACTCA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTTTCGCA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCTGTCCA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGCGAACC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCGCTCAC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TAACCCGA",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCTCTCAG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "AGGCTGTT",
+    "score": 0.36666666666666664,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCCTAGGA",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTTCGATG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTTTACAT",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGAGCATG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "ACTTGAGC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAGCACTC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CCTGATCA",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGTATTG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCGGGCGA",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGTAACCT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGAGAGGA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACGCCTT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGGACTAC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ACGTACTA",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "AATGTTTG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGACTTTT",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAAAAACC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GCTAGCCT",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CGGACTTG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTCCTGT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTTGAGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GGATCTTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CATCCGCT",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATATACG",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "GAGAATGT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GAACGATC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AATCCGGT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATGATGGA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCAGCCA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TTCCAGGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CACGCATC",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TGGTCGTC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTGCCCAG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TAGGTACT",
+    "score": 0.3,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAATCGCT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGTGTAG",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGTAATTG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTACCTTT",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTTCCCTC",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CTTTTATT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCTTTTAT",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTTTGGAG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGAGTAGA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGGTGGTA",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTGGCGAA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCAGATC",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATCGGATT",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCCAGCT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAAGTTAT",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TATGAGGG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGAATACT",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CAAATGTA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGCCGTCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCTGAATG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCAACCCT",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGACATAC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATTTGGA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGCGATCA",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TAAACAAG",
+    "score": 0.23333333333333336,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCCCAAAA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "ACAATGTG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCCAAGAC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACCCTTGC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGGGATGT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGGTCCAT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TGGCGAAC",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTTTGGC",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "GTATTAAC",
+    "score": 0.5,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CGGATGCA",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CACACTGC",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "CGATATAG",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "ATATAAGA",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCTTTGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TATTAATA",
+    "score": 0.8000000000000002,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 3 TA motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCAGAAT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TCGCGTCC",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCGACAG",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "CCATTAGT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ACAGTTTA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTCTACC",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGCCGGAT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCGAAATT",
+    "score": 0.6999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GAATTATT",
+    "score": 0.5666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GTCACTGT",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "CTTGAAAA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGGTAACC",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATCATGGT",
+    "score": 0.46666666666666673,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCTTGTG",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCTGCTA",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CTGGAAAG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCCCCGAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCTGATGA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "GGCCGTCG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGCCCCA",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GACGACAA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AAGGGCTT",
+    "score": 0.4333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CTGGCTGA",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGGGCCTA",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTTAAGG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCTTCACT",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCAAGACT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCATGTAT",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "AAGTCTTC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCAGACCG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCGTCGG",
+    "score": 0.5,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATGTGCAT",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30"
+    ]
+  },
+  {
+    "sequence": "GTAATCCT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATAAAGGG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CGTGCCTT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TACAGAGC",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCCTTTCC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 5 adjacent repeat(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "ATATGATA",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 3 AT motif(s): +1.50",
+      "Found 2 TA motif(s): +0.80"
+    ]
+  },
+  {
+    "sequence": "ACCTACGG",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGTAGGCC",
+    "score": 0.43333333333333335,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCGCATGA",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCACCGCG",
+    "score": 0.8999999999999999,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCCTGGCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCTCATC",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50"
+    ]
+  },
+  {
+    "sequence": "TTTCTGTG",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGACGCG",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACACCAT",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCACGCG",
+    "score": 0.6666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TTTTCACA",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GCCGTGGA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AACACCCG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GACGCTAG",
+    "score": 0.5666666666666665,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CCATAAGA",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TACTGTGA",
+    "score": 0.13333333333333333,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GAAACGAC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TATGTGAT",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGGGCGTC",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CGCCTCCT",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATACGTTT",
+    "score": 0.7000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CATCCGCA",
+    "score": 0.6333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGAAGAGA",
+    "score": 0.03333333333333333,
+    "reasoning": [
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GCGTTTCA",
+    "score": 0.49999999999999994,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCTTTTA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "CTTAGTCA",
+    "score": 0.16666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CTCCTTTG",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACTACGAG",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GGGATCTT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CAGCCAGG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTAGTACG",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCTGAAAT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "CCAGCTGG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTTATTCG",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGCAGCCA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AAGCTGCT",
+    "score": 0.5333333333333333,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GATTCAAC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGCTCAG",
+    "score": 0.19999999999999998,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60"
+    ]
+  },
+  {
+    "sequence": "TGCCCCAG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATAACAGA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "CCCCGCGT",
+    "score": 0.7666666666666666,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TCAATTAA",
+    "score": 0.4000000000000001,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "TAATTAAA",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 TA motif(s): +0.80",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GTTGAATC",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GCTTCCAG",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTGCTACT",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "TCAATCAT",
+    "score": 0.3666666666666667,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "AGCCAAGG",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ATTGTACG",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGCGCAAT",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TACCTTAG",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TGGGGTCT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "GGTCGTGT",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GTAGCGGT",
+    "score": 0.6,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "ATTTCGAC",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATGGCGCC",
+    "score": 0.8666666666666667,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CCTGGTGC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GTCTCTGT",
+    "score": 0.0,
+    "reasoning": []
+  },
+  {
+    "sequence": "GCCGTACG",
+    "score": 0.8333333333333334,
+    "reasoning": [
+      "Found 2 CG motif(s): +1.40",
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTCCATA",
+    "score": 0.3333333333333333,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 TA motif(s): +0.40",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "GACGAGAT",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70"
+    ]
+  },
+  {
+    "sequence": "TATAAACG",
+    "score": 0.7333333333333334,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 TA motif(s): +0.80",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "AGAAAGCC",
+    "score": 0.3,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGCAAATT",
+    "score": 0.5666666666666668,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 GC motif(s): +0.60",
+      "Starts with A and ends with T: +0.30",
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "AGTCCTAA",
+    "score": 0.20000000000000004,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "ATTCGTTG",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 1 AT motif(s): +0.50",
+      "Found 1 CG motif(s): +0.70",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TTTCCCTA",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 TA motif(s): +0.40",
+      "Found 4 adjacent repeat(s): +0.40"
+    ]
+  },
+  {
+    "sequence": "GCAGGCAA",
+    "score": 0.4666666666666666,
+    "reasoning": [
+      "Found 2 GC motif(s): +1.20",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCTAATAT",
+    "score": 0.6333333333333334,
+    "reasoning": [
+      "Found 2 AT motif(s): +1.00",
+      "Found 2 TA motif(s): +0.80",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGTCCAAC",
+    "score": 0.06666666666666667,
+    "reasoning": [
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "GGAACTGC",
+    "score": 0.26666666666666666,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "TCCTGGTT",
+    "score": 0.10000000000000002,
+    "reasoning": [
+      "Found 3 adjacent repeat(s): +0.30"
+    ]
+  },
+  {
+    "sequence": "ACTACGGT",
+    "score": 0.5000000000000001,
+    "reasoning": [
+      "Found 1 CG motif(s): +0.70",
+      "Found 1 TA motif(s): +0.40",
+      "Starts with A and ends with T: +0.30",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  },
+  {
+    "sequence": "TGGTTAGC",
+    "score": 0.39999999999999997,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 TA motif(s): +0.40",
+      "Found 2 adjacent repeat(s): +0.20"
+    ]
+  },
+  {
+    "sequence": "CTTGCTCT",
+    "score": 0.2333333333333333,
+    "reasoning": [
+      "Found 1 GC motif(s): +0.60",
+      "Found 1 adjacent repeat(s): +0.10"
+    ]
+  }
+]
