@@ -165,7 +165,7 @@ def main():
     parser.add_argument('--dynamics_off_pol', type=float, default=0.0, help='Off-policy dynamics parameter')
     parser.add_argument('--gen_data_sample_per_step', type=int, default=16, help='Number of data samples to generate per step')
     parser.add_argument('--gen_clip', type=float, default=10.0, help='Gradient clipping value for generator')
-
+    parser.add_argument('--gamma', type=float, default=0.5, help='Discount factor for the reward')
     # Proxy arguments
     parser.add_argument("--proxy_type", default="regression")
     parser.add_argument("--proxy_num_iterations", default=3000, type=int)

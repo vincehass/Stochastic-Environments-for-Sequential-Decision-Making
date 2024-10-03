@@ -207,5 +207,5 @@ python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_dbg  
 # Run experiments of TFBIND with MH
 
 ```
-python tfb/run_experiments.py --config tfb/config.yaml --method mh --task tfbind
+python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_klg2 --task tfbind --gamma 0.1
 ```
