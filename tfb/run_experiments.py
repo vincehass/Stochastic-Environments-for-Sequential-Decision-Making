@@ -26,7 +26,7 @@ generator_map = {
 
 EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
-
+WANDB_PROJECT = "TFBINDKL"
 def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
     wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)
@@ -105,9 +105,9 @@ def main():
     parser.add_argument('--method', nargs='+', required=True, help='Methods to run')
     parser.add_argument("--task", default="tfbind", type=str)
     # WandB arguments
-    parser.add_argument("--wandb_project", default='TFBINDStochSEQ', help="WandB project name")
+    parser.add_argument("--wandb_project", default=WANDB_PROJECT, help="WandB project name")
     parser.add_argument("--wandb_run_name", default=None, help="WandB run name")
-    parser.add_argument("--wandb_entity", default='nadhirvincenthassen', help="WandB entity (username or team name)")
+    parser.add_argument("--wandb_entity", default=WANDB_ENTITY, help="WandB entity (username or team name)")
     # Arguments
     parser.add_argument("--save_path", default=f'results/{EXPERIMENT_NAME}.pkl.gz')
     parser.add_argument("--name", default=EXPERIMENT_NAME)

@@ -185,3 +185,95 @@ if __name__ == "__main__":
     trajectories = [np.random.rand(5) for _ in range(10)]  # Example trajectories
     reward, stochastic_reward, next_states, loss, cvar = generator.train_step(trajectories, state, action)
     print(f"Reward: {reward}, Stochastic Reward: {stochastic_reward}, Next States: {next_states}, Loss: {loss}, CVaR: {cvar}")
+
+
+
+
+
+#KL Divergence Loss with entropy-ratio estimation
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+# Define a simple neural network for the policy
+class PolicyNetwork(nn.Module):
+    def __init__(self, input_dim, action_dim):
+        super(PolicyNetwork, self).__init__()
+        self.fc = nn.Sequential(
+            nn.Linear(input_dim, 128),
+            nn.ReLU(),
+            nn.Linear(128, action_dim),
+            nn.Softmax(dim=-1)
+        )
+    
+    def forward(self, state):
+        return self.fc(state)
+
+# KL Divergence Loss with entropy-ratio estimation
+def kl_divergence_loss(forward_policy, backward_policy, r_gamma):
+    return torch.sum(forward_policy * (torch.log(forward_policy) - torch.log(backward_policy) - torch.log(r_gamma)))
+
+# Entropy-Ratio Estimation
+def compute_entropy_ratio(H_high, H_low, gamma):
+    return H_high / (gamma * H_high + (1 - gamma) * H_low)
+
+# Dynamics Loss
+def dynamics_loss(policy, mu_pi, r_gamma, gamma):
+    H_pi = -torch.sum(policy * torch.log(policy), dim=-1)  # Entropy of policy
+    return -torch.sum(mu_pi * H_pi * (torch.log(r_gamma) + (1 - gamma) * (1 - H_pi) * torch.log(1 - r_gamma)))
+
+# Initialize environment parameters
+input_dim = 10   # State dimension (example)
+action_dim = 4   # Number of actions (example)
+gamma = 0.5      # Exploration-exploitation balance
+learning_rate = 0.001
+
+# Initialize policy network and optimizer
+policy_net = PolicyNetwork(input_dim, action_dim)
+optimizer = optim.Adam(policy_net.parameters(), lr=learning_rate)
+
+# Training loop
+for episode in range(1000):
+    state = torch.randn(input_dim)  # Example state initialization
+
+    done = False
+    while not done:
+        # Forward pass: sample action from the policy
+        action_probs = policy_net(state)
+        action = torch.multinomial(action_probs, 1)
+
+        # Simulate transition in the environment (example transition)
+        next_state = torch.randn(input_dim)  # Random transition
+        reward = torch.randn(1)  # Example reward
+
+        # Estimate entropy-ratio
+        H_high = torch.randn(1)  # Example high-entropy state
+        H_low = torch.randn(1)   # Example low-entropy state
+        r_gamma = compute_entropy_ratio(H_high, H_low, gamma)
+
+        # Backward policy (for simplicity, assume backward policy similar to forward policy)
+        backward_policy = policy_net(next_state)
+
+        # Compute KL divergence loss
+        kl_loss = kl_divergence_loss(action_probs, backward_policy, r_gamma)
+
+        # Compute dynamics loss
+        mu_pi = torch.randn(1)  # Example mu_pi, state visitation distribution
+        dynamics_loss_value = dynamics_loss(action_probs, mu_pi, r_gamma, gamma)
+
+        # Total loss
+        total_loss = kl_loss + dynamics_loss_value
+
+        # Optimize the policy
+        optimizer.zero_grad()
+        total_loss.backward()
+        optimizer.step()
+
+        # Transition to the next state
+        state = next_state
+
+        # Example termination condition
+        if torch.randn(1).item() > 0.9:
+            done = True
+
+print("Training complete")
