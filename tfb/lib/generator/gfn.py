@@ -245,6 +245,7 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         self.gamma = args.gamma
         self.device = args.device
         self.ce_loss = nn.CrossEntropyLoss()
+        self.logsoftmax2 = torch.nn.LogSoftmax(2)
 
     def entropy_ratio(self, H_high, H_low):
         """Compute entropy ratio."""
@@ -261,23 +262,39 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
 
     def get_dynamics_loss(self):
         """Compute dynamics loss from replay buffer samples."""
+        info = {}
         strs, thought_strs, r = self.dynamics_buffer.sample(self.dynamics_sample_size)
         s = self.tokenizer.process(strs).to(self.device)
         thought_s = self.tokenizer.process(thought_strs).to(self.device)
+
+        lens = [len(i) for i in strs]
+        
         real_actions = s[:, 1:].clamp(0, self.num_tokens - 1).long().transpose(1, 0)
-
         inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
-        inp_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        x = inp.reshape(s.shape[0], -1).to(self.device).detach()
+        inp_x_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp_thought = torch.zeros(thought_s.shape[0], self.max_len, self.num_tokens)
+        inp_thought[:, :inp_x_thought.shape[1], :] = inp_x_thought
+        x_thought = inp_thought.reshape(thought_s.shape[0], -1).to(self.device).detach()
 
-        forward_model_outs = self.forward_dynamics.forward_dynamics_model(inp_x, inp_thought, ...)
+        
+        forward_model_outs = self.forward_dynamics.forward_dynamics_model(x, x_thought, None, return_all=True, lens=lens)
+        forward_model_outs = forward_model_outs[:-1, :, :]
         forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
+        info['forward_dynamics_loss'] = forward_dynamics_loss
+        forward_model_logits = forward_model_outs.detach().log_softmax(-1)
+        info['forward_model_logits'] = forward_model_logits
+        
 
         # Compute entropy ratio (placeholders for H_high and H_low)
         H_high = torch.randn(1)
         H_low = torch.randn(1)
         r_gamma = self.entropy_ratio(H_high, H_low)
-
-        return forward_dynamics_loss
+        info['r_gamma'] = r_gamma
+        
+        return forward_dynamics_loss, info
 
     def train_step(self, input_batch):
         """Train the model, including KL divergence and dynamics loss."""
@@ -323,35 +340,118 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         
         lens = [len(i) for i in strs]
 
+        # inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        # inp_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        
+        
         inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
-        inp_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        x = inp.reshape(s.shape[0], -1).to(self.device).detach()
+
+        inp_x_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp_thought = torch.zeros(thought_s.shape[0], self.max_len, self.num_tokens)
+        inp_thought[:, :inp_x_thought.shape[1], :] = inp_x_thought
+        x_thought = inp_thought.reshape(thought_s.shape[0], -1).to(self.device).detach()
         real_actions = s[:, 1:].clamp(0, self.num_tokens - 1).long().transpose(1, 0)
         
-        forward_model_outs = self.forward_dynamics.forward_dynamics_model(inp_x, inp_thought, ...)
-        forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
-        info['forward_dynamics_loss'] = forward_dynamics_loss
+        # forward_model_outs = self.forward_dynamics.forward_dynamics_model(inp_x, inp_thought, None, return_all=True, lens=lens)
+        # forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
+        # info['forward_dynamics_loss'] = forward_dynamics_loss
 
-        forward_model_logits = forward_model_outs.detach().log_softmax(-1)
-        forward_model_logits = forward_model_logits[:-1, :, :]
 
-        forward_dynamics_loss = 1e9
-
-        forward_model_logits = forward_model_logits.log_softmax(-1) 
+        if not self.dynamics_off_pol:
+            forward_model_outs = self.forward_dynamics.forward_dynamics_model(x, x_thought, None, return_all=True, lens=lens)
+            forward_model_outs = forward_model_outs[:-1, :, :]
+            forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
+            forward_model_logits = forward_model_outs.detach().log_softmax(-1)
+        else:
+            with torch.no_grad():
+                forward_model_outs = self.forward_dynamics.forward_dynamics_model(x, x_thought, None, return_all=True, lens=lens)
+            forward_model_outs = forward_model_outs[:-1, :, :]
+            forward_dynamics_loss = 1e9
+            forward_model_logits = forward_model_outs.log_softmax(-1)
         
-        forward_model_logits = forward_model_logits.gather(-1, real_actions.unsqueeze(-1)).squeeze(-1)   
+        forward_model_logits = forward_model_logits.gather(-1, real_actions.unsqueeze(-1)).squeeze(-1) 
+        info['forward_dynamics_loss'] = forward_dynamics_loss
+        info['forward_model_logits'] = forward_model_logits
+        
+        # Log-likelihood difference computation
+        model_outs = self.model(x, None, return_all=True, lens=lens) 
+        # Forward pass for current state and next state (forward policy logits)
+        # Backward pass for current state and next state (backward policy logits)
+        policy_logits = model_outs[:, :, :self.num_tokens] 
+        policy_back_logits = model_outs[:, :, self.num_tokens:-1] 
+        log_flows = model_outs[:, :, -1] 
 
-        forward_policy = F.softmax(forward_model_logits, dim=-1)
-        backward_policy = F.softmax(forward_model_logits, dim=-1)  # Placeholder for backward policy
-        H_high = torch.randn(1)
-        H_low = torch.randn(1)
+        policy_logits = self.logsoftmax2(policy_logits)[:-1] 
+        policy_back_logits = self.logsoftmax2(policy_back_logits)[1:] 
+        
+        
+        # Reshape the policy logits and back logits to match the shape of the actions
+        mask = s.eq(self.num_tokens)
+        s = s.swapaxes(0, 1)
+        thought_s = thought_s.swapaxes(0, 1)
+        n = (s.shape[0] - 1) * s.shape[1]
+        lens = torch.tensor(lens).long()
+        end_pos = lens - 1 - 1
+        
+        policy_logits = policy_logits.reshape((n, self.num_tokens))
+        policy_logits = policy_logits[torch.arange(n, device=self.device), (thought_s[1:,].reshape((-1,))).clamp(0, self.num_tokens - 1)]
+        policy_logits = policy_logits.reshape(s[1:].shape)
+        policy_back_logits = policy_back_logits.reshape((n, self.num_tokens))
+        policy_back_logits = policy_back_logits[torch.arange(n, device=self.device), (thought_s[1:,].reshape((-1,))).clamp(0, self.num_tokens - 1)]
+        policy_back_logits = policy_back_logits.reshape(s[1:].shape)
+        # Masking the end of the sequence
+        
+        mask = mask[:, 1:].swapaxes(0, 1).logical_not().float()
+        mask_for_backward = mask.clone().detach().transpose(1, 0) 
+        
+        print(end_pos)
+        print(mask_for_backward.size(0))
+        # Check the values in end_pos
+        if (end_pos >= mask_for_backward.size(0)).any():
+            raise ValueError(f"end_pos contains out-of-bounds indices: {end_pos}")
+
+        mask_for_backward[torch.arange(end_pos.shape[0], device=self.device), end_pos] -= 1
+        
+        
+        # Log-Flows and End-Log-Flows 
+        log_flows = model_outs[:, :, -1] 
+        
+        r = r.clamp(min=self.reward_exp_min).log()
+        r = r.unsqueeze(-1).repeat(1, log_flows.shape[1]) 
+        
+        
+        
+
+        # Log-likelihood difference computation
+        ll_diff = torch.zeros((policy_logits.shape)).to(self.device)
+        ll_diff += log_flows[:-1]
+        log_flows = log_flows[1:].transpose(1, 0) 
+        ll_diff += policy_logits
+        ll_diff += forward_model_logits
+        
+        end_log_flow = mask_for_backward * log_flows + (1 - mask_for_backward) * r
+        end_log_flow = end_log_flow.transpose(1, 0)
+        # Compute high and low entropy for current and next state
+        # Compute entropy ratio
+        # Compute KL divergence loss
+        # Compute total loss
+        H_high = end_log_flow 
+        H_low = policy_back_logits
         r_gamma = self.entropy_ratio(H_high, H_low)
-        kl_loss = self.kl_divergence_loss(forward_policy, backward_policy, r_gamma)
-        info['kl_loss'] = kl_loss
-
-        # Total loss is a combination of KL and dynamics loss
-        total_loss = kl_loss + forward_dynamics_loss
-
-        return total_loss, info
+        kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
+        info['kl_divergence_loss'] = kl_divergence_loss
+        ll_diff -= kl_divergence_loss
+        ll_diff -= end_log_flow
+        ll_diff -= policy_back_logits
+        ll_diff *= mask
+        
+        loss = (ll_diff ** 2).sum() / mask.sum()
+        info['gfn_loss'] = loss.item()
+    
+        return loss, info
 
     def forward(self, x, lens, return_all=False):
         inp_x = F.one_hot(x, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
