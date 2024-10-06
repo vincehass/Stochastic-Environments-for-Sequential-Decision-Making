@@ -184,11 +184,28 @@ class RolloutWorker:
                 print(f"Debug: States when exception occurred: {states}")
                 raise e
 
+            # Debugging: Check input data for NaNs
+            print(f"Debug: States before model input: {states}")
+            # Ensure states is a tensor
+            # states = torch.tensor(states) if isinstance(states, list) else states
+            # if torch.isnan(states).any():
+            #     print("NaN values found in states!")
+
             with torch.no_grad():
                 logits = model(x, None)
             logits = logits[:, :self.args.vocab_size]
+
+            # Debugging: Check for NaN values in logits
+            print("Logits before Categorical:", logits)
+            if torch.isnan(logits).any():
+                print("NaN values found in logits!")
+                # Handle the NaN case, e.g., set logits to zero or some default value
+                logits = torch.nan_to_num(logits)  # This will replace NaNs with 0
+
             cat = Categorical(logits=logits / self.sampling_temperature)
             actions = cat.sample()
+            
+            print("Actions:", actions)
             
             if use_rand_policy and self.random_action_prob > 0:
                 rand_mask = torch.rand(actions.shape[0]) < self.random_action_prob
@@ -207,7 +224,21 @@ class RolloutWorker:
                 states[i].append(a.item())
                 thought_states[i].append(a.item())
         
+        
         # After the rollout is complete, evaluate with the oracle
+        print("Debug: States after rollout:")   
+        for i, state in enumerate(states):
+            print(f"  State {i}: {state}")
+        print("Debug: Thought states after rollout:")
+        for i, thought_state in enumerate(thought_states):
+            print(f"  Thought state {i}: {thought_state}")
+        print("Debug: Traj states after rollout:")
+        for i, traj_state in enumerate(traj_states):
+            print(f"  Traj state {i}: {traj_state}")
+        print(f"Debug: Traj actions after rollout: {traj_actions}")
+        print(f"Debug: Traj rewards after rollout: {traj_rewards}")
+        print(f"Debug: Traj dones after rollout: {traj_dones}")
+
         final_states = [s for s in states if len(s) == self.max_len]
         if final_states:
             oracle_scores = self.oracle(final_states)
@@ -317,6 +348,12 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             wandb_log_dict["dynamic_loss"] = loss_info
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
+
+        # Log KL divergence if available in loss_info
+        if isinstance(loss_info, dict) and 'kl_divergence_loss' in loss_info:
+            wandb_log_dict["kl_divergence_loss"] = loss_info['kl_divergence_loss'].item()
+        else:
+            print("Error: loss_info is not a dictionary or does not contain 'kl_divergence_loss'")
 
         wandb.log(wandb_log_dict)
 
