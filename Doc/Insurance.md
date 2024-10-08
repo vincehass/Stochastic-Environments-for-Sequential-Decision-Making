@@ -135,7 +135,7 @@ By framing the insurance pricing problem as a sequential prediction task similar
 
 ## INSURANCE
 
-Certainly! Let's reframe the explanations for the context of an insurance pricing model that predicts client premiums over time using a transformer architecture for multi-step predictions.
+Let's reframe the explanations for the context of an insurance pricing model that predicts client premiums over time using a transformer architecture for multi-step predictions.
 
 ### Overview of Transformers in Insurance Pricing
 
@@ -241,7 +241,7 @@ loss = mean_squared_error(predicted_premiums, actual_premiums)
 
 In the insurance pricing scenario, transformers can be effectively utilized for multi-step predictions of client premiums over time. The architecture leverages self-attention mechanisms to capture relationships between client features, enabling the model to predict future premiums based on historical data. By processing the entire sequence in parallel and focusing on relevant parts of the input, transformers provide a powerful framework for modeling complex relationships in insurance pricing.
 
-Certainly! Let's break down the multi-step prediction process for insurance pricing using a transformer architecture, similar to how we approached the DNA binding experiment. This will involve predicting future premiums for clients based on their historical data over time.
+Let's break down the multi-step prediction process for insurance pricing using a transformer architecture, similar to how we approached the DNA binding experiment. This will involve predicting future premiums for clients based on their historical data over time.
 
 ### Multi-Step Prediction Breakdown: Insurance Pricing
 
@@ -334,7 +334,7 @@ loss = mean_squared_error(predicted_premiums, actual_premiums)
 
 In the insurance pricing scenario, the model predicts future premiums based on historical client data over multiple time steps. Each month corresponds to a time step, and the model outputs predictions for several future premiums based on the input features. The loss is calculated based on the predicted and actual premiums over these time steps, allowing the model to learn from the entire sequence effectively. This approach enhances the model's ability to capture dependencies and relationships in the data, leading to improved predictions for insurance pricing.
 
-Certainly! To solve the problem of predicting insurance premiums over time using the concept of the `StochasticKLGFlowNetGenerator`, we can adapt the architecture and methodology to fit the context of insurance pricing. Below, I will provide a detailed explanation of how to implement this approach, including the architecture, data preparation, training process, and loss calculation.
+To solve the problem of predicting insurance premiums over time using the concept of the `StochasticKLGFlowNetGenerator`, we can adapt the architecture and methodology to fit the context of insurance pricing. Below, I will provide a detailed explanation of how to implement this approach, including the architecture, data preparation, training process, and loss calculation.
 
 ### Overview of StochasticKLGFlowNetGenerator for Insurance Pricing
 
@@ -471,7 +471,9 @@ for epoch in range(num_epochs):
 
 By adapting the `StochasticKLGFlowNetGenerator` concept for insurance pricing, we can model the distribution of future premiums based on historical client data. The architecture leverages flow networks to capture the underlying relationships in the data, allowing for multi-step predictions. The training process involves calculating losses based on the predicted distributions and updating the model accordingly, ultimately enabling accurate premium predictions for clients over time.
 
-Certainly! A Markov Decision Process (MDP) is a mathematical framework used for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision-maker. In the context of predicting insurance premiums over time, we can use MDPs to model the decision-making process involved in setting premiums based on various states of the client and their historical data.
+## MDP for Insurance Premium Prediction
+
+A Markov Decision Process (MDP) is a mathematical framework used for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision-maker. In the context of predicting insurance premiums over time, we can use MDPs to model the decision-making process involved in setting premiums based on various states of the client and their historical data.
 
 ### Overview of Markov Decision Process (MDP)
 

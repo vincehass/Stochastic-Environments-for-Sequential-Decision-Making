@@ -34,7 +34,7 @@ If you have a sequence of actions like `[action1, action2, action3]`, the time s
 
 In the model, this would correspond to processing the input data for each action at each time step, allowing the model to learn the relationships and dependencies between actions over time.
 
-Certainly! Let's break down the time steps in the context of the TFBIND experiment, which involves modeling DNA sequences for binding predictions. This example will illustrate how time steps are defined and processed in a typical sequence modeling scenario.
+Let's break down the time steps in the context of the TFBIND experiment, which involves modeling DNA sequences for binding predictions. This example will illustrate how time steps are defined and processed in a typical sequence modeling scenario.
 
 ### Example Breakdown: TFBIND Experiment (DNA Binding)
 
@@ -111,7 +111,9 @@ Certainly! Let's break down the time steps in the context of the TFBIND experime
 
 In the TFBIND experiment, time steps are defined by the individual nucleotides in the DNA sequences. Each nucleotide corresponds to a time step, and the model processes these sequences to predict the next nucleotide at each time step. The KL divergence loss is calculated for each time step to guide the model's learning process. This approach allows the model to learn the dependencies and relationships between nucleotides effectively.
 
-Certainly! In the context of the TFBIND experiment, where the goal is to predict DNA binding sequences, actions typically refer to the predicted or actual nucleotides at each time step in a sequence. Let's break down how actions are represented in the sequence, including both the predicted actions (outputs from the model) and the actual actions (ground truth).
+## DNA Binding Sequence
+
+In the context of the TFBIND experiment, where the goal is to predict DNA binding sequences, actions typically refer to the predicted or actual nucleotides at each time step in a sequence. Let's break down how actions are represented in the sequence, including both the predicted actions (outputs from the model) and the actual actions (ground truth).
 
 ### Actions in the Sequence
 
@@ -275,7 +277,7 @@ In a multi-step prediction scenario, the model predicts several future nucleotid
 
 ## TRANSFORMERS
 
-Certainly! Transformers are a powerful architecture for sequence modeling tasks, including multi-step predictions in applications like the TFBIND experiment for DNA binding predictions. Below, I will provide a detailed explanation of how transformers fit into this multi-step prediction scenario, including architecture, mechanisms, and examples.
+Transformers are a powerful architecture for sequence modeling tasks, including multi-step predictions in applications like the TFBIND experiment for DNA binding predictions. Below, I will provide a detailed explanation of how transformers fit into this multi-step prediction scenario, including architecture, mechanisms, and examples.
 
 ### Overview of Transformers
 
@@ -372,4 +374,3 @@ loss = cross_entropy(predicted_logits, actual_actions)
 ### Summary
 
 In the TFBIND experiment, transformers can be effectively utilized for multi-step predictions of DNA sequences. The architecture leverages self-attention mechanisms to capture relationships between nucleotides, enabling the model to predict several steps ahead based on the input sequence. By processing the entire sequence in parallel and focusing on relevant parts of the input, transformers provide a powerful framework for sequence modeling tasks in bioinformatics and other fields.
-
