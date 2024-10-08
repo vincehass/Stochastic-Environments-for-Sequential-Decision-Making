@@ -349,7 +349,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         elif isinstance(loss_info, (int, float)):
             wandb_log_dict["KL_divergence_loss"] = loss_info['kl_divergence_loss'] 
             wandb_log_dict["GFN_loss"] = loss_info['gfn_loss']
-            wandb_log_dict["forward_dynamics_loss"] = loss_info['forward_dynamics_loss']
+            wandb_log_dict["dynamics_loss"] = loss_info['forward_dynamics_loss']
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
 

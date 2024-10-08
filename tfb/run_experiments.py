@@ -15,14 +15,14 @@ from lib.oracle_wrapper import get_oracle
 from lib.logging import get_logger
 # Mapping of method names to generator classes
 generator_map = {
-    'stochastic_dbg': StochasticDBGFlowNetGenerator,
-    'stochastic_klg2': StochasticKL2GFlowNetGenerator,
-    'deterministic_dbg': DeterminsticDBGFlowNetGenerator,
-    'mars': MARSGenerator,
-    'mh': MHGenerator,
-    'ppo': PPOGenerator,
-    'sac': SACGenerator,
-    'random_traj': RandomTrajGenerator
+    'SGN-DB': StochasticDBGFlowNetGenerator,
+    'SGFN-KL': StochasticKL2GFlowNetGenerator,
+    'GFN-DB': DeterminsticDBGFlowNetGenerator,
+    'MARS': MARSGenerator,
+    'MCMC': MHGenerator,
+    'PPO': PPOGenerator,
+    'SAC': SACGenerator,
+    'Random': RandomTrajGenerator
 }
 
 EXPERIMENT_NAME = "TfbindE"
