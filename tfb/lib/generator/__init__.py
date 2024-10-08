@@ -6,23 +6,23 @@ from lib.generator.generators_friends import DeterminsticDBGFlowNetGenerator, MA
 def get_generator(args, tokenizer):
     method = args.method[0] if isinstance(args.method, list) else args.method  # Handle list input
     print(method)
-    if method == 'deterministic_dbg':
+    if method == 'GFN-DB':
         return DeterminsticDBGFlowNetGenerator(args, tokenizer)
-    elif method == 'stochastic_dbg':
+    elif method == 'SGN-DB':
         return StochasticDBGFlowNetGenerator(args, tokenizer)
     # elif method == 'stochastic_klg':
     #     return StochasticKLGFlowNetGenerator(args, tokenizer)
-    elif method == 'stochastic_klg2':
+    elif method == 'SGFN-KL':
         return StochasticKL2GFlowNetGenerator(args, tokenizer)
-    elif method == 'mars':
+    elif method == 'MARS':
         return MARSGenerator(args, tokenizer)
-    elif method == 'mh':
+    elif method == 'MCMC':
         return MHGenerator(args, tokenizer)
-    elif method == 'ppo':
+    elif method == 'PPO':
         return PPOGenerator(args, tokenizer)
-    elif method == 'sac':
+    elif method == 'SAC':
         return SACGenerator(args, tokenizer)
-    elif method == 'random':
+    elif method == 'RANDOM':
         return RandomTrajGenerator(args)
     else:
         raise ValueError(f"Unknown generator method: {method}")

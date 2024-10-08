@@ -27,7 +27,7 @@ generator_map = {
 
 EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
-WANDB_PROJECT = "TFBINDStochSEQ"
+WANDB_PROJECT = "StochEnv_TFBIND"
 def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
     wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)
@@ -45,58 +45,57 @@ def main_loop(config_file, methods_to_run, args):  # Added args parameter
     with open(config_file, 'r') as file:
         config = yaml.safe_load(file)
 
-    for experiment in config['experiments']:
-        if experiment['method'] in methods_to_run:
+    for method in methods_to_run:
+        if method in generator_map:
             # Set up the arguments for each experiment
             args = argparse.Namespace(
-                method=experiment['method'],
-                gen_num_iterations=experiment['gen_num_iterations'],
-                gen_episodes_per_step=experiment['gen_episodes_per_step'],
-                gen_reward_exp=experiment.get('gen_reward_exp', 3),
-                gen_reward_min=experiment.get('gen_reward_min', 0),
-                gen_reward_norm=experiment.get('gen_reward_norm', 1),
-                gen_random_action_prob=experiment.get('gen_random_action_prob', 0.001),
-                gen_sampling_temperature=experiment.get('gen_sampling_temperature', 2.0),
-                gen_leaf_coef=experiment.get('gen_leaf_coef', 25),
-                gen_reward_exp_ramping=experiment.get('gen_reward_exp_ramping', 3),
-                gen_balanced_loss=experiment.get('gen_balanced_loss', 1),
-                gen_output_coef=experiment.get('gen_output_coef', 10),
-                gen_loss_eps=experiment.get('gen_loss_eps', 1e-5),
-                num_tokens=experiment.get('num_tokens', 4),
-                gen_num_hidden=experiment.get('gen_num_hidden', 64),
-                gen_num_layers=experiment.get('gen_num_layers', 2),
-                gen_dropout=experiment.get('gen_dropout', 0.1),
-                gen_partition_init=experiment.get('gen_partition_init', 150.0),
-                gen_do_explicit_Z=experiment.get('gen_do_explicit_Z', True),
-                gen_L2=experiment.get('gen_L2', 0.0),
-                dynamics_num_hid=experiment.get('dynamics_num_hid', 128),
-                dynamics_num_layers=experiment.get('dynamics_num_layers', 2),
-                dynamics_dropout=experiment.get('dynamics_dropout', 0.1),
-                dynamics_partition_init=experiment.get('dynamics_partition_init', 150.0),
-                dynamics_do_explicit_Z=experiment.get('dynamics_do_explicit_Z', True),
-                dynamics_L2=experiment.get('dynamics_L2', 0.0),
-                dynamics_lr=experiment.get('dynamics_lr', 1e-3),
-                dynamics_clip=experiment.get('dynamics_clip', 10.0),
-                dynamics_off_pol=experiment.get('dynamics_off_pol', 0.0),
-                gen_data_sample_per_step=experiment.get('gen_data_sample_per_step', 16),
-                proxy_num_iterations=experiment.get('proxy_num_iterations', 3000),
-                proxy_num_dropout_samples=experiment.get('proxy_num_dropout_samples', 25),
-                proxy_num_hid=experiment.get('proxy_num_hid', 128),
-                proxy_num_layers=experiment.get('proxy_num_layers', 2),
-                proxy_dropout=experiment.get('proxy_dropout', 0.1),
-                proxy_learning_rate=experiment.get('proxy_learning_rate', 1e-3),
-                proxy_num_per_minibatch=experiment.get('proxy_num_per_minibatch', 32),
-                stick=experiment.get('stick', 0.25),
+                method=method,
+                gen_num_iterations=config[method]['gen_num_iterations'],
+                gen_episodes_per_step=config[method]['gen_episodes_per_step'],
+                gen_reward_exp=config[method].get('gen_reward_exp', 3),
+                gen_reward_min=config[method].get('gen_reward_min', 0),
+                gen_reward_norm=config[method].get('gen_reward_norm', 1),
+                gen_random_action_prob=config[method].get('gen_random_action_prob', 0.001),
+                gen_sampling_temperature=config[method].get('gen_sampling_temperature', 2.0),
+                gen_leaf_coef=config[method].get('gen_leaf_coef', 25),
+                gen_reward_exp_ramping=config[method].get('gen_reward_exp_ramping', 3),
+                gen_balanced_loss=config[method].get('gen_balanced_loss', 1),
+                gen_output_coef=config[method].get('gen_output_coef', 10),
+                gen_loss_eps=config[method].get('gen_loss_eps', 1e-5),
+                num_tokens=config[method].get('num_tokens', 4),
+                gen_num_hidden=config[method].get('gen_num_hidden', 64),
+                gen_num_layers=config[method].get('gen_num_layers', 2),
+                gen_dropout=config[method].get('gen_dropout', 0.1),
+                gen_partition_init=config[method].get('gen_partition_init', 150.0),
+                gen_do_explicit_Z=config[method].get('gen_do_explicit_Z', True),
+                gen_L2=config[method].get('gen_L2', 0.0),
+                dynamics_num_hid=config[method].get('dynamics_num_hid', 128),
+                dynamics_num_layers=config[method].get('dynamics_num_layers', 2),
+                dynamics_dropout=config[method].get('dynamics_dropout', 0.1),
+                dynamics_partition_init=config[method].get('dynamics_partition_init', 150.0),
+                dynamics_do_explicit_Z=config[method].get('dynamics_do_explicit_Z', True),
+                dynamics_L2=config[method].get('dynamics_L2', 0.0),
+                dynamics_lr=config[method].get('dynamics_lr', 1e-3),
+                dynamics_clip=config[method].get('dynamics_clip', 10.0),
+                dynamics_off_pol=config[method].get('dynamics_off_pol', 0.0),
+                gen_data_sample_per_step=config[method].get('gen_data_sample_per_step', 16),
+                proxy_num_iterations=config[method].get('proxy_num_iterations', 3000),
+                proxy_num_dropout_samples=config[method].get('proxy_num_dropout_samples', 25),
+                proxy_num_hid=config[method].get('proxy_num_hid', 128),
+                proxy_num_layers=config[method].get('proxy_num_layers', 2),
+                proxy_dropout=config[method].get('proxy_dropout', 0.1),
+                proxy_learning_rate=config[method].get('proxy_learning_rate', 1e-3),
+                proxy_num_per_minibatch=config[method].get('proxy_num_per_minibatch', 32),
+                stick=config[method].get('stick', 0.25),
                 wandb_project='TFBINDStochSEQ',  # Set your project name
                 wandb_entity='nadhirvincenthassen',    
-                wandb_run_name=f"{experiment['method']}_iter{experiment['gen_num_iterations']}_task{args.task}"
+                wandb_run_name=f"{method}_iter{config[method]['gen_num_iterations']}_task{args.task}"
             )
             
             # Get the generator class based on the method
-            generator_class = generator_map.get(experiment['method'])
+            generator_class = generator_map.get(method)
             if generator_class is None:
-                raise ValueError(f"Unknown method: {experiment['method']}")
-
+                raise ValueError(f"Unknown method: {method}")
             
             
 
@@ -178,16 +177,22 @@ def main():
     parser.add_argument('--proxy_num_per_minibatch', type=int, default=32,
                     help='Number of samples per minibatch for proxy training')
     args = parser.parse_args()
-    print(args)
+    #print(args)
     methods_to_run = args.method
     args.logger = get_logger(args)
     args.device = torch.device('cpu')
-    
+
+    print(f"Methods to run: {methods_to_run}")
+    print(f"Config file: {args.config}")
+    print(f"Logger: {args.logger}")
+    print(f"Device: {args.device}")
+    print(f"Save path: {args.save_path}")
     
     
     # Call run_experiment before main_loop
     for method in methods_to_run:
-        run_experiment(args, f"{method}_experiment")  # Pass the experiment name
+        #run_experiment(args, f"{method}_experiment")  # Pass the experiment name
+        run_experiment(args, f"{method}_seed{args.seed}")  # Pass the experiment name
 
     main_loop(args.config, methods_to_run, args)  # Pass args to main_loop
 
