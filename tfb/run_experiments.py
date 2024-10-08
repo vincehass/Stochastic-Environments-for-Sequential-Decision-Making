@@ -184,7 +184,7 @@ def main():
 
     print(f"Methods to run: {methods_to_run}")
     print(f"Config file: {args.config}")
-    print(f"Logger: {args.logger}")
+    # print(f"Logger: {args.logger}")
     print(f"Device: {args.device}")
     print(f"Save path: {args.save_path}")
     
