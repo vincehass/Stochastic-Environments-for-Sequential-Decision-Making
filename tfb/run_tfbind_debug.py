@@ -344,10 +344,17 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         # Handle different types of loss_info
         if isinstance(loss_info, dict):
             wandb_log_dict.update(loss_info)
+            print("wandb_log_dict:", wandb_log_dict)
+            
         elif isinstance(loss_info, (int, float)):
+            wandb_log_dict["KL_divergence_loss"] = loss_info['kl_divergence_loss'] 
             wandb_log_dict["dynamic_loss"] = loss_info
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
+
+        # Log r_gamma if available in loss_info
+        if 'r_gamma' in loss_info:
+            wandb_log_dict["r_gamma"] = loss_info['r_gamma']  # Log r_gamma
 
         wandb.log(wandb_log_dict)
 

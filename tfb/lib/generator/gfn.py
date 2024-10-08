@@ -275,37 +275,51 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         H_pi = -torch.sum(policy * torch.log(policy), dim=-1)  # Policy entropy
         return -torch.sum(mu_pi * H_pi * (torch.log(r_gamma) + (1 - self.gamma) * (1 - H_pi) * torch.log(1 - r_gamma)))
 
-    def get_dynamics_loss(self):
-        """Compute dynamics loss from replay buffer samples."""
-        info = {}
-        strs, thought_strs, r = self.dynamics_buffer.sample(self.dynamics_sample_size)
-        s = self.tokenizer.process(strs).to(self.device)
-        thought_s = self.tokenizer.process(thought_strs).to(self.device)
-
-        lens = [len(i) for i in strs]
-        
-        real_actions = s[:, 1:].clamp(0, self.num_tokens - 1).long().transpose(1, 0)
-        inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
-        inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens)
-        inp[:, :inp_x.shape[1], :] = inp_x
-        x = inp.reshape(s.shape[0], -1).to(self.device).detach()
-        inp_x_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
-        inp_thought = torch.zeros(thought_s.shape[0], self.max_len, self.num_tokens)
-        inp_thought[:, :inp_x_thought.shape[1], :] = inp_x_thought
-        x_thought = inp_thought.reshape(thought_s.shape[0], -1).to(self.device).detach()
-
-        
-        forward_model_outs = self.forward_dynamics.forward_dynamics_model(x, x_thought, None, return_all=True, lens=lens)
-        forward_model_outs = forward_model_outs[:-1, :, :]
-        forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
-        info['forward_dynamics_loss'] = forward_dynamics_loss
-        forward_model_logits = forward_model_outs.detach().log_softmax(-1)
-        info['forward_model_logits'] = forward_model_logits
-        
-        
-        return forward_dynamics_loss, info
-
     def train_step(self, input_batch):
+        #info = {}
+        loss, info = self.get_loss(input_batch)
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.args.gen_clip)
+        self.opt.step()
+        self.opt.zero_grad()
+        
+
+        return loss, info
+    
+    
+    
+    
+    # def get_dynamics_loss(self):
+    #     """Compute dynamics loss from replay buffer samples."""
+    #     info = {}
+    #     strs, thought_strs, r = self.dynamics_buffer.sample(self.dynamics_sample_size)
+    #     s = self.tokenizer.process(strs).to(self.device)
+    #     thought_s = self.tokenizer.process(thought_strs).to(self.device)
+
+    #     lens = [len(i) for i in strs]
+        
+    #     real_actions = s[:, 1:].clamp(0, self.num_tokens - 1).long().transpose(1, 0)
+    #     inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+    #     inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens)
+    #     inp[:, :inp_x.shape[1], :] = inp_x
+    #     x = inp.reshape(s.shape[0], -1).to(self.device).detach()
+    #     inp_x_thought = F.one_hot(thought_s[:, 1:], num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+    #     inp_thought = torch.zeros(thought_s.shape[0], self.max_len, self.num_tokens)
+    #     inp_thought[:, :inp_x_thought.shape[1], :] = inp_x_thought
+    #     x_thought = inp_thought.reshape(thought_s.shape[0], -1).to(self.device).detach()
+
+        
+    #     forward_model_outs = self.forward_dynamics.forward_dynamics_model(x, x_thought, None, return_all=True, lens=lens)
+    #     forward_model_outs = forward_model_outs[:-1, :, :]
+    #     forward_dynamics_loss = self.ce_loss(forward_model_outs.reshape(-1, forward_model_outs.shape[-1]), real_actions.reshape(-1))
+    #     info['forward_dynamics_loss'] = forward_dynamics_loss
+    #     forward_model_logits = forward_model_outs.detach().log_softmax(-1)
+    #     info['forward_model_logits'] = forward_model_logits
+        
+        
+    #     return forward_dynamics_loss, info
+
+    def train_step_dy(self, input_batch):
         """Train the model, including KL divergence and dynamics loss."""
         # Sample input and compute main loss
         loss, info = self.get_loss(input_batch)
@@ -424,18 +438,19 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         r_gamma = self.entropy_ratio(H_high, H_low)
 
         # Compute KL divergence loss
-        kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)  # New line added
+        kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
         print("kl_divergence_loss:", kl_divergence_loss)
-        info['kl_divergence_loss'] = kl_divergence_loss  # New line added
+        info['kl_divergence_loss'] = kl_divergence_loss
+        info['r_gamma'] = r_gamma.sum().item()  # Add r_gamma to the info dictionary
 
         # Update log-likelihood difference
         ll_diff -= end_log_flow
         ll_diff -= policy_back_logits
         ll_diff *= mask
 
-        loss = (ll_diff ** 2+kl_divergence_loss).sum() / mask.sum()
+        loss = (ll_diff ** 2).sum() / mask.sum() + kl_divergence_loss
         info['gfn_loss'] = loss.item()
-
+        print("gfn-loss:", loss)
         return loss, info
 
     def forward(self, x, lens, return_all=False):

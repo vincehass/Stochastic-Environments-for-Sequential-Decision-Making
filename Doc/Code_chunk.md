@@ -671,3 +671,111 @@ class StochasticDBGFlowNetGenerator(GeneratorBase):
 - **Usage in `ll_diff` and Training**: The `ll_diff` function and the training step make use of these new entropy values to adjust the policy and balance exploration vs. exploitation dynamically.
 
 This implementation should now reflect a more sophisticated and input-dependent calculation of high and low entropy, which is integrated into the main loss and log-likelihood difference functions.
+
+## KL Divergence
+
+In the `StochasticKL2GFlowNetGenerator` class, the KL divergence is calculated in the `kl_divergence_loss` method. Let's break down the process step by step, including the relevant code snippets and the mathematical concepts involved.
+
+### Overview of KL Divergence
+
+KL divergence (Kullback-Leibler divergence) is a measure of how one probability distribution diverges from a second, expected probability distribution. In the context of machine learning, it is often used to measure the difference between the predicted distribution (from the model) and the true distribution (from the data).
+
+### KL Divergence Calculation in `StochasticKL2GFlowNetGenerator`
+
+1. **Method Definition**:
+   The KL divergence is calculated in the `kl_divergence_loss` method:
+
+   ```python
+   def kl_divergence_loss(self, forward_policy, backward_policy, r_gamma):
+       """KL Divergence Loss."""
+       backward_policy = backward_policy.T  # Transpose the tensor
+
+       # Add a small constant to avoid log(0)
+       epsilon = 1e-10
+       forward_policy = torch.clamp(forward_policy, min=epsilon)  # Clamp to avoid log(0)
+       backward_policy = torch.clamp(backward_policy, min=epsilon)  # Clamp to avoid log(0)
+       r_gamma = torch.clamp(r_gamma, min=epsilon)  # Clamp to avoid log(0)
+
+       # Compute KL divergence
+       kl_loss = torch.sum(forward_policy * (torch.log(forward_policy) - torch.log(backward_policy) - torch.log(r_gamma)))
+
+       return kl_loss
+   ```
+
+2. **Input Parameters**:
+
+   - `forward_policy`: This is the predicted probability distribution from the model (the output of the policy network).
+   - `backward_policy`: This is the target probability distribution (often the output of a backward model or a reference distribution).
+   - `r_gamma`: This is a scaling factor derived from the entropy ratio, which helps balance the contributions of the forward and backward policies.
+
+3. **Transposing the Backward Policy**:
+
+   - The `backward_policy` is transposed to align its dimensions with the `forward_policy`. This is necessary for element-wise operations.
+
+4. **Clamping Values**:
+
+   - To avoid issues with logarithm calculations (specifically, taking the log of zero), a small constant (`epsilon = 1e-10`) is added to the probabilities. This ensures that all values are strictly positive.
+
+5. **KL Divergence Formula**:
+   The KL divergence is computed using the formula:
+   \[
+   D*{KL}(P || Q) = \sum*{i} P(i) \left( \log(P(i)) - \log(Q(i)) - \log(r\_{\gamma}) \right)
+   \]
+
+   - Here, \( P \) is the `forward_policy`, and \( Q \) is the `backward_policy`. The term \( r\_{\gamma} \) is included to adjust the divergence based on the entropy ratio.
+
+6. **Final Calculation**:
+   - The KL divergence loss is computed as the sum of the products of the forward policy and the difference of the logarithms:
+   ```python
+   kl_loss = torch.sum(forward_policy * (torch.log(forward_policy) - torch.log(backward_policy) - torch.log(r_gamma)))
+   ```
+
+### Summary of KL Divergence Calculation
+
+- The KL divergence is calculated by comparing the predicted distribution (`forward_policy`) with the target distribution (`backward_policy`), adjusted by the entropy ratio (`r_gamma`).
+- The method ensures numerical stability by clamping the probabilities to avoid taking the logarithm of zero.
+- The final KL divergence loss is returned, which can be used in the overall loss function during training.
+
+This KL divergence loss is crucial for training the model, as it helps the model learn to produce distributions that are closer to the target distributions, thereby improving its performance in generating sequences or making predictions.
+
+If you have any further questions or need clarification on specific parts, feel free to ask!
+
+## Entropy Ratio (r_gamma)
+
+In the `StochasticKL2GFlowNetGenerator` class, the `r_gamma` variable is computed in the `get_loss` method and is derived from the high and low entropy values of the policy logits. Let's break down its significance and the implications of its shape.
+
+### Significance of `r_gamma`
+
+1. **Entropy Ratio**:
+
+   - The `r_gamma` variable represents an entropy ratio, which is calculated using the `entropy_ratio` method. This method takes two inputs: `H_high` and `H_low`, which are the high and low quantiles of the policy's entropy.
+   - The entropy of a policy is a measure of its uncertainty or randomness. A higher entropy indicates a more exploratory policy, while lower entropy suggests a more deterministic policy.
+
+2. **Formula**:
+
+   - The formula used to compute `r_gamma` is:
+     ```python
+     r_gamma = H_high / (self.gamma * H_high + (1 - self.gamma) * H_low)
+     ```
+   - Here, `self.gamma` is a hyperparameter that balances the contribution of high and low entropy. It determines how much weight is given to the high entropy versus the low entropy in the calculation of `r_gamma`.
+
+3. **Purpose**:
+   - The purpose of `r_gamma` is to provide a normalized measure of the policy's entropy, which can be used in loss calculations, particularly in the KL divergence loss. It helps in balancing exploration and exploitation during training.
+
+### Shape of `r_gamma`
+
+1. **Shape Explanation**:
+
+   - The shape of `r_gamma` is determined by the shapes of `H_high` and `H_low`. Since both `H_high` and `H_low` are computed using the `torch.quantile` function on the `policy_logits`, their shapes will typically match the batch size and the number of actions (tokens).
+   - In the context of the `get_loss` method, `r_gamma` is expected to have a shape of `[batch_size, 1]` or `[batch_size]`, depending on how the quantiles are computed and the dimensions of the input tensors.
+
+2. **Implications of Shape**:
+   - If `r_gamma` has a shape of `[batch_size, 1]`, it indicates that there is one entropy ratio value for each sample in the batch. This is useful for element-wise operations in loss calculations.
+   - If `r_gamma` has a shape of `[batch_size]`, it can still be used directly in calculations, but you need to ensure that it is compatible with other tensors in terms of broadcasting.
+
+### Summary
+
+- **`r_gamma`**: Represents a normalized entropy ratio that balances exploration and exploitation in the policy.
+- **Shape**: Typically `[batch_size, 1]` or `[batch_size]`, indicating the number of samples in the batch and allowing for element-wise operations in loss calculations.
+
+By understanding the significance and shape of `r_gamma`, you can better interpret its role in the training process and how it influences the learning dynamics of the model. If you have further questions or need clarification on specific aspects, feel free to ask!

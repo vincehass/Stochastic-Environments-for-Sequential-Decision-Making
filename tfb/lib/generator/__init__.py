@@ -10,8 +10,8 @@ def get_generator(args, tokenizer):
         return DeterminsticDBGFlowNetGenerator(args, tokenizer)
     elif method == 'stochastic_dbg':
         return StochasticDBGFlowNetGenerator(args, tokenizer)
-    elif method == 'stochastic_klg':
-        return StochasticKLGFlowNetGenerator(args, tokenizer)
+    # elif method == 'stochastic_klg':
+    #     return StochasticKLGFlowNetGenerator(args, tokenizer)
     elif method == 'stochastic_klg2':
         return StochasticKL2GFlowNetGenerator(args, tokenizer)
     elif method == 'mars':

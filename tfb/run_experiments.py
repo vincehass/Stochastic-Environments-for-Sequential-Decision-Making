@@ -8,7 +8,7 @@ import numpy as np
 # Ensure the 'tfb' module is in the PYTHONPATH
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from tfb.run_tfbind import train  # Import the train function
-from tfb.lib.generator import StochasticDBGFlowNetGenerator, DeterminsticDBGFlowNetGenerator,MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
+from tfb.lib.generator import StochasticKL2GFlowNetGenerator, StochasticDBGFlowNetGenerator, DeterminsticDBGFlowNetGenerator,MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
 from tfb.lib.oracle_wrapper import get_oracle
 from tfb.lib.dataset import get_dataset
 from lib.oracle_wrapper import get_oracle
@@ -16,6 +16,7 @@ from lib.logging import get_logger
 # Mapping of method names to generator classes
 generator_map = {
     'stochastic_dbg': StochasticDBGFlowNetGenerator,
+    'stochastic_klg2': StochasticKL2GFlowNetGenerator,
     'deterministic_dbg': DeterminsticDBGFlowNetGenerator,
     'mars': MARSGenerator,
     'mh': MHGenerator,
@@ -26,7 +27,7 @@ generator_map = {
 
 EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
-WANDB_PROJECT = "TFBINDKL"
+WANDB_PROJECT = "TFBINDStochSEQ"
 def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
     wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)

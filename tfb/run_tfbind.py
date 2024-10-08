@@ -185,7 +185,7 @@ class RolloutWorker:
                 raise e
 
             # Debugging: Check input data for NaNs
-            print(f"Debug: States before model input: {states}")
+            # print(f"Debug: States before model input: {states}")
             # Ensure states is a tensor
             # states = torch.tensor(states) if isinstance(states, list) else states
             # if torch.isnan(states).any():
@@ -196,7 +196,7 @@ class RolloutWorker:
             logits = logits[:, :self.args.vocab_size]
 
             # Debugging: Check for NaN values in logits
-            print("Logits before Categorical:", logits)
+            #print("Logits before Categorical:", logits)
             if torch.isnan(logits).any():
                 print("NaN values found in logits!")
                 # Handle the NaN case, e.g., set logits to zero or some default value
@@ -319,7 +319,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         total_states_visited.update(tuple(seq) for seq in all_visited)
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
-        print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
+        #print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
 
         # Calculate metrics
         rewards = [i[-1] for i in rollout_artifacts["trajectories"]["traj_rewards"]]
@@ -332,7 +332,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         # Log metrics to wandb
         wandb_log_dict = {
             "iteration": it,
-            "loss": loss,
+            #"loss": loss,
             "avg_reward": avg_reward,
             "diversity": diversity,
             "novelty": novelty,
@@ -344,16 +344,18 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         # Handle different types of loss_info
         if isinstance(loss_info, dict):
             wandb_log_dict.update(loss_info)
+            print("wandb_log_dict:", wandb_log_dict)
+            
         elif isinstance(loss_info, (int, float)):
-            wandb_log_dict["dynamic_loss"] = loss_info
+            wandb_log_dict["KL_divergence_loss"] = loss_info['kl_divergence_loss'] 
+            wandb_log_dict["GFN_loss"] = loss_info['gfn_loss']
+            wandb_log_dict["forward_dynamics_loss"] = loss_info['forward_dynamics_loss']
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
 
-        # Log KL divergence if available in loss_info
-        if isinstance(loss_info, dict) and 'kl_divergence_loss' in loss_info:
-            wandb_log_dict["kl_divergence_loss"] = loss_info['kl_divergence_loss'].item()
-        else:
-            print("Error: loss_info is not a dictionary or does not contain 'kl_divergence_loss'")
+        # Log r_gamma if available in loss_info
+        if 'r_gamma' in loss_info:
+            wandb_log_dict["r_gamma"] = loss_info['r_gamma']  # Log r_gamma
 
         wandb.log(wandb_log_dict)
 
