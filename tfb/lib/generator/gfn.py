@@ -248,8 +248,9 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         self.logsoftmax2 = torch.nn.LogSoftmax(2)
 
     def entropy_ratio(self, H_high, H_low):
-        """Compute entropy ratio."""
-        return H_high / (self.gamma * H_high + (1 - self.gamma) * H_low)
+        """Compute entropy ratio and return as tensor."""
+        r_gamma = H_high / (self.gamma * H_high + (1 - self.gamma) * H_low)
+        return torch.tensor(r_gamma)
 
     def kl_divergence_loss(self, forward_policy, backward_policy, r_gamma):
         """KL Divergence Loss."""
@@ -436,12 +437,16 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         H_high = torch.quantile(policy_logits, 0.9, dim=-1, keepdim=True)
         H_low = torch.quantile(policy_logits, 0.1, dim=-1, keepdim=True)
         r_gamma = self.entropy_ratio(H_high, H_low)
-
+            # Ensure r_gamma is a tensor before returning
+        if not isinstance(r_gamma, torch.Tensor):
+            raise ValueError("r_gamma must be a tensor, but got: {}".format(type(r_gamma)))
+        r_gamma = r_gamma.to(torch.float32)
+        print(f"Debug: r_gamma type after calculation: {type(r_gamma)}")  # Check the type of r_gamma
         # Compute KL divergence loss
         kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
         print("kl_divergence_loss:", kl_divergence_loss)
         info['kl_divergence_loss'] = kl_divergence_loss
-        info['r_gamma'] = r_gamma.sum().item()  # Add r_gamma to the info dictionary
+        info['r_gamma'] = r_gamma.sum()  # Add r_gamma to the info dictionary
 
         # Update log-likelihood difference
         ll_diff -= end_log_flow

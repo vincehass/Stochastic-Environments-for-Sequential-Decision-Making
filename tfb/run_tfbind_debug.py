@@ -27,6 +27,7 @@ import datetime
 import shutil
 
 from scipy.spatial.distance import pdist, squareform
+from sklearn.metrics import confusion_matrix
 
 # EXPERIMENT_NAME = "tfbind8_SGN"
 # WANDB_ENTITY = "nadhirvincenthassen"  # Your username set as default
@@ -185,7 +186,7 @@ class RolloutWorker:
                 raise e
 
             # Debugging: Check input data for NaNs
-            print(f"Debug: States before model input: {states}")
+            # print(f"Debug: States before model input: {states}")
             # Ensure states is a tensor
             # states = torch.tensor(states) if isinstance(states, list) else states
             # if torch.isnan(states).any():
@@ -196,7 +197,7 @@ class RolloutWorker:
             logits = logits[:, :self.args.vocab_size]
 
             # Debugging: Check for NaN values in logits
-            print("Logits before Categorical:", logits)
+            #print("Logits before Categorical:", logits)
             if torch.isnan(logits).any():
                 print("NaN values found in logits!")
                 # Handle the NaN case, e.g., set logits to zero or some default value
@@ -303,6 +304,10 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
     total_steps = 0
     total_states_visited = set()  # To track unique states visited
 
+    # Initialize lists for confusion matrix
+    all_actions = []
+    all_expected_actions = []
+
     for it in tqdm(range(args.gen_num_iterations + 1)):
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
         visited.extend(rollout_artifacts["visited"])
@@ -319,6 +324,37 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         total_states_visited.update(tuple(seq) for seq in all_visited)
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
+
+        # Check if r_gamma is in loss_info and is a tensor
+        if 'r_gamma' in loss_info:
+            r_gamma = loss_info['r_gamma']
+            if isinstance(r_gamma, torch.Tensor):  # Ensure r_gamma is a tensor
+                expected_actions = torch.argmax(r_gamma)  # Derive expected actions from r_gamma
+                expected_actions = expected_actions.to(torch.int64)  # Convert to tensor of type int64 if needed
+            else:
+                print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping confusion matrix update.")
+                expected_actions = torch.tensor([])  # Set to an empty tensor if not a tensor
+        else:
+            print("Warning: r_gamma not found in loss_info.")
+            expected_actions = torch.tensor([])  # Set to an empty tensor if not found
+
+        # Check if expected_actions is a scalar
+        if expected_actions.dim() == 0:
+            expected_actions = expected_actions.unsqueeze(0)  # Convert to 1D tensor
+
+        # Collect actions taken during the training step
+        actions_taken = rollout_artifacts["trajectories"]["traj_actions"]  # Assuming this contains the actions taken
+
+        # Flatten the list of tensors and convert to a single tensor
+        if isinstance(actions_taken, list):
+            actions_taken_flat = [a.item() for sublist in actions_taken for a in sublist]  # Flattening
+            actions_taken_tensor = torch.tensor(actions_taken_flat, dtype=torch.int64)
+        else:
+            actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)  # If it's already a tensor
+
+        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect expected actions
+        all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
+
         print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
 
         # Calculate metrics
@@ -343,11 +379,11 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         # Handle different types of loss_info
         if isinstance(loss_info, dict):
-            wandb_log_dict.update(loss_info)
-            print("wandb_log_dict:", wandb_log_dict)
-            
+            wandb_log_dict.update(loss_info)  # Update with all loss_info metrics
+            # Log kl_divergence_loss specifically
+            if 'kl_divergence_loss' in loss_info:
+                wandb_log_dict["kl_divergence_loss"] = loss_info['kl_divergence_loss']  # Log KL divergence loss
         elif isinstance(loss_info, (int, float)):
-            wandb_log_dict["KL_divergence_loss"] = loss_info['kl_divergence_loss'] 
             wandb_log_dict["dynamic_loss"] = loss_info
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
@@ -361,6 +397,21 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         if it % 5000 == 0:
             args.logger.save(args.save_path, args)
     
+    # After training, calculate and print the confusion matrix if expected_actions and actions are not empty
+            if all_expected_actions and all_actions:
+                print(f"Length of all_expected_actions: {len(all_expected_actions)}")
+                print(f"Length of all_actions: {len(all_actions)}")
+                # Ensure both lists are populated correctly
+                if len(all_expected_actions) != len(all_actions):
+                    print("Mismatch in lengths of expected and actual actions.")
+                # Call confusion_matrix only if lengths match
+                if len(all_expected_actions) == len(all_actions):
+                    cm = confusion_matrix(all_expected_actions, all_actions)
+                    print("Confusion Matrix:\n", cm, "\n")
+                    print("R Gamma:", loss_info['r_gamma'])
+                    # Log the confusion matrix to wandb
+                    wandb.log({"confusion_matrix": cm})
+
     return rollout_worker, generator
 
 def calculate_dists(sequences):

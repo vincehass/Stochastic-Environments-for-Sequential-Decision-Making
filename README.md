@@ -209,3 +209,9 @@ python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_dbg  
 ```
 python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_klg2 --task tfbind --gamma 0.1
 ```
+
+# Run experiments of TFBIND with GFN-KL
+
+```
+python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --task tfbind --gamma 0.1
+```
