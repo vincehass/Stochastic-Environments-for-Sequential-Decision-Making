@@ -779,3 +779,170 @@ In the `StochasticKL2GFlowNetGenerator` class, the `r_gamma` variable is compute
 - **Shape**: Typically `[batch_size, 1]` or `[batch_size]`, indicating the number of samples in the batch and allowing for element-wise operations in loss calculations.
 
 By understanding the significance and shape of `r_gamma`, you can better interpret its role in the training process and how it influences the learning dynamics of the model. If you have further questions or need clarification on specific aspects, feel free to ask!
+
+## Reward Adjusted Diff
+
+In the `tfb/run_tfbind.py` file, rewards are calculated during the rollout process within the `RolloutWorker` class, specifically in the `rollout` method. Here's a detailed breakdown of how rewards are computed:
+
+### Breakdown of Reward Calculation
+
+1. **Initialization of Rewards**:
+
+   - In the `rollout` method, rewards are initialized to zero for each action taken during the rollout. This is done in the following lines:
+     ```python
+     if t == self.max_len - 1:
+         self.workers.push(states[i] + [a.item()], i)
+         r, d = 0, 1  # Reward is 0, done flag is 1 for the last action
+     else:
+         r, d = 0, 0  # Reward is 0, done flag is 0 for all other actions
+     ```
+
+2. **Appending Rewards**:
+
+   - The calculated reward (`r`) is appended to the `traj_rewards` list for each episode:
+     ```python
+     traj_rewards[i].append(r)
+     ```
+
+3. **Final States Evaluation**:
+
+   - After the rollout is complete, the method evaluates the final states using the oracle to get scores. This is done in the following lines:
+     ```python
+     final_states = [s for s in states if len(s) == self.max_len]
+     if final_states:
+         oracle_scores = self.oracle(final_states)
+         for i, (state, score) in enumerate(zip(final_states, oracle_scores)):
+             visited.append((state, thought_states[i], score.item(), score.item()))
+     ```
+
+4. **Using Oracle for Reward Calculation**:
+
+   - The oracle is expected to return scores for the final states, which can be interpreted as rewards. The scores are then used to update the `visited` list with the corresponding states and their scores:
+     ```python
+     visited.append((state, thought_states[i], score.item(), score.item()))
+     ```
+
+5. **L2R Function**:
+   - The `l2r` function is defined in the `RolloutWorker` class and is used to transform the raw scores into rewards. This function is called in the `execute_train_episode_batch` method:
+     ```python
+     traj_rewards[mbidx][-1] = self.l2r(r, it)
+     ```
+   - The `l2r` function applies a transformation based on the reward exponent (`self.reward_exp`) and the current iteration (`it`):
+     ```python
+     if self.exp_ramping_factor > 0:
+         self.l2r = lambda x, t=0: (x) ** (1 + (self.reward_exp - 1) * (1 - 1/(1 + t / self.exp_ramping_factor)))
+     else:
+         self.l2r = lambda x, t=0: (x) ** self.reward_exp
+     ```
+
+### Summary of Reward Calculation Process
+
+- **During Rollout**: Rewards are initialized to zero for each action, with a done flag set for the last action in an episode.
+- **Final Evaluation**: After the rollout, the final states are evaluated using the oracle, which provides scores that can be interpreted as rewards.
+- **Transformation**: The raw scores are transformed into rewards using the `l2r` function, which applies an exponentiation based on the specified parameters.
+
+### Tensor Shapes
+
+- **Rewards Tensor**: The shape of the `traj_rewards` tensor will be `[num_episodes]`, where each entry corresponds to the reward for the respective episode.
+- **Oracle Scores**: The scores returned by the oracle will also have a shape of `[num_final_states]`, where each entry corresponds to the score for a final state.
+
+This process allows the model to learn from the rewards received during the rollout, guiding it to improve its performance in generating sequences.
+
+## Modes Calculation
+
+In the `tfb/run_tfbind.py` file, modes are calculated using the `calculate_num_modes` function. This function determines the number of unique modes in a set of sequences based on pairwise Hamming distances. Here’s a detailed breakdown of how modes are calculated:
+
+### Breakdown of Mode Calculation
+
+1. **Function Definition**:
+   The function `calculate_num_modes` is defined as follows:
+
+   ```python
+   def calculate_num_modes(sequences, distance_threshold=2):
+   ```
+
+2. **Input Handling**:
+
+   - The function takes a list of sequences and a distance threshold as inputs.
+   - It ensures that the sequences are in a 2D numpy array format:
+     ```python
+     sequences = np.array(sequences)
+     if sequences.ndim == 1:
+         sequences = sequences.reshape(-1, 1)
+     ```
+
+3. **String Conversion**:
+
+   - If the sequences are strings (Unicode or byte strings), they are converted to an integer representation. This is done to facilitate distance calculations:
+     ```python
+     if sequences.dtype.kind in ['U', 'S']:  # Unicode or byte string
+         unique_chars = np.unique(sequences.ravel())
+         char_to_int = {char: i for i, char in enumerate(unique_chars)}
+         int_sequences = np.array([[char_to_int[char] for char in seq] for seq in sequences])
+     else:
+         int_sequences = sequences
+     ```
+
+4. **Ensure 2D Format**:
+
+   - The function checks if `int_sequences` is 2D and reshapes it if necessary:
+     ```python
+     if int_sequences.ndim == 1:
+         int_sequences = int_sequences.reshape(-1, 1)
+     ```
+
+5. **Pairwise Hamming Distances**:
+
+   - The function calculates pairwise Hamming distances between the sequences using the `pdist` function from `scipy.spatial.distance`:
+     ```python
+     distances = squareform(pdist(int_sequences, metric='hamming'))
+     ```
+
+6. **Mode Initialization**:
+
+   - An empty list `modes` is initialized to keep track of the unique modes:
+     ```python
+     modes = []
+     ```
+
+7. **Mode Identification**:
+
+   - The function iterates through each sequence and checks if it is similar to any of the previously identified modes based on the Hamming distance:
+     ```python
+     for i in range(len(sequences)):
+         if not any(distances[i, j] <= distance_threshold / len(sequences[0]) for j in modes):
+             modes.append(i)
+     ```
+   - If the distance between the current sequence and any of the identified modes is greater than the threshold, the current sequence is considered a new mode and is added to the `modes` list.
+
+8. **Return Number of Modes**:
+   - Finally, the function returns the number of unique modes identified:
+     ```python
+     return len(modes)
+     ```
+
+### Summary of Mode Calculation Process
+
+- **Input Handling**: The function ensures that the input sequences are in the correct format (2D numpy array).
+- **String Conversion**: If the sequences are strings, they are converted to integer representations for distance calculations.
+- **Distance Calculation**: Pairwise Hamming distances are calculated to assess the similarity between sequences.
+- **Mode Identification**: The function identifies unique modes based on the specified distance threshold, ensuring that modes are not too similar to each other.
+- **Output**: The function returns the count of unique modes.
+
+### Example of Mode Calculation
+
+If you have a set of sequences like:
+
+```python
+sequences = [
+    "abc",
+    "abd",
+    "xyz",
+    "xzy",
+    "abc"
+]
+```
+
+The function will convert these sequences to integer representations, calculate the pairwise Hamming distances, and identify unique modes based on the specified distance threshold.
+
+This process allows the model to understand the diversity of the generated sequences and helps in evaluating the performance of the generator in producing varied outputs.

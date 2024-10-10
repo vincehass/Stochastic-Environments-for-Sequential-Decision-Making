@@ -27,7 +27,7 @@ generator_map = {
 
 EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
-WANDB_PROJECT = "StochEnv_TFBIND"
+WANDB_PROJECT = "StochEnv_TFBINDC"
 def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
     wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)
@@ -192,7 +192,7 @@ def main():
     # Call run_experiment before main_loop
     for method in methods_to_run:
         #run_experiment(args, f"{method}_experiment")  # Pass the experiment name
-        run_experiment(args, f"{method}_seed{args.seed}")  # Pass the experiment name
+        run_experiment(args, f"{method}_gamma{args.gamma}_seed{args.seed}")  # Pass the experiment name
 
     main_loop(args.config, methods_to_run, args)  # Pass args to main_loop
 
