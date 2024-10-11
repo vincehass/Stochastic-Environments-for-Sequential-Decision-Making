@@ -264,7 +264,7 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
 
         print(f"forward_policy shape: {forward_policy.shape}")
         print(f"backward_policy shape: {backward_policy.shape}")
-        print(f"r_gamma shape: {r_gamma.shape}")
+        
 
         # Compute KL divergence
         kl_loss = torch.sum(forward_policy * (torch.log(forward_policy) - torch.log(backward_policy) - torch.log(r_gamma)))
@@ -446,8 +446,8 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
         print("kl_divergence_loss:", kl_divergence_loss)
         info['kl_divergence_loss'] = kl_divergence_loss
-        info['r_gamma'] = r_gamma.sum()  # Add r_gamma to the info dictionary
-
+        info['r_gamma'] = r_gamma# Add r_gamma to the info dictionary
+        print(f"r_gamma shape: {r_gamma.shape}")
         # Update log-likelihood difference
         ll_diff -= end_log_flow
         ll_diff -= policy_back_logits

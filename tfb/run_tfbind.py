@@ -307,6 +307,8 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
     # Initialize lists for confusion matrix
     all_actions = []
     all_expected_actions = []
+    all_expected_states = []  # To collect expected states
+    all_r_gamma_values = []  # To collect r_gamma values
 
     for it in tqdm(range(args.gen_num_iterations + 1)):
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
@@ -325,12 +327,26 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
 
+        
+
         # Check if r_gamma is in loss_info and is a tensor
         if 'r_gamma' in loss_info:
             r_gamma = loss_info['r_gamma']
             if isinstance(r_gamma, torch.Tensor):  # Ensure r_gamma is a tensor
-                expected_actions = torch.argmax(r_gamma)  # Derive expected actions from r_gamma
-                expected_actions = expected_actions.to(torch.int64)  # Convert to tensor of type int64 if needed
+                # Print the shape of r_gamma for debugging
+                print("Shape of r_gamma:", r_gamma.shape)
+
+                # Check the dimensions of r_gamma and handle accordingly
+                if r_gamma.dim() == 1:
+                    expected_actions = torch.argmax(r_gamma, dim=0)  # Use default dim=0 for 1D tensor
+                elif r_gamma.dim() == 2:
+                    if r_gamma.size(1) == 1:
+                        expected_actions = torch.argmax(r_gamma.squeeze(1), dim=0)  # Squeeze the second dimension
+                    else:
+                        expected_actions = torch.argmax(r_gamma, dim=1)  # Handle other 2D cases
+                else:
+                    raise ValueError("Unexpected tensor dimensions for r_gamma")
+                all_r_gamma_values.append(r_gamma.squeeze().cpu().numpy())  # Collect r_gamma values
             else:
                 print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping confusion matrix update.")
                 expected_actions = torch.tensor([])  # Set to an empty tensor if not a tensor
@@ -338,22 +354,35 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             print("Warning: r_gamma not found in loss_info.")
             expected_actions = torch.tensor([])  # Set to an empty tensor if not found
 
-        # Check if expected_actions is a scalar
-        if expected_actions.dim() == 0:
-            expected_actions = expected_actions.unsqueeze(0)  # Convert to 1D tensor
-
+        
         # Collect actions taken during the training step
         actions_taken = rollout_artifacts["trajectories"]["traj_actions"]  # Assuming this contains the actions taken
+        
+        # Collect expected states (assuming you have a way to derive them)
+        expected_states = rollout_artifacts["trajectories"]["traj_states"]  # Replace with actual expected states collection
+        all_expected_states.extend(expected_states)  # Collect expected states
+        print("Contents of rollout_artifacts['trajectories']:")
+        for key, value in rollout_artifacts["trajectories"].items():
+            print(key)
+        print(f"Shape of actions_taken: {len(actions_taken)}")
+        print(f"Shape of expected_states: {len(expected_states)}")
+        print(f"Shape of expected_actions: {expected_actions.shape}")
 
-        # Flatten the list of tensors and convert to a single tensor
+
+        # Flatten the list of tensors and convert to a single tensor for actions_taken
         if isinstance(actions_taken, list):
             actions_taken_flat = [a.item() for sublist in actions_taken for a in sublist]  # Flattening
             actions_taken_tensor = torch.tensor(actions_taken_flat, dtype=torch.int64)
         else:
             actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)  # If it's already a tensor
 
-        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect actual actions
+        # Check if expected_actions is a scalar
+        if expected_actions.dim() == 0:
+            expected_actions = expected_actions.unsqueeze(0)  # Convert to 1D tensor
+
+        # Collect actions
         all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
+        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect actual actions
 
         # Debugging information
         print(f"Iteration {it}:")
@@ -401,17 +430,19 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             args.logger.save(args.save_path, args)
 
     # After training, calculate and print the confusion matrix if expected_actions and actions are not empty
-    if all_expected_actions and all_actions:
+    if all_expected_actions and all_actions and all_expected_states:
         print(f"Final Length of all_expected_actions: {len(all_expected_actions)}")
         print(f"Final Length of all_actions: {len(all_actions)}")
+        print(f"Final Length of all_expected_states: {len(all_expected_states)}")
+
         # Ensure both lists are populated correctly
-        if len(all_expected_actions) != len(all_actions):
-            print("Mismatch in lengths of expected and actual actions.")
-        # Call confusion_matrix only if lengths match
-        if len(all_expected_actions) == len(all_actions):
-            cm = confusion_matrix(all_expected_actions, all_actions)
+        if len(all_expected_actions) != len(all_actions) or len(all_expected_actions) != len(all_expected_states):
+            print("Mismatch in lengths of expected actions, actual actions, and expected states.")
+        else:
+            # Compute confusion matrix between expected actions and expected states
+            cm = confusion_matrix(all_expected_states, all_expected_actions)
             print("Confusion Matrix:\n", cm, "\n")
-            print("R Gamma:", loss_info.get('r_gamma', 'Not available'))
+            print("R Gamma values:\n", all_r_gamma_values)  # Print or log r_gamma values
             # Log the confusion matrix to wandb
             wandb.log({"confusion_matrix": cm})
 
