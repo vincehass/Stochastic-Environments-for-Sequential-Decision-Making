@@ -352,10 +352,13 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         else:
             actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)  # If it's already a tensor
 
-        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect expected actions
+        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect actual actions
         all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
 
-        #print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
+        # Debugging information
+        print(f"Iteration {it}:")
+        print(f"  Length of all_expected_actions: {len(all_expected_actions)}")
+        print(f"  Length of all_actions: {len(all_actions)}")
 
         # Calculate metrics
         rewards = [i[-1] for i in rollout_artifacts["trajectories"]["traj_rewards"]]
@@ -394,23 +397,23 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         wandb.log(wandb_log_dict)
 
-        if it % 5000 == 0:
+        if it % 10 == 0:
             args.logger.save(args.save_path, args)
-    
+
     # After training, calculate and print the confusion matrix if expected_actions and actions are not empty
-            if all_expected_actions and all_actions:
-                print(f"Length of all_expected_actions: {len(all_expected_actions)}")
-                print(f"Length of all_actions: {len(all_actions)}")
-                # Ensure both lists are populated correctly
-                if len(all_expected_actions) != len(all_actions):
-                    print("Mismatch in lengths of expected and actual actions.")
-                # Call confusion_matrix only if lengths match
-                if len(all_expected_actions) == len(all_actions):
-                    cm = confusion_matrix(all_expected_actions, all_actions)
-                    print("Confusion Matrix:\n", cm, "\n")
-                    print("R Gamma:", loss_info['r_gamma'])
-                    # Log the confusion matrix to wandb
-                    wandb.log({"confusion_matrix": cm})
+    if all_expected_actions and all_actions:
+        print(f"Final Length of all_expected_actions: {len(all_expected_actions)}")
+        print(f"Final Length of all_actions: {len(all_actions)}")
+        # Ensure both lists are populated correctly
+        if len(all_expected_actions) != len(all_actions):
+            print("Mismatch in lengths of expected and actual actions.")
+        # Call confusion_matrix only if lengths match
+        if len(all_expected_actions) == len(all_actions):
+            cm = confusion_matrix(all_expected_actions, all_actions)
+            print("Confusion Matrix:\n", cm, "\n")
+            print("R Gamma:", loss_info.get('r_gamma', 'Not available'))
+            # Log the confusion matrix to wandb
+            wandb.log({"confusion_matrix": cm})
 
     return rollout_worker, generator
 
@@ -545,30 +548,34 @@ def train(args, oracle, dataset):
     
     rollout_worker, _ = train_generator(args, generator, oracle, proxy, tokenizer, dataset)
 
-    for step in range(args.gen_num_iterations):
-        batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
-    
-        # Debug prints
-        print(f"Debug: dataset.train shape: {dataset.train.shape}")
-        print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
-        print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
-        print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
-
-        dataset.add(batch)
-        curr_round_infos = log_overall_metrics(args, dataset, collected=True)
-        print(curr_round_infos)
+    # Wrap the training loop with tqdm
+    with tqdm(total=args.gen_num_iterations, desc="Training Progress", unit="iteration") as pbar:
+        for step in range(args.gen_num_iterations):
+            batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
         
-        wandb.log({
-            "step": step,
-            "max_100_collected_scores": curr_round_infos['max-100-collected-scores'],
-            "novelty": curr_round_infos['novelty'],
-            "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
-            "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
-            "top_100_dists": curr_round_infos['top-100-dists'],
-            "top_100_scores": curr_round_infos['top-100-scores'],
-            "num_modes_collected": curr_round_infos['num-modes-collected'],
-            "num_modes_all": curr_round_infos['num-modes-all']
-        })
+            # Debug prints
+            print(f"Debug: dataset.train shape: {dataset.train.shape}")
+            print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
+            print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
+            print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
+
+            dataset.add(batch)
+            curr_round_infos = log_overall_metrics(args, dataset, collected=True)
+            print(curr_round_infos)
+            
+            wandb.log({
+                "step": step,
+                "max_100_collected_scores": curr_round_infos['max-100-collected-scores'],
+                "novelty": curr_round_infos['novelty'],
+                "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
+                "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
+                "top_100_dists": curr_round_infos['top-100-dists'],
+                "top_100_scores": curr_round_infos['top-100-scores'],
+                "num_modes_collected": curr_round_infos['num-modes-collected'],
+                "num_modes_all": curr_round_infos['num-modes-all']
+            })
+
+            pbar.update(1)  # Update the progress bar
         
     args.logger.save(args.save_path, args)
 
