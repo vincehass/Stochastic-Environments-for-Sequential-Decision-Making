@@ -457,7 +457,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         # Log r_gamma if available in loss_info
         if 'r_gamma' in loss_info:
-            wandb_log_dict["r_gamma"] = loss_info['r_gamma'] # Log r_gamma
+            wandb_log_dict["r_gamma"] = loss_info['r_gamma'].sum().item() # Log r_gamma
             print("r_gamma: ", loss_info['r_gamma'])
 
         wandb.log(wandb_log_dict)

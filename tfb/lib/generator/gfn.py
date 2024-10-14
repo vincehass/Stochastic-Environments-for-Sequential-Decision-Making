@@ -446,7 +446,7 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
         print("kl_divergence_loss:", kl_divergence_loss)
         info['kl_divergence_loss'] = kl_divergence_loss
-        info['r_gamma'] = r_gamma.sum().item()# Add r_gamma to the info dictionary
+        info['r_gamma'] = r_gamma# Add r_gamma to the info dictionary
         #print(f"r_gamma shape: {r_gamma.shape}")
         # Update log-likelihood difference
         ll_diff -= end_log_flow
