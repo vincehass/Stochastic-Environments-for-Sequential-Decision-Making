@@ -262,8 +262,8 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         backward_policy = torch.clamp(backward_policy, min=epsilon)  # Clamp to avoid log(0)
         r_gamma = torch.clamp(r_gamma, min=epsilon)  # Clamp to avoid log(0)
 
-        print(f"forward_policy shape: {forward_policy.shape}")
-        print(f"backward_policy shape: {backward_policy.shape}")
+        # print(f"forward_policy shape: {forward_policy.shape}")
+        # print(f"backward_policy shape: {backward_policy.shape}")
         
 
         # Compute KL divergence
@@ -441,10 +441,10 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
         if not isinstance(r_gamma, torch.Tensor):
             raise ValueError("r_gamma must be a tensor, but got: {}".format(type(r_gamma)))
         r_gamma = r_gamma.to(torch.float32)
-        print(f"Debug: r_gamma type after calculation: {type(r_gamma)}")  # Check the type of r_gamma
+        #print(f"Debug: r_gamma type after calculation: {type(r_gamma)}")  # Check the type of r_gamma
         # Compute KL divergence loss
         kl_divergence_loss = self.kl_divergence_loss(end_log_flow, log_flows, r_gamma)
-        print("kl_divergence_loss:", kl_divergence_loss)
+        #print("kl_divergence_loss:", kl_divergence_loss)
         info['kl_divergence_loss'] = kl_divergence_loss
         info['r_gamma'] = r_gamma# Add r_gamma to the info dictionary
         #print(f"r_gamma shape: {r_gamma.shape}")
@@ -455,7 +455,7 @@ class StochasticKL2GFlowNetGenerator(GeneratorBase):
 
         loss = (ll_diff ** 2).sum() / mask.sum() + kl_divergence_loss
         info['gfn_loss'] = loss.item()
-        print("gfn-loss:", loss)
+        #print("gfn-loss:", loss)
         return loss, info
 
     def forward(self, x, lens, return_all=False):

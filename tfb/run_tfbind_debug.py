@@ -9,7 +9,9 @@ import torch
 import torch.nn as nn
 from torch.distributions import Categorical
 from tqdm import tqdm
-
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 import wandb
 
 from lib.acquisition_fn import get_acq_fn
@@ -230,15 +232,16 @@ class RolloutWorker:
         print("Debug: States after rollout:")   
         for i, state in enumerate(states):
             print(f"  State {i}: {state}")
-        print("Debug: Thought states after rollout:")
-        for i, thought_state in enumerate(thought_states):
-            print(f"  Thought state {i}: {thought_state}")
-        print("Debug: Traj states after rollout:")
-        for i, traj_state in enumerate(traj_states):
-            print(f"  Traj state {i}: {traj_state}")
-        print(f"Debug: Traj actions after rollout: {traj_actions}")
-        print(f"Debug: Traj rewards after rollout: {traj_rewards}")
-        print(f"Debug: Traj dones after rollout: {traj_dones}")
+            print(f"  Actions {i}: {actions}")
+        # print("Debug: Thought states after rollout:")
+        # for i, thought_state in enumerate(thought_states):
+        #     print(f"  Thought state {i}: {thought_state}")
+        # print("Debug: Traj states after rollout:")
+        # for i, traj_state in enumerate(traj_states):
+        #     print(f"  Traj state {i}: {traj_state}")
+        # print(f"Debug: Traj actions after rollout: {traj_actions}")
+        # print(f"Debug: Traj rewards after rollout: {traj_rewards}")
+        # print(f"Debug: Traj dones after rollout: {traj_dones}")
 
         final_states = [s for s in states if len(s) == self.max_len]
         if final_states:
@@ -305,8 +308,9 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
     total_states_visited = set()  # To track unique states visited
 
     # Initialize lists for confusion matrix
-    all_actions = []
     all_expected_actions = []
+    all_expected_states = []
+    all_r_gamma_values = []
 
     for it in tqdm(range(args.gen_num_iterations + 1)):
         rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
@@ -325,12 +329,25 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
 
-        # Check if r_gamma is in loss_info and is a tensor
+        # Collect actions taken during the training step
+        actions_taken = rollout_artifacts["trajectories"]["traj_actions"]  # Assuming this contains the actions taken
+
+        # Collect r_gamma values
         if 'r_gamma' in loss_info:
             r_gamma = loss_info['r_gamma']
-            if isinstance(r_gamma, torch.Tensor):  # Ensure r_gamma is a tensor
-                expected_actions = torch.argmax(r_gamma)  # Derive expected actions from r_gamma
-                expected_actions = expected_actions.to(torch.int64)  # Convert to tensor of type int64 if needed
+            if isinstance(r_gamma, torch.Tensor):
+                print("Shape of r_gamma:", r_gamma.shape)
+
+                if r_gamma.dim() == 1:
+                    expected_actions = torch.argmax(r_gamma, dim=0)  # Use default dim=0 for 1D tensor
+                elif r_gamma.dim() == 2:
+                    if r_gamma.size(1) == 1:
+                        expected_actions = torch.argmax(r_gamma.squeeze(1), dim=0)  # Squeeze the second dimension
+                    else:
+                        expected_actions = torch.argmax(r_gamma, dim=1)  # Handle other 2D cases
+                else:
+                    raise ValueError("Unexpected tensor dimensions for r_gamma")
+                all_r_gamma_values.append(r_gamma.squeeze().cpu().numpy())  # Collect r_gamma values
             else:
                 print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping confusion matrix update.")
                 expected_actions = torch.tensor([])  # Set to an empty tensor if not a tensor
@@ -338,24 +355,43 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             print("Warning: r_gamma not found in loss_info.")
             expected_actions = torch.tensor([])  # Set to an empty tensor if not found
 
+        # Flatten actions_taken if it's a list of lists
+        if isinstance(actions_taken, list):
+            actions_taken_flat = [a.item() for sublist in actions_taken for a in sublist]
+            actions_taken_tensor = torch.tensor(actions_taken_flat, dtype=torch.int64)
+        else:
+            actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)
+
         # Check if expected_actions is a scalar
         if expected_actions.dim() == 0:
             expected_actions = expected_actions.unsqueeze(0)  # Convert to 1D tensor
 
-        # Collect actions taken during the training step
-        actions_taken = rollout_artifacts["trajectories"]["traj_actions"]  # Assuming this contains the actions taken
-
-        # Flatten the list of tensors and convert to a single tensor
-        if isinstance(actions_taken, list):
-            actions_taken_flat = [a.item() for sublist in actions_taken for a in sublist]  # Flattening
-            actions_taken_tensor = torch.tensor(actions_taken_flat, dtype=torch.int64)
-        else:
-            actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)  # If it's already a tensor
-
-        all_actions.extend(actions_taken_tensor.cpu().numpy())  # Collect expected actions
+        # Collect actions
+        all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
+        
+        
+        
+        # Collect expected states (assuming you have a way to derive them)
+        expected_states = rollout_artifacts["trajectories"]["traj_states"]  # Replace with actual expected states collection
+        all_expected_states.extend(expected_states)  # Collect expected states
         all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
 
-        print(f"Iteration {it}, Loss: {loss}, Loss Info: {loss_info}")
+        print("Contents of rollout_artifacts['trajectories']:")
+        for key, value in rollout_artifacts["trajectories"].items():
+            print(key)
+        print(f"Shape of actions_taken: {len(actions_taken)}")
+        print(f"Shape of expected_states: {len(expected_states)}")
+        print(f"Shape of expected_actions: {expected_actions.shape}")
+        print(f"shape of all_r_gamma_values: {len(all_r_gamma_values)}")
+        print(f"shape of all_expected_actions: {len(all_expected_actions)}")
+        print(f"shape of all_expected_states: {len(all_expected_states)}")
+        
+        
+        # Debugging information
+        print(f"Iteration {it}:")
+        print(f"  Length of all_expected_actions: {len(all_expected_actions)}")
+        print(f"  Length of all_actions: {len(actions_taken_tensor)}")
+        print(f"  Length of all_expected_states: {len(all_expected_states)}")
 
         # Calculate metrics
         rewards = [i[-1] for i in rollout_artifacts["trajectories"]["traj_rewards"]]
@@ -364,7 +400,27 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         novelty = calculate_novelty(rollout_artifacts["trajectories"]["states"], dataset.get_all_sequences())
         unique_sequences.update(tuple(seq) for seq in rollout_artifacts["trajectories"]["states"])
         total_steps += sum(len(traj) for traj in rollout_artifacts["trajectories"]["traj_states"])
+        print(f"Debug: total_steps: {total_steps}")
+        print(f"Debug: len(rollout_artifacts['trajectories']['traj_states']): {len(rollout_artifacts['trajectories']['traj_states'])}")
+        print(f"Debug: len(rollout_artifacts['trajectories']['states']): {len(rollout_artifacts['trajectories']['states'])}")  
+        print(f"Debug: len(rollout_artifacts['trajectories']['traj_actions']): {len(rollout_artifacts['trajectories']['traj_actions'])}")
+        print(f"Debug: len(rollout_artifacts['trajectories']['traj_rewards']): {len(rollout_artifacts['trajectories']['traj_rewards'])}")
+        # Print last states, actions, and rewards
+        last_states = rollout_artifacts["trajectories"]["traj_states"][-1]
+        last_actions = rollout_artifacts["trajectories"]["traj_actions"][-1]
+        last_rewards = rollout_artifacts["trajectories"]["traj_rewards"][-1]
 
+        print("Last States:")
+        for state in last_states:
+            print(state)
+
+        print("Last Actions:")
+        for action in last_actions:
+            print(action)
+
+        print("Last Rewards:")
+        for reward in last_rewards:
+            print(reward)
         # Log metrics to wandb
         wandb_log_dict = {
             "iteration": it,
@@ -374,8 +430,16 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             "novelty": novelty,
             "unique_sequences": len(unique_sequences),
             "total_steps": total_steps,
-            "total_states_visited": count_elements(total_states_visited)  # Use count_elements instead of len
+            "total_states_visited": count_elements(total_states_visited),  # Use count_elements instead of len
+            "expected_actions_dist": count_elements(all_expected_actions),
+            "expected_states_dist": count_elements(all_expected_states),
+            "all_actions_dist": count_elements(actions_taken_tensor)
         }
+
+        print("shape of all_expected_actions: ", len(all_expected_actions))
+        print("shape of all_expected_states: ", len(all_expected_states))
+        print("shape of all_r_gamma_values: ", len(all_r_gamma_values))
+        
 
         # Handle different types of loss_info
         if isinstance(loss_info, dict):
@@ -390,27 +454,40 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         # Log r_gamma if available in loss_info
         if 'r_gamma' in loss_info:
-            wandb_log_dict["r_gamma"] = loss_info['r_gamma']  # Log r_gamma
+            wandb_log_dict["r_gamma"] = loss_info['r_gamma'].sum().item() # Log r_gamma
+            print("r_gamma: ", loss_info['r_gamma'])
 
         wandb.log(wandb_log_dict)
-
-        if it % 5000 == 0:
+       
+        if it % 100 == 0:
             args.logger.save(args.save_path, args)
+
+            
     
-    # After training, calculate and print the confusion matrix if expected_actions and actions are not empty
-            if all_expected_actions and all_actions:
-                print(f"Length of all_expected_actions: {len(all_expected_actions)}")
-                print(f"Length of all_actions: {len(all_actions)}")
-                # Ensure both lists are populated correctly
-                if len(all_expected_actions) != len(all_actions):
-                    print("Mismatch in lengths of expected and actual actions.")
-                # Call confusion_matrix only if lengths match
-                if len(all_expected_actions) == len(all_actions):
-                    cm = confusion_matrix(all_expected_actions, all_actions)
-                    print("Confusion Matrix:\n", cm, "\n")
-                    print("R Gamma:", loss_info['r_gamma'])
-                    # Log the confusion matrix to wandb
-                    wandb.log({"confusion_matrix": cm})
+    # Construct the confusion matrix
+    # actions_taken_np = np.array(expected_actions)
+    # expected_states_np = np.array(expected_states[-1][-1][:-1])
+    # print("expected_states: ", expected_states_np)
+    # print("expected_actions: ", actions_taken_np) 
+    # # Assuming r_gamma_values is a 2D numpy array with shape (expected_states_np.shape[0], actions_taken_np.shape[0])
+    # # Create a DataFrame for the heatmap
+    # heatmap_df = pd.DataFrame(loss_info['r_gamma'], columns=actions_taken_np, index=expected_states_np)
+    
+    # # Create the heatmap
+    # plt.figure(figsize=(10, 8))
+    # sns.heatmap(heatmap_df, annot=True, cmap='viridis', cbar=True, fmt=".2f")
+    # plt.title('Heatmap of Expected States and r_gamma')
+    # plt.xlabel('Actions Taken')
+    # plt.ylabel('Expected States')
+    
+    # # Save the heatmap as an image
+    # heatmap_image_path = f"heatmap_expected_states_r_gamma_iteration_{it}.png"
+    # plt.savefig(heatmap_image_path)
+    # plt.close()  # Close the plot to free memory
+    
+    # # Log the heatmap image to WandB
+    # wandb.log({"heatmap_expected_states_r_gamma": wandb.Image(heatmap_image_path)})
+
 
     return rollout_worker, generator
 
@@ -545,30 +622,37 @@ def train(args, oracle, dataset):
     
     rollout_worker, _ = train_generator(args, generator, oracle, proxy, tokenizer, dataset)
 
-    for step in range(args.gen_num_iterations):
-        batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
-    
-        # Debug prints
-        print(f"Debug: dataset.train shape: {dataset.train.shape}")
-        print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
-        print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
-        print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
-
-        dataset.add(batch)
-        curr_round_infos = log_overall_metrics(args, dataset, collected=True)
-        print(curr_round_infos)
+    # Wrap the training loop with tqdm
+    with tqdm(total=args.gen_num_iterations, desc="Training Progress", unit="iteration") as pbar:
+        for step in range(args.gen_num_iterations):
+            batch = sample_batch(args, rollout_worker, generator, dataset, oracle)
         
-        wandb.log({
-            "step": step,
-            "max_100_collected_scores": curr_round_infos['max-100-collected-scores'],
-            "novelty": curr_round_infos['novelty'],
-            "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
-            "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
-            "top_100_dists": curr_round_infos['top-100-dists'],
-            "top_100_scores": curr_round_infos['top-100-scores'],
-            "num_modes_collected": curr_round_infos['num-modes-collected'],
-            "num_modes_all": curr_round_infos['num-modes-all']
-        })
+            # Debug prints
+            print(f"Debug: dataset.train shape: {dataset.train.shape}")
+            print(f"Debug: dataset.train_scores shape: {dataset.train_scores.shape}")
+            print(f"Debug: batch[0] shape: {np.array(batch[0]).shape}")
+            print(f"Debug: batch[1] shape: {np.array(batch[1]).shape}")
+            print(f"Debug: num_modes_collected: {curr_round_infos['num-modes-collected']}")
+            print(f"Debug: num_modes_all: {curr_round_infos['num-modes-all']}")
+            print(f"Debug: curr_round_infos: {curr_round_infos}")
+            print(f"Debug: curr_round_infos['num-modes-collected']: {curr_round_infos['num-modes-collected']}")
+            print(f"Debug: curr_round_infos['num-modes-all']: {curr_round_infos['num-modes-all']}")
+            dataset.add(batch)
+            curr_round_infos = log_overall_metrics(args, dataset, collected=True)
+            
+            wandb.log({
+                "step": step,
+                "max_100_collected_scores": curr_round_infos['max-100-collected-scores'],
+                "novelty": curr_round_infos['novelty'],
+                "top_100_collected_dists": curr_round_infos['top-100-collected-dists'],
+                "top_100_collected_scores": curr_round_infos['top-100-collected-scores'],
+                "top_100_dists": curr_round_infos['top-100-dists'],
+                "top_100_scores": curr_round_infos['top-100-scores'],
+                "num_modes_collected": curr_round_infos['num-modes-collected'],
+                "num_modes_all": curr_round_infos['num-modes-all']
+            })
+
+            pbar.update(1)  # Update the progress bar
         
     args.logger.save(args.save_path, args)
 

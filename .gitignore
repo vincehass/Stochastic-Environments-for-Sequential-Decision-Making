@@ -99,3 +99,6 @@ wandb/
 
 # VS Code
 .vscode/
+
+
+results/
