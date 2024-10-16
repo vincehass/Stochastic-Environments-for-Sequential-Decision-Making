@@ -217,18 +217,23 @@ def calculate_novelty(new_sequences, reference_sequences):
     if new_sequences.ndim == 1:
         new_sequences = new_sequences.reshape(-1, 1)  # Reshape to 2D if it's 1D
 
+    # Convert sequences to a numerical format (e.g., integer encoding)
+    unique_chars = np.unique(np.concatenate(new_sequences))  # Get unique characters
+    char_to_int = {char: idx for idx, char in enumerate(unique_chars)}  # Create a mapping
+    int_sequences = np.array([[char_to_int[char] for char in seq] for seq in new_sequences])  # Convert to integers
+
     reference_set = set(tuple(seq) for seq in reference_sequences)
     novel_count = sum(1 for seq in new_sequences if tuple(seq) not in reference_set)
     
     # Calculate diversity based on pairwise distances
-    if len(new_sequences) > 1:
-        distances = squareform(pdist(new_sequences, metric='hamming'))
+    if len(int_sequences) > 1:
+        distances = squareform(pdist(int_sequences, metric='hamming'))
         diversity_score = np.mean(distances)  # Average distance as a diversity measure
     else:
         diversity_score = 0
 
     # Check if new_sequences is empty using .size
-    novelty_score = novel_count / new_sequences.shape[0] if new_sequences.size > 0 else 0
+    novelty_score = novel_count / int_sequences.shape[0] if int_sequences.size > 0 else 0
     return novelty_score + diversity_score  # Adjust the return value as needed
 
 def count_elements(iterable):
