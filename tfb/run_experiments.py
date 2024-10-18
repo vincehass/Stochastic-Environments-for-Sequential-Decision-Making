@@ -8,7 +8,7 @@ import numpy as np
 # Ensure the 'tfb' module is in the PYTHONPATH
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from tfb.run_tfbind import train  # Import the train function
-from tfb.lib.generator import StochasticKL2GFlowNetGenerator, StochasticDBGFlowNetGenerator, DeterminsticDBGFlowNetGenerator,MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
+from tfb.lib.generator import StochasticKL2GFlowNetGenerator, StochasticKL3GFlowNetGenerator, StochasticDBGFlowNetGenerator, DeterminsticDBGFlowNetGenerator,MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
 from tfb.lib.oracle_wrapper import get_oracle
 from tfb.lib.dataset import get_dataset
 from lib.oracle_wrapper import get_oracle
@@ -17,6 +17,7 @@ from lib.logging import get_logger
 generator_map = {
     'SGN-DB': StochasticDBGFlowNetGenerator,
     'SGFN-KL': StochasticKL2GFlowNetGenerator,
+    'SGFN-KL-gamma': StochasticKL3GFlowNetGenerator,
     'GFN-DB': DeterminsticDBGFlowNetGenerator,
     'MARS': MARSGenerator,
     'MCMC': MHGenerator,

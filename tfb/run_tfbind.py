@@ -294,7 +294,7 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
                         expected_actions = torch.argmax(r_gamma, dim=1)  # Handle other 2D cases
                 else:
                     raise ValueError("Unexpected tensor dimensions for r_gamma")
-                all_r_gamma_values.append(r_gamma.squeeze().cpu().numpy())  # Collect r_gamma values
+                all_r_gamma_values.append(r_gamma.squeeze().detach().cpu().numpy())  # Collect r_gamma values
             else:
                 print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping confusion matrix update.")
                 expected_actions = torch.tensor([])  # Set to an empty tensor if not a tensor
@@ -404,6 +404,8 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             # Log kl_divergence_loss specifically
             if 'kl_divergence_loss' in loss_info:
                 wandb_log_dict["kl_divergence_loss"] = loss_info['kl_divergence_loss']  # Log KL divergence loss
+                if it % 100 == 0:
+                    print("kl_divergence_loss: ", loss_info['kl_divergence_loss'])
         elif isinstance(loss_info, (int, float)):
             wandb_log_dict["dynamic_loss"] = loss_info
         else:
@@ -412,31 +414,38 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         # Log r_gamma if available in loss_info
         if 'r_gamma' in loss_info:
             wandb_log_dict["r_gamma"] = loss_info['r_gamma'].sum().item() # Log r_gamma
-            #print("r_gamma: ", loss_info['r_gamma'])
-            pass
-
+            if it % 100 == 0:
+                print("r_gamma: ", loss_info['r_gamma'])
+            
+        if 'H_high' in loss_info:
+            wandb_log_dict["H_high"] = loss_info['H_high'].sum().item() # Log H_high
+            if it % 100 == 0:
+                print("H_high: ", loss_info['H_high'])
+        if 'H_low' in loss_info:
+            wandb_log_dict["H_low"] = loss_info['H_low'].sum().item() # Log H_low
+            if it % 100 == 0:
+                print("H_low: ", loss_info['H_low'])
+                
         wandb.log(wandb_log_dict)
        
         if it % 100 == 0:
             # Debugging information
             #args.logger.save(args.save_path, args)
             print(f"Iteration {it}:")
-            print("step: ", total_steps)
+            print("Total step: ", total_steps)
             print(f"  Length of all_expected_actions: {len(all_expected_actions)}")
             print(f"  Length of all_actions: {len(actions_taken_tensor)}")
             print(f"  Length of all_expected_states: {len(all_expected_states)}")
-            print("Shape of state: ", len(last_states))
-            print("Shape of action: ", len(actions_taken_tensor))
-            print("Shape of rewards: ", len(rewards))
-            #print("Number of modes: ", calculate_num_modes(last_states))
-            print("Shape of r_gamma: ", len(r_gamma))
+            print("Shape of last state: ", len(last_states))
+            print("Shape of last action: ", len(last_actions))
+            print("Shape of last reward: ", len(last_rewards))
             print("Shape of unique_sequence: ", len(unique_sequences))
             print("Shape of states_visited: ", count_elements(total_states_visited))
             print("Value of diversity: ", (diversity))
             print("Value of novelty: ", (novelty))
             print("loss: ", loss)
-            print("kl_divergence_loss: ", loss_info['kl_divergence_loss'])
-            print("r_gamma: ", loss_info['r_gamma'])
+            
+            
             
             
             # After the rollout is complete, evaluate with the oracle

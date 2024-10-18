@@ -1,4 +1,4 @@
-from lib.generator.gfn import StochasticDBGFlowNetGenerator, StochasticKLGFlowNetGenerator, StochasticKL2GFlowNetGenerator
+from lib.generator.gfn import StochasticDBGFlowNetGenerator, StochasticKLGFlowNetGenerator, StochasticKL3GFlowNetGenerator, StochasticKL2GFlowNetGenerator
 from lib.generator.generators_friends import DeterminsticDBGFlowNetGenerator, MARSGenerator, MHGenerator, PPOGenerator, SACGenerator, RandomTrajGenerator
 
 
@@ -10,6 +10,8 @@ def get_generator(args, tokenizer):
         return DeterminsticDBGFlowNetGenerator(args, tokenizer)
     elif method == 'SGN-DB':
         return StochasticDBGFlowNetGenerator(args, tokenizer)
+    elif method == 'SGFN-KL-gamma':
+        return StochasticKL3GFlowNetGenerator(args, tokenizer)
     # elif method == 'stochastic_klg':
     #     return StochasticKLGFlowNetGenerator(args, tokenizer)
     elif method == 'SGFN-KL':

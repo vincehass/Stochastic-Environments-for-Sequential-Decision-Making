@@ -946,3 +946,32 @@ sequences = [
 The function will convert these sequences to integer representations, calculate the pairwise Hamming distances, and identify unique modes based on the specified distance threshold.
 
 This process allows the model to understand the diversity of the generated sequences and helps in evaluating the performance of the generator in producing varied outputs.
+
+## Entropy Ratio
+
+In the `StochasticKL2GFlowNetGenerator` class, the `entropy_ratio` method is used to compute the entropy ratio `r_gamma`. This ratio is crucial for balancing exploration and exploitation during training. Let's break down the method and its significance:
+
+### Method Definition
+
+The `entropy_ratio` method is defined as follows:
+
+The `r_gamma` values in your code appear to represent an entropy ratio, which is a measure of uncertainty or randomness in the policy's action distribution. Here's how to interpret high and low values of `r_gamma`:
+
+### High Values of `r_gamma`
+
+- **Indicates High Entropy**: A high `r_gamma` value suggests that the policy is exploring a wide range of actions. This means that the model is uncertain about which action to take and is likely considering multiple options.
+- **Exploration**: High values can be beneficial in scenarios where exploration is necessary to discover better strategies or to avoid local optima. It encourages the model to try different actions rather than sticking to a few known ones.
+- **Potential for Diverse Outcomes**: With high entropy, the model may generate more diverse outputs, which can be useful in tasks requiring creativity or variability.
+
+### Low Values of `r_gamma`
+
+- **Indicates Low Entropy**: A low `r_gamma` value suggests that the policy is more deterministic, meaning it is confident about its actions and is likely to choose a specific action over others.
+- **Exploitation**: Low values can be beneficial in scenarios where the model has already learned effective strategies and needs to exploit this knowledge to maximize rewards. It indicates that the model is leveraging its learned behavior rather than exploring new actions.
+- **Risk of Convergence**: If `r_gamma` remains low for too long, it may lead to premature convergence, where the model becomes stuck in a suboptimal strategy and fails to explore potentially better alternatives.
+
+### Summary
+
+- **High `r_gamma`**: Encourages exploration, leading to diverse actions and potentially discovering better strategies.
+- **Low `r_gamma`**: Encourages exploitation of known strategies, leading to more consistent but potentially less innovative outcomes.
+
+In practice, balancing exploration and exploitation is crucial for effective learning in reinforcement learning and similar tasks. Adjusting the `r_gamma` values dynamically based on the learning progress or the environment's state can help achieve this balance.
