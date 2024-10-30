@@ -213,3 +213,17 @@ python tfb/run_experiments.py --config tfb/config.yaml --method SAC --task tfbin
 ```
 python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --gamma 0.25 --stick 0.25
 ```
+
+### Experiment Results of GRID-SEARCH
+
+![SGFN-KL](./figures/mode4_results.png)
+![SGFN-KL](./figures/mode5_results.png)
+![SGFN-KL](./figures/mode6_results.png)
+Comparison results of the number of modes captured during training for GRID-SEARCH experiment for different level of stochasticity
+
+### Experiment Results of TFBIND with SGFN-KL
+
+![Entropy Search](./figures/r_gamma.png)
+![Number of modes](./figures/num_modes_all.png)
+![Dynamic Loss](./figures/dynamic_forward_alpha0.75.png)
+Comparison results of the Entropy Search, number of modes and dynamic loss captured during training for TFBIND experiment for different level of gamma with stochasticity level α = 0.25.
