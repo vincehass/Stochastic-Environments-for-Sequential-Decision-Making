@@ -227,3 +227,53 @@ Comparison results of the number of modes captured during training for GRID-SEAR
 </div>
 
 Comparison results of the Entropy Search, number of modes, and dynamic loss captured during training for TFBIND experiment for different levels of gamma with stochasticity level α = 0.25.
+
+Certainly! Below is an analysis of the figures presented in your `README.md` file, focusing on the results from the GRID-SEARCH experiment and the TFBIND experiment with SGFN-KL.
+
+### Analysis of Figures
+
+#### Experiment Results of GRID-SEARCH
+
+1. **Figures Overview:**
+
+   - The figures represent the performance of the model under different levels of stochasticity (α = 0.25, 0.5, and 0.75, respectively).
+   - Each figure likely illustrates the number of modes captured during training, which is a critical metric for understanding the model's ability to explore the solution space effectively.
+
+2. **Stochasticity Levels:**
+
+   - **α = 0.25:** This figure may show a relatively stable performance with a moderate number of modes captured. The model might be effectively balancing exploration and exploitation, leading to a diverse set of solutions.
+   - **α = 0.5:** The performance could indicate an increase in the number of modes captured, suggesting that the model is adapting well to the increased stochasticity. This level of stochasticity may encourage the model to explore more diverse solutions, potentially leading to better generalization.
+   - **α = 0.75:** This figure might show a peak in the number of modes captured, indicating that the model is highly effective at exploring the solution space under high stochasticity. However, it is essential to analyze whether this increase leads to meaningful improvements in the quality of solutions or if it results in overfitting to noise.
+
+3. **Comparison Insights:**
+   - The comparison across these figures provides insights into how varying levels of stochasticity affect the model's performance. It highlights the importance of tuning the stochasticity parameter to achieve optimal exploration without sacrificing the quality of the solutions.
+
+#### Experiment Results of TFBIND with SGFN-KL
+
+1. **Figures Overview:**
+
+   - The figures provide insights into the performance of the SGFN-KL method in the TFBIND experiment.
+   - These figures likely illustrate key metrics such as the effectiveness of the entropy search, the number of modes generated, and the dynamic loss during training.
+
+2. **Entropy Search (r_gamma.png):**
+
+   - This figure may depict the relationship between the entropy search strategy and the binding affinity of generated sequences. A higher entropy value could indicate a more exploratory approach, which is crucial for discovering diverse and high-affinity DNA sequences.
+   - Analyzing the trends in this figure can help determine whether the entropy search effectively guides the model toward optimal solutions.
+
+3. **Number of Modes (num_modes_all.png):**
+
+   - This figure likely shows the total number of unique modes captured during the training process. A higher number of modes suggests that the model is effectively exploring the sequence space and finding diverse solutions.
+   - It is essential to correlate this metric with the binding affinity scores to ensure that the diversity of solutions does not come at the cost of quality.
+
+4. **Dynamic Loss (dynamic_forward_alpha0.75.png):**
+
+   - This figure may illustrate the dynamic loss function's behavior during training. A decreasing loss over time indicates that the model is learning effectively and improving its performance.
+   - Analyzing the loss curve can provide insights into the stability of the training process and whether the model converges to a satisfactory solution.
+
+5. **Comparison Insights:**
+   - The comparison of these figures allows for a comprehensive understanding of how the SGFN-KL method performs in terms of exploration (entropy), diversity (number of modes), and convergence (dynamic loss).
+   - It is crucial to analyze whether the model maintains a balance between exploration and exploitation, ensuring that it discovers high-affinity sequences while also covering a diverse range of potential solutions.
+
+### Conclusion
+
+The figures presented in the `README.md` provide valuable insights into the performance of the Stochastic Generative Flow Networks in various experiments. By analyzing the results across different levels of stochasticity and the effectiveness of the SGFN-KL method, one can draw conclusions about the model's ability to explore the solution space, discover diverse high-affinity sequences, and optimize for specific objectives. This analysis can guide future experiments and model improvements, ensuring that the methodology remains robust and effective in tackling complex problems in sequential decision-making and drug discovery.
