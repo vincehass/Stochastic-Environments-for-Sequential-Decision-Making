@@ -200,18 +200,16 @@ python tfb/run_tfbind.py --gen_num_iterations 5000 --gen_episodes_per_step 16 --
 
 # Run experiments of TFBIND
 
-```
-python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_dbg  --task tfbind
-```
+## Available methods: SAC, PPO, SGFN-KL, SGFN-DB, GFN-DB
 
-# Run experiments of TFBIND with MH
+### Run experiments of TFBIND with SAC
 
 ```
-python tfb/run_experiments.py --config tfb/config.yaml --method stochastic_klg2 --task tfbind --gamma 0.1
+python tfb/run_experiments.py --config tfb/config.yaml --method SAC --task tfbind
 ```
 
-# Run experiments of TFBIND with GFN-KL
+### Run experiments of TFBIND with SGFN-KL
 
 ```
-python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --task tfbind --gamma 0.1
+python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --gamma 0.25 --stick 0.25
 ```
