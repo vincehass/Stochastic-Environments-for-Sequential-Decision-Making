@@ -975,3 +975,134 @@ The `r_gamma` values in your code appear to represent an entropy ratio, which is
 - **Low `r_gamma`**: Encourages exploitation of known strategies, leading to more consistent but potentially less innovative outcomes.
 
 In practice, balancing exploration and exploitation is crucial for effective learning in reinforcement learning and similar tasks. Adjusting the `r_gamma` values dynamically based on the learning progress or the environment's state can help achieve this balance.
+
+## Rewards Contour
+
+To adapt the contour plot logging to your existing `train` function in `run_tfbind.py`, we will collect the rewards from the `sample_batch` function and log the contour plot after the training process is complete.
+
+Here’s how you can implement this:
+
+### Updated `train` Function with Contour Plot Logging
+
+Below is the modified `train` function that includes the contour plot of rewards after training, specifically after collecting `curr_round_infos`.
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import wandb
+
+# ... existing imports ...
+
+def plot_reward_contours(rewards, x_labels, y_labels):
+    """
+    Create a contour plot of the rewards and log it to WandB.
+
+    :param rewards: 2D array of rewards
+    :param x_labels: Labels for the x-axis
+    :param y_labels: Labels for the y-axis
+    """
+    X, Y = np.meshgrid(x_labels, y_labels)
+    plt.figure(figsize=(10, 8))
+    contour = plt.contourf(X, Y, rewards, levels=20, cmap='viridis')
+    plt.colorbar(contour)
+    plt.title('Contour Plot of Rewards')
+    plt.xlabel('X-axis Label')  # Replace with appropriate label
+    plt.ylabel('Y-axis Label')  # Replace with appropriate label
+
+    # Save the plot as an image
+    plot_image_path = "contour_plot_after_training.png"
+    plt.savefig(plot_image_path)
+    plt.close()  # Close the plot to free memory
+
+    # Log the image to WandB
+    wandb.log({"reward_contour": wandb.Image(plot_image_path)})
+
+def train(args, oracle, dataset):
+    print("Training generator")
+    visited = []
+    rollout_worker = RolloutWorker(args, oracle, proxy, tokenizer, dataset)
+    unique_sequences = set()
+    total_steps = 0
+    total_states_visited = set()  # To track unique states visited
+
+    # Initialize lists for confusion matrix
+    all_expected_actions = []
+    all_expected_states = []
+    all_r_gamma_values = []
+
+    # Collect rewards for contour plotting
+    all_rewards = []  # This will hold rewards for each episode
+
+    for it in tqdm(range(args.gen_num_iterations + 1)):
+        rollout_artifacts = rollout_worker.execute_train_episode_batch(generator, it, dataset, use_rand_policy=False)
+        visited.extend(rollout_artifacts["visited"])
+
+        # Collect rewards for the current episode
+        rewards = [i[-1] for i in rollout_artifacts["trajectories"]["traj_rewards"]]
+        all_rewards.append(rewards)  # Collect rewards for the current episode
+
+        # Check if all_visited is iterable
+        all_visited = rollout_artifacts["trajectories"]["states"]
+        if not is_iterable(all_visited):
+            raise ValueError("Expected 'all_visited' to be iterable, but got: {}".format(type(all_visited)))
+
+        # Count elements in all_visited
+        all_visited_count = count_elements(all_visited)
+        total_states_visited.update(tuple(seq) for seq in all_visited)
+
+        loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
+
+        # Calculate metrics
+        avg_reward = np.mean(rewards)
+        diversity = calculate_diversity(rollout_artifacts["trajectories"]["states"])
+        novelty = calculate_novelty(rollout_artifacts["trajectories"]["states"], dataset.get_all_sequences())
+        unique_sequences.update(tuple(seq) for seq in rollout_artifacts["trajectories"]["states"])
+        total_steps += sum(len(traj) for traj in rollout_artifacts["trajectories"]["traj_states"])
+
+        # Log metrics to wandb
+        wandb_log_dict = {
+            "iteration": it,
+            "loss": loss,
+            "avg_reward": avg_reward,
+            "diversity": diversity,
+            "novelty": novelty,
+            "unique_sequences": len(unique_sequences),
+            "total_steps": total_steps,
+            "total_states_visited": count_elements(total_states_visited),
+        }
+
+        wandb.log(wandb_log_dict)
+
+    # After training is complete, convert to a 2D array for contour plotting
+    rewards_array = np.array(all_rewards)  # Adjust this based on your data structure
+    x_labels = np.arange(rewards_array.shape[1])  # Example x labels
+    y_labels = np.arange(rewards_array.shape[0])  # Example y labels
+
+    # Plot the contour of rewards and log to WandB after training
+    plot_reward_contours(rewards_array, x_labels, y_labels)
+
+    return rollout_worker, generator
+```
+
+### Explanation of the Changes
+
+1. **Collecting Rewards:**
+
+   - A new list `all_rewards` is initialized to collect the rewards from each episode. The rewards are collected from `rollout_artifacts["trajectories"]["traj_rewards"]` after each episode.
+
+2. **Plotting After Training:**
+
+   - After the training loop completes, the rewards are converted into a 2D array suitable for contour plotting. The `plot_reward_contours` function is called to generate and log the contour plot.
+
+3. **Image Naming:**
+
+   - The plot image is saved with a fixed filename (`contour_plot_after_training.png`), indicating that it represents the rewards after the entire training process.
+
+4. **Adjusting the Loop Structure:**
+   - The outer loop iterates over the number of training iterations, and rewards are collected for each episode.
+
+### Note
+
+- Ensure that you have initialized WandB at the beginning of your script with `wandb.init()` and that you have the necessary configurations set up.
+- Adjust the `x_labels` and `y_labels` to reflect the actual dimensions of your reward data.
+- You may want to manage the saved images to avoid cluttering your directory, especially if you are logging every episode. Consider saving only every few episodes or using a different strategy for managing the images.

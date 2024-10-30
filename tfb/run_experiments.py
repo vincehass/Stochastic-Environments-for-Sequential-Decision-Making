@@ -15,7 +15,7 @@ from lib.oracle_wrapper import get_oracle
 from lib.logging import get_logger
 # Mapping of method names to generator classes
 generator_map = {
-    'SGN-DB': StochasticDBGFlowNetGenerator,
+    'SGFN-DB': StochasticDBGFlowNetGenerator,
     'SGFN-KL': StochasticKL2GFlowNetGenerator,
     'SGFN-KL-gamma': StochasticKL3GFlowNetGenerator,
     'GFN-DB': DeterminsticDBGFlowNetGenerator,
@@ -28,7 +28,7 @@ generator_map = {
 
 EXPERIMENT_NAME = "TfbindE"
 WANDB_ENTITY = "nadhirvincenthassen" 
-WANDB_PROJECT = "StochEnv_TFBINDC"
+WANDB_PROJECT = "StochEnv_TFBINDCPU"
 def run_experiment(args, experiment_name):  # Added experiment_name parameter
     # Initialize wandb for logging
     wandb.init(project=args.wandb_project, entity=args.wandb_entity, name=experiment_name)
@@ -192,16 +192,13 @@ def main():
     
     # Call run_experiment before main_loop
     for method in methods_to_run:
-        #run_experiment(args, f"{method}_experiment")  # Pass the experiment name
-        run_experiment(args, f"{method}_gamma{args.gamma}_seed{args.seed}")  # Pass the experiment name
+        
+        if method == "SGFN-KL":
+            run_experiment(args, f"{method}_gamma{args.gamma}_stick{args.stick}_seed{args.seed}")  # Pass the experiment name
+        else:
+            run_experiment(args, f"{method}_seed{args.seed}")  # Pass the experiment name
 
     main_loop(args.config, methods_to_run, args)  # Pass args to main_loop
-
-    
-
-    # Use the experiment name in the wandb run name if not provided
-    if args.wandb_run_name is None:
-        args.wandb_run_name = f"{EXPERIMENT_NAME}_{args.seed}"
 
     # Initialize wandb
     wandb.init(

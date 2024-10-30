@@ -41,7 +41,7 @@ experiments:
     stick: 0.25
     task: "tfbind"
 
-  - method: SGN-DB
+  - method: SGFN-DB
     gen_num_iterations: 5000
     gen_episodes_per_step: 16
     gen_reward_exp: 3
@@ -82,7 +82,7 @@ experiments:
     task: "tfbind"
 
   - method: SGFN-KL
-    gen_num_iterations: 100
+    gen_num_iterations: 10
     gen_episodes_per_step: 5
     gen_reward_exp: 3
     gen_reward_min: 0
@@ -119,8 +119,8 @@ experiments:
     proxy_learning_rate: 1e-3
     proxy_num_per_minibatch: 32
     stick: 0.25
-    #gamma: 0.2
     task: "tfbind"
+    wandb_run_name: "SGFN-KL"
 
   - method: SGFN-KL-gamma
     gen_num_iterations: 100
@@ -162,202 +162,45 @@ experiments:
     stick: 0.25
     task: "tfbind"
 
-  - method: MARS
-    gen_num_iterations: 5000
-    gen_episodes_per_step: 16
-    gen_reward_exp: 3
-    gen_reward_min: 0
-    gen_reward_norm: 1
-    gen_random_action_prob: 0.001
-    gen_sampling_temperature: 2.0
-    gen_leaf_coef: 25
-    gen_reward_exp_ramping: 3
-    gen_balanced_loss: 1
-    gen_output_coef: 10
-    gen_loss_eps: 1e-5
-    num_tokens: 4
-    gen_num_hidden: 64
-    gen_num_layers: 2
-    gen_dropout: 0.1
-    gen_partition_init: 150.0
-    gen_do_explicit_Z: true
-    gen_L2: 0.0
-    dynamics_num_hid: 128
-    dynamics_num_layers: 2
-    dynamics_dropout: 0.1
-    dynamics_partition_init: 150.0
-    dynamics_do_explicit_Z: true
-    dynamics_L2: 0.0
-    dynamics_lr: 1e-3
-    dynamics_clip: 10.0
-    dynamics_off_pol: 0.0
-    gen_data_sample_per_step: 16
-    proxy_num_iterations: 3000
-    proxy_num_dropout_samples: 25
-    proxy_num_hid: 128
-    proxy_num_layers: 2
-    proxy_dropout: 0.1
-    proxy_learning_rate: 1e-3
-    proxy_num_per_minibatch: 32
-    stick: 0.25
-    task: "tfbind"
+# config.yaml
 
-  - method: MCMC
-    gen_num_iterations: 5000
-    gen_episodes_per_step: 16
-    gen_reward_exp: 3
-    gen_reward_min: 0
-    gen_reward_norm: 1
-    gen_random_action_prob: 0.001
-    gen_sampling_temperature: 2.0
-    gen_leaf_coef: 25
-    gen_reward_exp_ramping: 3
-    gen_balanced_loss: 1
-    gen_output_coef: 10
-    gen_loss_eps: 1e-5
-    num_tokens: 4
-    gen_num_hidden: 64
-    gen_num_layers: 2
-    gen_dropout: 0.1
-    gen_partition_init: 150.0
-    gen_do_explicit_Z: true
-    gen_L2: 0.0
-    dynamics_num_hid: 128
-    dynamics_num_layers: 2
-    dynamics_dropout: 0.1
-    dynamics_partition_init: 150.0
-    dynamics_do_explicit_Z: true
-    dynamics_L2: 0.0
-    dynamics_lr: 1e-3
-    dynamics_clip: 10.0
-    dynamics_off_pol: 0.0
-    gen_data_sample_per_step: 16
-    proxy_num_iterations: 3000
-    proxy_num_dropout_samples: 25
-    proxy_num_hid: 128
-    proxy_num_layers: 2
-    proxy_dropout: 0.1
-    proxy_learning_rate: 1e-3
-    proxy_num_per_minibatch: 32
-    stick: 0.25
-    task: "tfbind"
-
-  - method: PPO
-    gen_num_iterations: 5000
-    gen_episodes_per_step: 16
-    gen_reward_exp: 3
-    gen_reward_min: 0
-    gen_reward_norm: 1
-    gen_random_action_prob: 0.001
-    gen_sampling_temperature: 2.0
-    gen_leaf_coef: 25
-    gen_reward_exp_ramping: 3
-    gen_balanced_loss: 1
-    gen_output_coef: 10
-    gen_loss_eps: 1e-5
-    num_tokens: 4
-    gen_num_hidden: 64
-    gen_num_layers: 2
-    gen_dropout: 0.1
-    gen_partition_init: 150.0
-    gen_do_explicit_Z: true
-    gen_L2: 0.0
-    dynamics_num_hid: 128
-    dynamics_num_layers: 2
-    dynamics_dropout: 0.1
-    dynamics_partition_init: 150.0
-    dynamics_do_explicit_Z: true
-    dynamics_L2: 0.0
-    dynamics_lr: 1e-3
-    dynamics_clip: 10.0
-    dynamics_off_pol: 0.0
-    gen_data_sample_per_step: 16
-    proxy_num_iterations: 3000
-    proxy_num_dropout_samples: 25
-    proxy_num_hid: 128
-    proxy_num_layers: 2
-    proxy_dropout: 0.1
-    proxy_learning_rate: 1e-3
-    proxy_num_per_minibatch: 32
-    stick: 0.25
-    task: "tfbind"
-
-  - method: SAC
-    gen_num_iterations: 5000
-    gen_episodes_per_step: 16
-    gen_reward_exp: 3
-    gen_reward_min: 0
-    gen_reward_norm: 1
-    gen_random_action_prob: 0.001
-    gen_sampling_temperature: 2.0
-    gen_leaf_coef: 25
-    gen_reward_exp_ramping: 3
-    gen_balanced_loss: 1
-    gen_output_coef: 10
-    gen_loss_eps: 1e-5
-    num_tokens: 4
-    gen_num_hidden: 64
-    gen_num_layers: 2
-    gen_dropout: 0.1
-    gen_partition_init: 150.0
-    gen_do_explicit_Z: true
-    gen_L2: 0.0
-    dynamics_num_hid: 128
-    dynamics_num_layers: 2
-    dynamics_dropout: 0.1
-    dynamics_partition_init: 150.0
-    dynamics_do_explicit_Z: true
-    dynamics_L2: 0.0
-    dynamics_lr: 1e-3
-    dynamics_clip: 10.0
-    dynamics_off_pol: 0.0
-    gen_data_sample_per_step: 16
-    proxy_num_iterations: 3000
-    proxy_num_dropout_samples: 25
-    proxy_num_hid: 128
-    proxy_num_layers: 2
-    proxy_dropout: 0.1
-    proxy_learning_rate: 1e-3
-    proxy_num_per_minibatch: 32
-    stick: 0.25
-    task: "tfbind"
-
-  - method: RANDOM
-    gen_num_iterations: 5000
-    gen_episodes_per_step: 16
-    gen_reward_exp: 3
-    gen_reward_min: 0
-    gen_reward_norm: 1
-    gen_random_action_prob: 0.001
-    gen_sampling_temperature: 2.0
-    gen_leaf_coef: 25
-    gen_reward_exp_ramping: 3
-    gen_balanced_loss: 1
-    gen_output_coef: 10
-    gen_loss_eps: 1e-5
-    num_tokens: 4
-    gen_num_hidden: 64
-    gen_num_layers: 2
-    gen_dropout: 0.1
-    gen_partition_init: 150.0
-    gen_do_explicit_Z: true
-    gen_L2: 0.0
-    dynamics_num_hid: 128
-    dynamics_num_layers: 2
-    dynamics_dropout: 0.1
-    dynamics_partition_init: 150.0
-    dynamics_do_explicit_Z: true
-    dynamics_L2: 0.0
-    dynamics_lr: 1e-3
-    dynamics_clip: 10.0
-    dynamics_off_pol: 0.0
-    gen_data_sample_per_step: 16
-    proxy_num_iterations: 3000
-    proxy_num_dropout_samples: 25
-    proxy_num_hid: 128
-    proxy_num_layers: 2
-    proxy_dropout: 0.1
-    proxy_learning_rate: 1e-3
-    proxy_num_per_minibatch: 32
-    stick: 0.25
-    task: "tfbind"
+SAC:
+  vocab_size: 4 # Example vocabulary size
+  max_len: 50 # Maximum sequence length
+  gen_learning_rate: 0.001 # Learning rate for the generator
+  gamma: 0.99 # Discount factor
+  alpha: 0.2 # Temperature for exploration
+  device: "cpu" # Device to run the model on
+  hidden_dim: 128 # Hidden dimension for actor
+  state_dim: 128 # Example state dimension (max_len * vocab_size)
+  action_dim: 4 # Example action dimension (vocab_size)
+  task: "tfbind"
+MARS:
+  vocab_size: 4 # Example vocabulary size
+  max_len: 50 # Maximum sequence length
+  lr: 0.001 # Learning rate for the generator
+  hidden_dim: 128 # Hidden dimension for the network
+  state_dim: 128 # Example state dimension (max_len * vocab_size)
+  action_dim: 4 # Example action dimension (vocab_size)
+  task: "tfbind"
+PPO:
+  vocab_size: 4 # Example vocabulary size
+  max_len: 50 # Maximum sequence length
+  lr: 0.001 # Learning rate for the generator
+  hidden_dim: 128 # Hidden dimension for actor and critic
+  state_dim: 128 # Example state dimension (max_len * vocab_size)
+  action_dim: 4 # Example action dimension (vocab_size)
+  task: "tfbind"
+RANDOM:
+  vocab_size: 4 # Example vocabulary size
+  max_len: 50 # Maximum sequence length
+  action_dim: 1000 # Example action dimension (vocab_size)
+  task: "tfbind"
+MCMC:
+  vocab_size: 4 # Example vocabulary size
+  max_len: 50 # Maximum sequence length
+  lr: 0.001 # Learning rate for the generator
+  hidden_dim: 128 # Hidden dimension for the network
+  state_dim: 128 # Example state dimension (max_len * vocab_size)
+  action_dim: 4 # Example action dimension (vocab_size)
+  task: "tfbind"

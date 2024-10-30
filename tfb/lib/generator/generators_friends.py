@@ -191,37 +191,83 @@ class SACGenerator(GeneratorBase):
 
 
 #MARS
-class MARSGenerator:
-    def __init__(self, args):
-        self.args = args
-        self.net = nn.Sequential(
-            nn.Linear(args.state_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, args.action_dim)
-        )
-        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=args.lr)
+class MARSGenerator(GeneratorBase):
+    def __init__(self, args, tokenizer):
+        super().__init__(args)  # Call the base class constructor
+        self.num_tokens = args.vocab_size
+        self.max_len = args.max_len
+        self.tokenizer = tokenizer
+        self.device = args.device
+
+        # Initialize MLP model
+        self.net = MLP(
+            num_tokens=self.num_tokens,
+            num_outputs=self.num_tokens,
+            num_hid=args.gen_num_hidden,
+            num_layers=args.gen_num_layers,
+            max_len=self.max_len,
+            dropout=0,
+            partition_init=args.gen_partition_init,
+            causal=args.gen_do_explicit_Z
+        ).to(self.device)  # Move model to the specified device
+
+        # Initialize the optimizer
+        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=args.gen_learning_rate, weight_decay=args.gen_L2, betas=(0.9, 0.999))
 
     def parameters(self):
         return self.net.parameters()
 
-    def learn_from(self, trajs):
-        states = torch.cat([traj['states'] for traj in trajs])
-        actions = torch.cat([traj['actions'] for traj in trajs])
-        rewards = torch.cat([traj['rewards'] for traj in trajs])
-        
-        logits = self.net(states)
-        log_probs = torch.log_softmax(logits, dim=-1)
-        action_log_probs = log_probs.gather(1, actions.unsqueeze(-1)).squeeze(-1)
-        
-        loss = -torch.mean(action_log_probs * rewards)
-        
+    def train_step(self, input_batch):
+        loss, info = self.learn_from(input_batch)
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-        
-        return loss.item()
+        return loss.item(), info
+
+    def learn_from(self, batch):
+        info = {}
+        strs, thought_strs, r = zip(*batch["bulk_trajs"])
+
+        # Process input strings
+        s = self.tokenizer.process(strs).to(self.device)
+        thought_s = self.tokenizer.process(thought_strs).to(self.device)
+
+        # Convert rewards to tensor
+        r = torch.tensor(r).to(self.device).clamp(min=0)
+
+        # Prepare input for the model
+        inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens).to(self.device)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        x = inp.reshape(s.shape[0], -1).to(self.device)
+
+        # Define or compute the mask as needed
+        mask = None  # Ensure mask is defined
+        action_logits = self.net(x, mask)  # Pass the mask argument
+        log_probs = F.log_softmax(action_logits, dim=-1)
+
+        # Calculate loss
+        # Ensure thought_s has the correct shape for gathering
+        thought_s = thought_s.unsqueeze(1)  # This should be [batch_size, 1]
+        action_log_probs = log_probs.gather(1, thought_s.unsqueeze(1))  # This should work now
+        loss = -torch.mean(action_log_probs * r)  # Use rewards for loss calculation
+
+        return loss.item(), info
+
+    def forward(self, x, lens, return_all=False):
+        # Prepare input for the model
+        inp_x = F.one_hot(x, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(x.shape[0], self.max_len, self.num_tokens).to(self.device)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        inp = inp.reshape(x.shape[0], -1).to(self.device)
+
+        # Get action probabilities from the model
+        action_logits = self.net(inp, None)  # Ensure to pass the required mask argument
+
+        if return_all:
+            return action_logits  # Return logits if return_all is True
+        else:
+            return F.softmax(action_logits, dim=-1)  # Return probabilities if not returning all
 
     def sample_many(self, env, n_samples):
         trajs = []
@@ -230,7 +276,8 @@ class MARSGenerator:
             done = False
             traj = {'states': [], 'actions': [], 'rewards': []}
             while not done:
-                logits = self.net(torch.tensor(state, dtype=torch.float32))
+                state_tensor = torch.tensor(state, dtype=torch.float32).to(self.device)  # Ensure state is on the correct device
+                logits = self.net(state_tensor, None)  # Ensure to pass the required mask argument
                 action = Categorical(logits=logits).sample().item()
                 next_state, reward, done, _ = env.step(action)
                 traj['states'].append(state)
@@ -275,73 +322,110 @@ class MARSGenerator:
     
 
 #PPO
-class PPOGenerator:
-    def __init__(self, args):
-        self.args = args
-        self.actor = nn.Sequential(
-            nn.Linear(args.state_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, args.action_dim)
+class PPOGenerator(GeneratorBase):
+    def __init__(self, args, tokenizer):
+        super().__init__(args)
+
+        self.num_tokens = args.vocab_size
+        self.max_len = args.max_len
+        self.tokenizer = tokenizer
+        self.device = args.device
+        
+        self.out_coef = 1.0  # Add this line to define out_coef
+
+        # Initialize the model (policy network)
+        self.model = MLP(
+            num_tokens=self.num_tokens,
+            num_outputs=self.num_tokens,
+            num_hid=args.gen_num_hidden,
+            num_layers=args.gen_num_layers,
+            max_len=self.max_len,
+            dropout=0,
+            partition_init=args.gen_partition_init,
+            causal=args.gen_do_explicit_Z
         )
-        self.critic = nn.Sequential(
-            nn.Linear(args.state_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, args.hidden_dim),
-            nn.ReLU(),
-            nn.Linear(args.hidden_dim, 1)
-        )
-        self.optimizer = torch.optim.Adam(list(self.actor.parameters()) + list(self.critic.parameters()), lr=args.lr)
+        self.model.to(args.device)
+
+        # Initialize the optimizer
+        self.optimizer = torch.optim.Adam(self.model.model_params(), lr=args.gen_learning_rate, weight_decay=args.gen_L2, betas=(0.9, 0.999))
+
+        self.gamma = 0.99  # Discount factor
+        self.epsilon = 0.2  # Clipping parameter for PPO
+        self.ppo_epochs = 5  # Number of PPO epochs
 
     def parameters(self):
-        return list(self.actor.parameters()) + list(self.critic.parameters())
+        return self.model.parameters()
 
-    def learn_from(self, trajs):
-        states = torch.cat([traj['states'] for traj in trajs])
-        actions = torch.cat([traj['actions'] for traj in trajs])
-        rewards = torch.cat([traj['rewards'] for traj in trajs])
-        
-        old_logits = self.actor(states)
-        old_log_probs = torch.log_softmax(old_logits, dim=-1).gather(1, actions.unsqueeze(-1)).squeeze(-1).detach()
-        
-        for _ in range(self.args.ppo_epochs):
-            logits = self.actor(states)
-            log_probs = torch.log_softmax(logits, dim=-1).gather(1, actions.unsqueeze(-1)).squeeze(-1)
-            values = self.critic(states).squeeze(-1)
-            
-            ratio = torch.exp(log_probs - old_log_probs)
-            surrogate1 = ratio * rewards
-            surrogate2 = torch.clamp(ratio, 1 - self.args.clip_epsilon, 1 + self.args.clip_epsilon) * rewards
-            actor_loss = -torch.min(surrogate1, surrogate2).mean()
-            
-            critic_loss = nn.MSELoss()(values, rewards)
-            
-            loss = actor_loss + 0.5 * critic_loss
-            
-            self.optimizer.zero_grad()
-            loss.backward()
-            self.optimizer.step()
-        
-        return loss.item()
+    def train_step(self, input_batch):
+        loss, info = self.learn_from(input_batch)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        return loss.item(), info
 
-    def sample_many(self, env, n_samples):
-        trajs = []
-        for _ in range(n_samples):
-            state = env.reset()
-            done = False
-            traj = {'states': [], 'actions': [], 'rewards': []}
-            while not done:
-                logits = self.actor(torch.tensor(state, dtype=torch.float32))
-                action = Categorical(logits=logits).sample().item()
-                next_state, reward, done, _ = env.step(action)
-                traj['states'].append(state)
-                traj['actions'].append(action)
-                traj['rewards'].append(reward)
-                state = next_state
-            trajs.append(traj)
-        return trajs    
-    
+    def learn_from(self, batch):
+        info = {}
+        strs, thought_strs, r = zip(*batch["bulk_trajs"])
+
+        # Process input strings
+        s = self.tokenizer.process(strs).to(self.device)
+        thought_s = self.tokenizer.process(thought_strs).to(self.device)
+
+        # Convert rewards to tensor
+        r = torch.tensor(r).to(self.device).clamp(min=0)
+
+        # Prepare input for the model
+        inp_x = F.one_hot(s, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(s.shape[0], self.max_len, self.num_tokens).to(self.device)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        x = inp.reshape(s.shape[0], -1).to(self.device)
+
+        # Add a mask argument (you need to define what mask should be)
+        mask = None  # Define or compute the mask as needed
+        action_logits = self.model(x, mask)  # Pass the mask argument
+        log_probs = F.log_softmax(action_logits, dim=-1)
+
+        # Calculate advantages (using TD error or any other method)
+        values = r  # Assuming rewards are used as values for simplicity
+        advantages = values - values.mean()  # Simple advantage calculation
+
+        # Adjust the shape of advantages to match ratio
+        advantages = advantages.unsqueeze(1)  # Change shape from [32] to [32, 1]
+
+        # Debugging: Print shapes of ratio and advantages
+        print("Shape of log_probs:", log_probs.shape)  # Add this line
+        print("Shape of advantages:", advantages.shape)  # Add this line
+
+        # Calculate the surrogate loss
+        ratio = torch.exp(log_probs - log_probs.detach())  # Importance sampling ratio
+        surrogate_loss = ratio * advantages  # Now this should work without error
+        clipped_surrogate_loss = torch.clamp(ratio, 1 - self.epsilon, 1 + self.epsilon) * advantages
+
+        # Debugging: Print shapes of ratio and clipped_surrogate_loss
+        print("Shape of ratio:", ratio.shape)  # Add this line
+        print("Shape of clipped_surrogate_loss:", clipped_surrogate_loss.shape)  # Add this line
+
+        # Total loss
+        actor_loss = -torch.min(surrogate_loss, clipped_surrogate_loss).mean()
+
+        # Total loss
+        total_loss = actor_loss
+
+        info['actor_loss'] = actor_loss.item()
+
+        return total_loss, info
+
+    def forward(self, x, lens, return_all=False):
+        inp_x = F.one_hot(x, num_classes=self.num_tokens + 1)[:, :, :-1].to(torch.float32)
+        inp = torch.zeros(x.shape[0], self.max_len, self.num_tokens)
+        inp[:, :inp_x.shape[1], :] = inp_x
+        inp = inp.reshape(x.shape[0], -1).to(self.device)
+
+        # Ensure to pass the required mask argument
+        out = self.model(inp, None, lens=lens, return_all=return_all) * self.out_coef
+
+        return out
+
 
 
 
@@ -645,3 +729,11 @@ class MHGenerator(GeneratorBase):
         out = self.model(inp, None, lens=lens, return_all=return_all) * self.out_coef
 
         return out
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ def get_generator(args, tokenizer):
     print(method)
     if method == 'GFN-DB':
         return DeterminsticDBGFlowNetGenerator(args, tokenizer)
-    elif method == 'SGN-DB':
+    elif method == 'SGFN-DB':
         return StochasticDBGFlowNetGenerator(args, tokenizer)
     elif method == 'SGFN-KL-gamma':
         return StochasticKL3GFlowNetGenerator(args, tokenizer)

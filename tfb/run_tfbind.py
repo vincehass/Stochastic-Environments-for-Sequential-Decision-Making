@@ -99,34 +99,27 @@ class RolloutWorker:
 
         for t in range(self.max_len):
             if len(states) > 0:
-                pass
-                #print(f"Debug: Length of first state = {len(states[0])}")
+                
+                print(f"Debug: Length of first state = {len(states[0])}")
             
             try:
                 x = self.environment.tokenizer.process(states)
                 if x.numel() > 0:  # Check if tensor is not empty
                     x = x.to(self.device)
                 else:
-                    #print("Debug: Processed states resulted in an empty tensor")
-                    pass
+                    print("Debug: Processed states resulted in an empty tensor")
+                    
             except Exception as e:
                 print(f"Debug: Exception occurred: {e}")
                 print(f"Debug: States when exception occurred: {states}")
                 raise e
 
-            # Debugging: Check input data for NaNs
-            # print(f"Debug: States before model input: {states}")
-            # Ensure states is a tensor
-            # states = torch.tensor(states) if isinstance(states, list) else states
-            # if torch.isnan(states).any():
-            #     print("NaN values found in states!")
-
+          
             with torch.no_grad():
                 logits = model(x, None)
             logits = logits[:, :self.args.vocab_size]
 
-            # Debugging: Check for NaN values in logits
-            #print("Logits before Categorical:", logits)
+            
             if torch.isnan(logits).any():
                 print("NaN values found in logits!")
                 # Handle the NaN case, e.g., set logits to zero or some default value
@@ -276,15 +269,22 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
 
         loss, loss_info = generator.train_step(rollout_artifacts["trajectories"])
 
-        # Collect actions taken during the training step
+        # if args.method == "SFGN-KL":
+            # Collect actions taken during the training step
         actions_taken = rollout_artifacts["trajectories"]["traj_actions"]  # Assuming this contains the actions taken
 
         # Collect r_gamma values
+        
+         
+        
+        # Process r_gamma
         if 'r_gamma' in loss_info:
             r_gamma = loss_info['r_gamma']
+        
             if isinstance(r_gamma, torch.Tensor):
-                #print("Shape of r_gamma:", r_gamma.shape)
-                pass
+                print("Shape of r_gamma:", r_gamma.shape)
+                print("r_gamma:", r_gamma)
+                
                 if r_gamma.dim() == 1:
                     expected_actions = torch.argmax(r_gamma, dim=0)  # Use default dim=0 for 1D tensor
                 elif r_gamma.dim() == 2:
@@ -298,41 +298,11 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             else:
                 print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping confusion matrix update.")
                 expected_actions = torch.tensor([])  # Set to an empty tensor if not a tensor
+                
         else:
-            print("Warning: r_gamma not found in loss_info.")
-            expected_actions = torch.tensor([])  # Set to an empty tensor if not found
-
-        # Flatten actions_taken if it's a list of lists
-        if isinstance(actions_taken, list):
-            actions_taken_flat = [a.item() for sublist in actions_taken for a in sublist]
-            actions_taken_tensor = torch.tensor(actions_taken_flat, dtype=torch.int64)
-        else:
-            actions_taken_tensor = torch.tensor(actions_taken, dtype=torch.int64)
-
-        # Check if expected_actions is a scalar
-        if expected_actions.dim() == 0:
-            expected_actions = expected_actions.unsqueeze(0)  # Convert to 1D tensor
-
-        # Collect actions
-        all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
-        
-        
-        
-        # # Collect expected states (assuming you have a way to derive them)
-        # expected_states = rollout_artifacts["trajectories"]["traj_states"]  # Replace with actual expected states collection
-        # all_expected_states.extend(expected_states)  # Collect expected states
-        # all_expected_actions.extend(expected_actions.cpu().numpy())  # Collect expected actions
-
-        # print("Contents of rollout_artifacts['trajectories']:")
-        # for key, value in rollout_artifacts["trajectories"].items():
-        #     print(key)
-        # print(f"Shape of actions_taken: {len(actions_taken)}")
-        # # print(f"Shape of expected_states: {len(expected_states)}")
-        # print(f"Shape of expected_actions: {expected_actions.shape}")
-        # print(f"shape of all_r_gamma_values: {len(all_r_gamma_values)}")
-        # print(f"shape of all_expected_actions: {len(all_expected_actions)}")
-        # print(f"shape of all_expected_states: {len(all_expected_states)}")
-        
+            print("r_gamma not found in loss_info. Skipping r_gamma update.")
+            
+      
         
         
 
@@ -343,25 +313,14 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
         novelty = calculate_novelty(rollout_artifacts["trajectories"]["states"], dataset.get_all_sequences())
         unique_sequences.update(tuple(seq) for seq in rollout_artifacts["trajectories"]["states"])
         total_steps += sum(len(traj) for traj in rollout_artifacts["trajectories"]["traj_states"])
-        # print(f"Debug: total_steps: {total_steps}")
-        # print(f"Debug: len(rollout_artifacts['trajectories']['traj_states']): {len(rollout_artifacts['trajectories']['traj_states'])}")
-        # print(f"Debug: len(rollout_artifacts['trajectories']['states']): {len(rollout_artifacts['trajectories']['states'])}")  
-        # print(f"Debug: len(rollout_artifacts['trajectories']['traj_actions']): {len(rollout_artifacts['trajectories']['traj_actions'])}")
-        # print(f"Debug: len(rollout_artifacts['trajectories']['traj_rewards']): {len(rollout_artifacts['trajectories']['traj_rewards'])}")
-        # # Print last states, actions, and rewards
+       
         last_states = rollout_artifacts["trajectories"]["traj_states"][-1]
         last_actions = rollout_artifacts["trajectories"]["traj_actions"][-1]
         last_rewards = rollout_artifacts["trajectories"]["traj_rewards"][-1]
 
         
         
-        last_expected_action = expected_actions[-1]
-        
-        # print(f"expected_actions: {expected_actions}")
-        # print(f"Last Expected Action: {last_expected_action}")
-        # print(f"Debug: last_states[-1]: {last_states[-1]}")
-        # print(f"Debug: last_actions[-1]: {last_actions[-1]}")
-        # print(f"Debug: last_rewards[-1]: {last_rewards[-1]}")
+       
 
         # Log metrics to wandb
         wandb_log_dict = {
@@ -373,31 +332,11 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             "unique_sequences": len(unique_sequences),
             "total_steps": total_steps,
             "total_states_visited": count_elements(total_states_visited),  # Use count_elements instead of len
-            "expected_actions_dist": count_elements(all_expected_actions),
-            "expected_states_dist": count_elements(all_expected_states),
-            "all_actions_dist": count_elements(actions_taken_tensor)
+
         }
 
         
         
-        # # Collect r_gamma values
-        # r_gamma_tensors = []
-        # if 'r_gamma' in loss_info:
-        #     r_gamma = loss_info['r_gamma']
-        #     if isinstance(r_gamma, torch.Tensor):
-        #         r_gamma_tensors.append(r_gamma.squeeze(1))  # Append the tensor to the list
-        #     else:
-        #         print(f"Warning: r_gamma is not a tensor, but a {type(r_gamma)}. Skipping.")
-    
-        # # Check if we have collected 7 tensors
-        # if len(r_gamma_tensors) == 7:
-        #     # Stack the tensors into a single tensor of shape (7, 7)
-        #     r_gamma_tensor = torch.stack(r_gamma_tensors)
-        #     print("Shape of r_gamma_tensor after stacking:", r_gamma_tensor.shape)
-        
-        #     # Reset the list for the next batch of tensors
-        #     r_gamma_tensors = []
-
         # Handle different types of loss_info
         if isinstance(loss_info, dict):
             wandb_log_dict.update(loss_info)  # Update with all loss_info metrics
@@ -410,21 +349,24 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             wandb_log_dict["dynamic_loss"] = loss_info
         else:
             print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
-
-        # Log r_gamma if available in loss_info
-        if 'r_gamma' in loss_info:
+        
+        # if args.method == "SGFN-KL":
+            # Log r_gamma if available in loss_info
+        if isinstance(loss_info, dict) and 'r_gamma' in loss_info:
             wandb_log_dict["r_gamma"] = loss_info['r_gamma'].sum().item() # Log r_gamma
             if it % 100 == 0:
                 print("r_gamma: ", loss_info['r_gamma'])
-            
-        if 'H_high' in loss_info:
-            wandb_log_dict["H_high"] = loss_info['H_high'].sum().item() # Log H_high
-            if it % 100 == 0:
-                print("H_high: ", loss_info['H_high'])
-        if 'H_low' in loss_info:
-            wandb_log_dict["H_low"] = loss_info['H_low'].sum().item() # Log H_low
-            if it % 100 == 0:
-                print("H_low: ", loss_info['H_low'])
+        
+            if 'H_high' in loss_info:
+                wandb_log_dict["H_high"] = loss_info['H_high'].sum().item() # Log H_high
+                if it % 100 == 0:
+                    print("H_high: ", loss_info['H_high'])
+            if 'H_low' in loss_info:
+                wandb_log_dict["H_low"] = loss_info['H_low'].sum().item() # Log H_low
+                if it % 100 == 0:
+                    print("H_low: ", loss_info['H_low'])
+        else:
+            print(f"Warning: Unexpected type for loss_info: {type(loss_info)}")
                 
         wandb.log(wandb_log_dict)
        
@@ -433,80 +375,11 @@ def train_generator(args, generator, oracle, proxy, tokenizer, dataset):
             #args.logger.save(args.save_path, args)
             print(f"Iteration {it}:")
             print("Total step: ", total_steps)
-            print(f"  Length of all_expected_actions: {len(all_expected_actions)}")
-            print(f"  Length of all_actions: {len(actions_taken_tensor)}")
-            print(f"  Length of all_expected_states: {len(all_expected_states)}")
-            print("Shape of last state: ", len(last_states))
-            print("Shape of last action: ", len(last_actions))
-            print("Shape of last reward: ", len(last_rewards))
+            print("loss: ", loss)
             print("Shape of unique_sequence: ", len(unique_sequences))
             print("Shape of states_visited: ", count_elements(total_states_visited))
             print("Value of diversity: ", (diversity))
             print("Value of novelty: ", (novelty))
-            print("loss: ", loss)
-            
-            
-            
-            
-            # After the rollout is complete, evaluate with the oracle
-
-        
-            #print(f"  Actions {i}: {actions}")
-        #     # Concatenate r_gamma and expected_actions
-        #  # Ensure expected_actions is also converted to numpy
-        # expected_actions_np = expected_actions.cpu().numpy() if expected_actions.dim() > 0 else np.array([])
-        # r_gamma_np = r_gamma.squeeze().cpu().numpy()
-        # # combined = np.concatenate((r_gamma_np, expected_actions_np))  # Ensure both are numpy arrays
-        # # print("Combined shape:", combined.shape)
-
-        # # all_r_gamma_values.append(r_gamma_np)  # Collect r_gamma values
-        
-        # last_states_np = np.array(last_states[-1])
-        # print("last_states_np: ", last_states_np[:-1])
-        # r_gamma_np = np.array(all_r_gamma_values[-1])
-        # print("r_gamma_np: ", r_gamma_np)
-        # # Assuming r_gamma_values is a 1D numpy array with shape (7,7)
-        # # Create a DataFrame for the heatmap
-        # heatmap_df = pd.DataFrame(r_gamma_np.reshape(7, 7), columns=np.arange(7), index=np.arange(7))
-        
-        # # Create the heatmap
-        # plt.figure(figsize=(10, 8))
-        # sns.heatmap(heatmap_df, annot=True, cmap='viridis', cbar=True, fmt=".2f")
-        # plt.title('Heatmap of Last States with r_gamma[-1]')
-        # plt.xlabel('Last States')
-        # plt.ylabel('r_gamma[-1]')
-        
-        # # Save the heatmap as an image in the figures directory
-        # heatmap_image_path = f"figures/heatmap/heatmap_last_states_r_gamma_iteration_{it}.png"
-        # plt.savefig(heatmap_image_path)
-        # plt.close()  # Close the plot to free memory
-        
-        # # Log the heatmap image to WandB
-        # wandb.log({"heatmap_last_states_r_gamma": wandb.Image(heatmap_image_path)})       
-    
-    # Construct the confusion matrix
-    # actions_taken_np = np.array(expected_actions)
-    # expected_states_np = np.array(expected_states[-1][-1][:-1])
-    # print("expected_states: ", expected_states_np)
-    # print("expected_actions: ", actions_taken_np) 
-    # # Assuming r_gamma_values is a 2D numpy array with shape (expected_states_np.shape[0], actions_taken_np.shape[0])
-    # # Create a DataFrame for the heatmap
-    # heatmap_df = pd.DataFrame(loss_info['r_gamma'], columns=actions_taken_np, index=expected_states_np)
-    
-    # # Create the heatmap
-    # plt.figure(figsize=(10, 8))
-    # sns.heatmap(heatmap_df, annot=True, cmap='viridis', cbar=True, fmt=".2f")
-    # plt.title('Heatmap of Expected States and r_gamma')
-    # plt.xlabel('Actions Taken')
-    # plt.ylabel('Expected States')
-    
-    # # Save the heatmap as an image
-    # heatmap_image_path = f"heatmap_expected_states_r_gamma_iteration_{it}.png"
-    # plt.savefig(heatmap_image_path)
-    # plt.close()  # Close the plot to free memory
-    
-    # # Log the heatmap image to WandB
-    # wandb.log({"heatmap_expected_states_r_gamma": wandb.Image(heatmap_image_path)})
 
 
     return rollout_worker, generator
@@ -681,11 +554,6 @@ def train(args, oracle, dataset):
                 "num_modes_all": curr_round_infos['num-modes-all']
             })
 
-            # print(f"Debug: num_modes_collected: {curr_round_infos['num-modes-collected']}")
-            # print(f"Debug: num_modes_all: {curr_round_infos['num-modes-all']}")
-            # print(f"Debug: curr_round_infos: {curr_round_infos}")
-            # print(f"Debug: curr_round_infos['num-modes-collected']: {curr_round_infos['num-modes-collected']}")
-            # print(f"Debug: curr_round_infos['num-modes-all']: {curr_round_infos['num-modes-all']}")
             pbar.update(1)  # Update the progress bar
         
     args.logger.save(args.save_path, args)
