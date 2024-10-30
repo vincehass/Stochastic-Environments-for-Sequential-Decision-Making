@@ -510,4 +510,154 @@ The output will look something like:
 
 This DataFrame format provides a convenient way to store and manipulate time series data for insurance pricing, making it suitable for machine learning models, exploratory data analysis, and other data science workflows. Each row in the DataFrame provides a snapshot of the customer data and pricing outcome at a specific time step, which can be used for training models or analysis.
 
-Let me know if you need further modifications or explanations!
+## Customer Analysis
+
+Below is a Python script that uses the generated DataFrame to perform data analysis and summarize customer attributes. It also includes clustering based on the Customer Lifetime Value (CLTV) score, which was calculated during the time series generation. The script uses pandas, seaborn for visualization, and scikit-learn for clustering.
+
+### Python Code: Data Analysis and Clustering
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+# Load the time series data
+df = pd.read_csv("insurance_pricing_timeseries_dataset.csv")
+
+# Summarize customer attributes
+def summarize_customer_attributes(df):
+    # Descriptive statistics for numeric attributes
+    summary = df.describe()
+    print("Descriptive statistics for customer attributes:")
+    print(summary)
+
+    # Plot distributions for customer features
+    features = ['age', 'income', 'claim_history', 'competitor_price']
+    plt.figure(figsize=(14, 10))
+    for i, feature in enumerate(features):
+        plt.subplot(2, 2, i + 1)
+        sns.histplot(df[feature], kde=True)
+        plt.title(f'Distribution of {feature}')
+    plt.tight_layout()
+    plt.show()
+
+    # Average CLTV score over time for each customer
+    average_scores = df.groupby('customer_id')['score'].mean()
+    print("\nAverage CLTV Score for each customer:")
+    print(average_scores)
+
+    # Plot the average CLTV score distribution
+    plt.figure(figsize=(8, 6))
+    sns.histplot(average_scores, kde=True)
+    plt.title('Distribution of Average CLTV Scores')
+    plt.xlabel('Average CLTV Score')
+    plt.ylabel('Frequency')
+    plt.show()
+
+# Clustering based on CLTV score
+def cluster_customers(df, num_clusters=3):
+    # Aggregate features for clustering (use average over time steps)
+    customer_features = df.groupby('customer_id').agg({
+        'age': 'mean',
+        'income': 'mean',
+        'claim_history': 'mean',
+        'competitor_price': 'mean',
+        'score': 'mean'
+    }).reset_index()
+
+    # Prepare data for clustering
+    features_to_cluster = ['age', 'income', 'claim_history', 'competitor_price', 'score']
+    X = customer_features[features_to_cluster]
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    # Apply KMeans clustering
+    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+    customer_features['cluster'] = kmeans.fit_predict(X_scaled)
+
+    # Print cluster centers
+    print("\nCluster centers (in standardized feature space):")
+    print(kmeans.cluster_centers_)
+
+    # Plot the clustering results
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(
+        x=customer_features['income'], y=customer_features['score'],
+        hue=customer_features['cluster'], palette='viridis', s=100, alpha=0.7
+    )
+    plt.title('Customer Clustering Based on Income and CLTV Score')
+    plt.xlabel('Income')
+    plt.ylabel('Average CLTV Score')
+    plt.legend(title='Cluster')
+    plt.show()
+
+    return customer_features
+
+if __name__ == "__main__":
+    # Load and analyze the data
+    df = pd.read_csv("insurance_pricing_timeseries_dataset.csv")
+
+    # Step 1: Summarize customer attributes
+    summarize_customer_attributes(df)
+
+    # Step 2: Cluster customers based on CLTV score
+    clustered_customers = cluster_customers(df, num_clusters=3)
+
+    # Step 3: Show the result of the clustering
+    print("\nClustered customer data:")
+    print(clustered_customers.head())
+```
+
+### Breakdown of the Script
+
+1. **Loading Data**:
+
+   - The script loads the data from the CSV file generated earlier (`insurance_pricing_timeseries_dataset.csv`).
+
+2. **Summarizing Customer Attributes** (`summarize_customer_attributes()`):
+
+   - **Descriptive Statistics**: Generates descriptive statistics such as mean, min, max, and quartiles for numeric attributes (`age`, `income`, `claim_history`, `competitor_price`).
+   - **Distribution Plots**: Uses seaborn to plot distributions of these features to visualize how the customer base is distributed.
+   - **Average CLTV Score per Customer**: Computes the average CLTV score for each customer over the time steps and plots its distribution.
+
+3. **Clustering Based on CLTV Score** (`cluster_customers()`):
+   - **Aggregation**: Aggregates the customer attributes over the time steps using the mean to represent each customer with a single set of features.
+   - **Scaling and Preparation**:
+     - Uses `StandardScaler` from scikit-learn to normalize the data, making it suitable for clustering.
+   - **KMeans Clustering**:
+     - Uses KMeans to group customers into clusters based on their attributes.
+     - The number of clusters is set to 3 by default, but this can be adjusted.
+   - **Visualization**:
+     - Uses a scatter plot to visualize clustering results. The plot shows customer income against their average CLTV score, colored by the cluster to which they belong.
+   - **Clustered Customer Data**:
+     - The cluster information is added to the original customer dataset, showing which cluster each customer belongs to.
+
+### Requirements
+
+- **Pandas**: For loading and manipulating the dataset.
+- **Seaborn and Matplotlib**: For visualizing distributions and clustering results.
+- **Scikit-Learn**: For clustering the data using `KMeans`.
+
+### How Clustering is Related to CLTV
+
+- The goal is to cluster customers based on the attributes that are most relevant to their CLTV (Customer Lifetime Value). In this scenario, `score` (the CLTV score) is used alongside other features like `age`, `income`, and `competitor_price` to cluster customers.
+- This analysis can help segment customers into groups that behave similarly, allowing for targeted marketing, risk assessment, and better pricing strategies.
+
+### Usage
+
+- To run the analysis, simply save this script and execute it.
+- The output will include:
+  - Descriptive statistics of the dataset.
+  - Several plots that summarize the data, including distributions and clustering visualizations.
+  - The final clusters for customers based on their attributes and average CLTV score.
+
+### Example Outputs
+
+- **Descriptive Statistics**: Provides details like mean, standard deviation, min, max, etc., for each customer feature.
+- **Distribution Plots**: Shows how features like age, income, and competitor prices are distributed across the dataset.
+- **Clustering Results**: A scatter plot showing the customers grouped into clusters based on features like income and CLTV score.
+
+This script is intended to provide insights into the customer base and allow for customer segmentation based on their attributes and predicted value to the company, thereby enhancing strategic decision-making for insurance pricing. Let me know if you need further modifications or additional analysis!
