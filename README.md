@@ -216,9 +216,9 @@ python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --gamma 
 
 ### Experiment Results of GRID-SEARCH
 
-![SGFN-KL](./figures/results/mode4_results.png)
-![SGFN-KL](./figures/results/mode5_results.png)
-![SGFN-KL](./figures/results/mode6_results.png)
+![α = 0.25](./figures/results/mode4_results.png)
+![α = 0.5](./figures/results/mode5_results.png)
+![α = 0.75](./figures/results/mode6_results.png)
 Comparison results of the number of modes captured during training for GRID-SEARCH experiment for different level of stochasticity
 
 ### Experiment Results of TFBIND with SGFN-KL
