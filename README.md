@@ -217,13 +217,13 @@ python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --gamma 
 ### Experiment Results of GRID-SEARCH
 
 ![α = 0.25](./figures/results/mode4_results.png){:height="20%" width="20%"}
-![α = 0.5](./figures/results/mode5_results.png){:height="20%" width="20%"}
-![α = 0.75](./figures/results/mode6_results.png){:height="20%" width="20%"}
+![α = 0.5](./figures/results/mode5_results.png){style="width:20%; height:auto;"}
+![α = 0.75](./figures/results/mode6_results.png){style="width:20%; height:auto;"}
 Comparison results of the number of modes captured during training for GRID-SEARCH experiment for different level of stochasticity
 
 ### Experiment Results of TFBIND with SGFN-KL
 
-![Entropy Search](./figures/results/r_gamma.png){:height="20%" width="20%"}
-![Number of modes](./figures/results/num_modes_all.png){:height="20%" width="20%"}
-![Dynamic Loss](./figures/results/dynamic_forward_alpha0.75.png){:height="20%" width="20%"}
+![Entropy Search](./figures/results/r_gamma.png){style="width:20%; height:auto;"}
+![Number of modes](./figures/results/num_modes_all.png){style="width:20%; height:auto;"}
+![Dynamic Loss](./figures/results/dynamic_forward_alpha0.75.png){style="width:20%; height:auto;"}
 Comparison results of the Entropy Search, number of modes and dynamic loss captured during training for TFBIND experiment for different level of gamma with stochasticity level α = 0.25.
