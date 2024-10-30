@@ -6,12 +6,6 @@ This repo introduce Stochastic Generative Flow Networks, an innovative approach 
 
 Our implementation is heavily based on "Towards Understanding and Improving GFlowNet Training" (https://github.com/maxwshen/gflownet).
 
-### Large Files
-
-You can download additional large files by following link: https://drive.google.com/drive/folders/1JobUWGowoiQxGWVz3pipdfcjhtdY4CVq?usp=sharing
-
-These files should be placed in `datasets`
-
 ### Installation
 
 - Create conda environment:
@@ -216,14 +210,20 @@ python tfb/run_experiments.py --config tfb/config.yaml --method SGFN-KL --gamma 
 
 ### Experiment Results of GRID-SEARCH
 
-![α = 0.25](./figures/results/mode4_results.png){:height="20%" width="20%"}
-![α = 0.5](./figures/results/mode5_results.png){style="width:20%; height:auto;"}
-![α = 0.75](./figures/results/mode6_results.png){style="width:20%; height:auto;"}
-Comparison results of the number of modes captured during training for GRID-SEARCH experiment for different level of stochasticity
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <img src="./figures/results/mode4_results.png" alt="α = 0.25" style="width: 30%; height: auto;"/>
+    <img src="./figures/results/mode5_results.png" alt="α = 0.5" style="width: 30%; height: auto;"/>
+    <img src="./figures/results/mode6_results.png" alt="α = 0.75" style="width: 30%; height: auto;"/>
+</div>
+
+Comparison results of the number of modes captured during training for GRID-SEARCH experiment for different levels of stochasticity.
 
 ### Experiment Results of TFBIND with SGFN-KL
 
-![Entropy Search](./figures/results/r_gamma.png){style="width:20%; height:auto;"}
-![Number of modes](./figures/results/num_modes_all.png){style="width:20%; height:auto;"}
-![Dynamic Loss](./figures/results/dynamic_forward_alpha0.75.png){style="width:20%; height:auto;"}
-Comparison results of the Entropy Search, number of modes and dynamic loss captured during training for TFBIND experiment for different level of gamma with stochasticity level α = 0.25.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <img src="./figures/results/r_gamma.png" alt="Entropy Search" style="width: 30%; height: auto;"/>
+    <img src="./figures/results/num_modes_all.png" alt="Number of modes" style="width: 30%; height: auto;"/>
+    <img src="./figures/results/dynamic_forward_alpha0.75.png" alt="Dynamic Loss" style="width: 30%; height: auto;"/>
+</div>
+
+Comparison results of the Entropy Search, number of modes, and dynamic loss captured during training for TFBIND experiment for different levels of gamma with stochasticity level α = 0.25.
