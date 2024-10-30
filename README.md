@@ -255,7 +255,7 @@ Certainly! Below is an analysis of the figures presented in your `README.md` fil
    - The figures provide insights into the performance of the SGFN-KL method in the TFBIND experiment.
    - These figures likely illustrate key metrics such as the effectiveness of the entropy search, the number of modes generated, and the dynamic loss during training.
 
-2. **Entropy Search (r\_$\gamma$):**
+2. **Entropy Search (r_gamma):**
 
    - This figure may depict the relationship between the entropy search strategy and the binding affinity of generated sequences. A higher entropy value could indicate a more exploratory approach, which is crucial for discovering diverse and high-affinity DNA sequences.
    - Analyzing the trends in this figure can help determine whether the entropy search effectively guides the model toward optimal solutions.
