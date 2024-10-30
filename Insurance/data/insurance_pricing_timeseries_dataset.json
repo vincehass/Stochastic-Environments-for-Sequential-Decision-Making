@@ -1,0 +1,987 @@
+[
+  {
+    "customer_id": 0,
+    "time_series": [
+      {
+        "time_step": 0,
+        "features": {
+          "age": 36,
+          "income": 100953.03989801137,
+          "claim_history": 6,
+          "competitor_price": 0.8734907714883087
+        },
+        "score": 0.1863960372508195,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.44",
+          "Final price calculated: 1.44",
+          "Estimated profit margin: 0.93"
+        ]
+      },
+      {
+        "time_step": 1,
+        "features": {
+          "age": 36.083333333333336,
+          "income": 104507.84158117491,
+          "claim_history": 6,
+          "competitor_price": 0.8223549078185597
+        },
+        "score": 0.17772764920068104,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.41",
+          "Final price calculated: 1.41",
+          "Estimated profit margin: 0.89"
+        ]
+      },
+      {
+        "time_step": 2,
+        "features": {
+          "age": 36.16666666666667,
+          "income": 108312.20521339239,
+          "claim_history": 6,
+          "competitor_price": 0.9555127782132536
+        },
+        "score": 0.187239072607933,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.48",
+          "Final price calculated: 1.48",
+          "Estimated profit margin: 0.94"
+        ]
+      },
+      {
+        "time_step": 3,
+        "features": {
+          "age": 36.25000000000001,
+          "income": 110785.16796888571,
+          "claim_history": 6,
+          "competitor_price": 0.7639399504767108
+        },
+        "score": 0.16560882707878538,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.38",
+          "Final price calculated: 1.38",
+          "Estimated profit margin: 0.83"
+        ]
+      },
+      {
+        "time_step": 4,
+        "features": {
+          "age": 36.33333333333334,
+          "income": 115585.76410266098,
+          "claim_history": 6,
+          "competitor_price": 1.0060853680257498
+        },
+        "score": 0.18502277269991402,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.50",
+          "Final price calculated: 1.50",
+          "Estimated profit margin: 0.93"
+        ]
+      },
+      {
+        "time_step": 5,
+        "features": {
+          "age": 36.41666666666668,
+          "income": 114764.76793954133,
+          "claim_history": 6,
+          "competitor_price": 0.9985422094516494
+        },
+        "score": 0.1850894530056236,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.50",
+          "Final price calculated: 1.50",
+          "Estimated profit margin: 0.93"
+        ]
+      },
+      {
+        "time_step": 6,
+        "features": {
+          "age": 36.500000000000014,
+          "income": 121192.0572091393,
+          "claim_history": 6,
+          "competitor_price": 0.9922587889040401
+        },
+        "score": 0.1780338216812647,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.50",
+          "Final price calculated: 1.50",
+          "Estimated profit margin: 0.89"
+        ]
+      },
+      {
+        "time_step": 7,
+        "features": {
+          "age": 36.58333333333335,
+          "income": 124438.6125857437,
+          "claim_history": 6,
+          "competitor_price": 0.8994714957761036
+        },
+        "score": 0.16550853699186668,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.45",
+          "Final price calculated: 1.45",
+          "Estimated profit margin: 0.83"
+        ]
+      },
+      {
+        "time_step": 8,
+        "features": {
+          "age": 36.666666666666686,
+          "income": 122274.7335196467,
+          "claim_history": 6,
+          "competitor_price": 0.9718638904915549
+        },
+        "score": 0.1749116555295088,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.49",
+          "Final price calculated: 1.49",
+          "Estimated profit margin: 0.87"
+        ]
+      },
+      {
+        "time_step": 9,
+        "features": {
+          "age": 36.75000000000002,
+          "income": 124208.50088929421,
+          "claim_history": 7,
+          "competitor_price": 1.013648372747487
+        },
+        "score": 0.1771563363854545,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.51",
+          "Final price calculated: 1.51",
+          "Estimated profit margin: 0.89"
+        ]
+      },
+      {
+        "time_step": 10,
+        "features": {
+          "age": 36.83333333333336,
+          "income": 126888.36509432575,
+          "claim_history": 7,
+          "competitor_price": 1.0876407653114522
+        },
+        "score": 0.18187571143681944,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.54",
+          "Final price calculated: 1.54",
+          "Estimated profit margin: 0.91"
+        ]
+      },
+      {
+        "time_step": 11,
+        "features": {
+          "age": 36.91666666666669,
+          "income": 128684.41149078067,
+          "claim_history": 7,
+          "competitor_price": 1.0960931387209671
+        },
+        "score": 0.18092490238131603,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.55",
+          "Final price calculated: 1.55",
+          "Estimated profit margin: 0.90"
+        ]
+      }
+    ]
+  },
+  {
+    "customer_id": 1,
+    "time_series": [
+      {
+        "time_step": 0,
+        "features": {
+          "age": 21,
+          "income": 46579.06338429391,
+          "claim_history": 1,
+          "competitor_price": 1.0102820830953265
+        },
+        "score": 0.2948604282490518,
+        "reasoning": [
+          "Segment: young_low_income, price sensitivity: 0.70",
+          "Competitor price adjustment: 0.71",
+          "Final price calculated: 1.71",
+          "Estimated profit margin: 1.47"
+        ]
+      },
+      {
+        "time_step": 1,
+        "features": {
+          "age": 21.083333333333332,
+          "income": 47552.02758108422,
+          "claim_history": 1,
+          "competitor_price": 0.8513744076923693
+        },
+        "score": 0.2716403894958475,
+        "reasoning": [
+          "Segment: young_low_income, price sensitivity: 0.70",
+          "Competitor price adjustment: 0.60",
+          "Final price calculated: 1.60",
+          "Estimated profit margin: 1.36"
+        ]
+      },
+      {
+        "time_step": 2,
+        "features": {
+          "age": 21.166666666666664,
+          "income": 47833.41188729783,
+          "claim_history": 1,
+          "competitor_price": 0.9359106339975275
+        },
+        "score": 0.283194076872356,
+        "reasoning": [
+          "Segment: young_low_income, price sensitivity: 0.70",
+          "Competitor price adjustment: 0.66",
+          "Final price calculated: 1.66",
+          "Estimated profit margin: 1.42"
+        ]
+      },
+      {
+        "time_step": 3,
+        "features": {
+          "age": 21.249999999999996,
+          "income": 48397.97653238655,
+          "claim_history": 1,
+          "competitor_price": 1.0262548508128582
+        },
+        "score": 0.2952777025814136,
+        "reasoning": [
+          "Segment: young_low_income, price sensitivity: 0.70",
+          "Competitor price adjustment: 0.72",
+          "Final price calculated: 1.72",
+          "Estimated profit margin: 1.48"
+        ]
+      },
+      {
+        "time_step": 4,
+        "features": {
+          "age": 21.33333333333333,
+          "income": 50264.034059016565,
+          "claim_history": 1,
+          "competitor_price": 1.120210954674611
+        },
+        "score": 0.2617570614084445,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.56",
+          "Final price calculated: 1.56",
+          "Estimated profit margin: 1.31"
+        ]
+      },
+      {
+        "time_step": 5,
+        "features": {
+          "age": 21.41666666666666,
+          "income": 50350.53348109009,
+          "claim_history": 1,
+          "competitor_price": 0.8646948755060018
+        },
+        "score": 0.2361189540695101,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.43",
+          "Final price calculated: 1.43",
+          "Estimated profit margin: 1.18"
+        ]
+      },
+      {
+        "time_step": 6,
+        "features": {
+          "age": 21.499999999999993,
+          "income": 51947.11628019208,
+          "claim_history": 1,
+          "competitor_price": 1.0035192799974353
+        },
+        "score": 0.24840481171955142,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.50",
+          "Final price calculated: 1.50",
+          "Estimated profit margin: 1.24"
+        ]
+      },
+      {
+        "time_step": 7,
+        "features": {
+          "age": 21.583333333333325,
+          "income": 53353.8281546615,
+          "claim_history": 1,
+          "competitor_price": 1.1395628408378864
+        },
+        "score": 0.2606024559291271,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.57",
+          "Final price calculated: 1.57",
+          "Estimated profit margin: 1.30"
+        ]
+      },
+      {
+        "time_step": 8,
+        "features": {
+          "age": 21.666666666666657,
+          "income": 52834.80436739858,
+          "claim_history": 1,
+          "competitor_price": 0.8681086908428448
+        },
+        "score": 0.2339760647168859,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.43",
+          "Final price calculated: 1.43",
+          "Estimated profit margin: 1.17"
+        ]
+      },
+      {
+        "time_step": 9,
+        "features": {
+          "age": 21.74999999999999,
+          "income": 53082.25122651637,
+          "claim_history": 1,
+          "competitor_price": 0.9873269544043077
+        },
+        "score": 0.2456504442139144,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.49",
+          "Final price calculated: 1.49",
+          "Estimated profit margin: 1.23"
+        ]
+      },
+      {
+        "time_step": 10,
+        "features": {
+          "age": 21.83333333333332,
+          "income": 51900.19726959075,
+          "claim_history": 1,
+          "competitor_price": 0.8746204225330434
+        },
+        "score": 0.23556184498371358,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.44",
+          "Final price calculated: 1.44",
+          "Estimated profit margin: 1.18"
+        ]
+      },
+      {
+        "time_step": 11,
+        "features": {
+          "age": 21.916666666666654,
+          "income": 51144.334112465694,
+          "claim_history": 1,
+          "competitor_price": 1.0882775185863371
+        },
+        "score": 0.25768341774616804,
+        "reasoning": [
+          "Segment: young_high_income, price sensitivity: 0.50",
+          "Competitor price adjustment: 0.54",
+          "Final price calculated: 1.54",
+          "Estimated profit margin: 1.29"
+        ]
+      }
+    ]
+  },
+  {
+    "customer_id": 2,
+    "time_series": [
+      {
+        "time_step": 0,
+        "features": {
+          "age": 54,
+          "income": 107873.49620019141,
+          "claim_history": 0,
+          "competitor_price": 1.0539985542120716
+        },
+        "score": 0.17644638813677432,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.42",
+          "Final price calculated: 1.42",
+          "Estimated profit margin: 0.88"
+        ]
+      },
+      {
+        "time_step": 1,
+        "features": {
+          "age": 54.083333333333336,
+          "income": 111816.6704824317,
+          "claim_history": 0,
+          "competitor_price": 0.8259071971726903
+        },
+        "score": 0.15425590529138355,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.33",
+          "Final price calculated: 1.33",
+          "Estimated profit margin: 0.77"
+        ]
+      },
+      {
+        "time_step": 2,
+        "features": {
+          "age": 54.16666666666667,
+          "income": 110920.96947506849,
+          "claim_history": 1,
+          "competitor_price": 1.009611808184815
+        },
+        "score": 0.1698479751797167,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.40",
+          "Final price calculated: 1.40",
+          "Estimated profit margin: 0.85"
+        ]
+      },
+      {
+        "time_step": 3,
+        "features": {
+          "age": 54.25000000000001,
+          "income": 109766.82132500265,
+          "claim_history": 1,
+          "competitor_price": 1.1294491236793738
+        },
+        "score": 0.18058910856934723,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.45",
+          "Final price calculated: 1.45",
+          "Estimated profit margin: 0.90"
+        ]
+      },
+      {
+        "time_step": 4,
+        "features": {
+          "age": 54.33333333333334,
+          "income": 108831.68407549158,
+          "claim_history": 1,
+          "competitor_price": 0.9759774049169444
+        },
+        "score": 0.16924650831786398,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.39",
+          "Final price calculated: 1.39",
+          "Estimated profit margin: 0.85"
+        ]
+      },
+      {
+        "time_step": 5,
+        "features": {
+          "age": 54.41666666666668,
+          "income": 109039.10346327783,
+          "claim_history": 1,
+          "competitor_price": 1.1869733529407447
+        },
+        "score": 0.18591876477198171,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.47",
+          "Final price calculated: 1.47",
+          "Estimated profit margin: 0.93"
+        ]
+      },
+      {
+        "time_step": 6,
+        "features": {
+          "age": 54.500000000000014,
+          "income": 112010.84034830495,
+          "claim_history": 1,
+          "competitor_price": 1.084236611360086
+        },
+        "score": 0.17472808856050193,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.43",
+          "Final price calculated: 1.43",
+          "Estimated profit margin: 0.87"
+        ]
+      },
+      {
+        "time_step": 7,
+        "features": {
+          "age": 54.58333333333335,
+          "income": 111167.64357911164,
+          "claim_history": 1,
+          "competitor_price": 0.9911162813082457
+        },
+        "score": 0.16812165892554803,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.40",
+          "Final price calculated: 1.40",
+          "Estimated profit margin: 0.84"
+        ]
+      },
+      {
+        "time_step": 8,
+        "features": {
+          "age": 54.666666666666686,
+          "income": 111569.67441112829,
+          "claim_history": 1,
+          "competitor_price": 1.076976842924997
+        },
+        "score": 0.17458847302287148,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.43",
+          "Final price calculated: 1.43",
+          "Estimated profit margin: 0.87"
+        ]
+      },
+      {
+        "time_step": 9,
+        "features": {
+          "age": 54.75000000000002,
+          "income": 112093.55141646115,
+          "claim_history": 1,
+          "competitor_price": 0.7935556669288468
+        },
+        "score": 0.1513909019378466,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.32",
+          "Final price calculated: 1.32",
+          "Estimated profit margin: 0.76"
+        ]
+      },
+      {
+        "time_step": 10,
+        "features": {
+          "age": 54.83333333333336,
+          "income": 111787.60823449132,
+          "claim_history": 1,
+          "competitor_price": 0.947216177904197
+        },
+        "score": 0.16398968599784444,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.38",
+          "Final price calculated: 1.38",
+          "Estimated profit margin: 0.82"
+        ]
+      },
+      {
+        "time_step": 11,
+        "features": {
+          "age": 54.91666666666669,
+          "income": 112935.00398260317,
+          "claim_history": 1,
+          "competitor_price": 0.9352219670140494
+        },
+        "score": 0.1618827533785208,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.37",
+          "Final price calculated: 1.37",
+          "Estimated profit margin: 0.81"
+        ]
+      }
+    ]
+  },
+  {
+    "customer_id": 3,
+    "time_series": [
+      {
+        "time_step": 0,
+        "features": {
+          "age": 71,
+          "income": 43993.85802993747,
+          "claim_history": 7,
+          "competitor_price": 0.9898899875816981
+        },
+        "score": 0.2747929404798663,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.59",
+          "Final price calculated: 1.59",
+          "Estimated profit margin: 1.37"
+        ]
+      },
+      {
+        "time_step": 1,
+        "features": {
+          "age": 71.08333333333333,
+          "income": 44262.975084399586,
+          "claim_history": 7,
+          "competitor_price": 0.8871122255327573
+        },
+        "score": 0.26219049197953126,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.53",
+          "Final price calculated: 1.53",
+          "Estimated profit margin: 1.31"
+        ]
+      },
+      {
+        "time_step": 2,
+        "features": {
+          "age": 71.16666666666666,
+          "income": 44765.012864160184,
+          "claim_history": 7,
+          "competitor_price": 0.8867913725616506
+        },
+        "score": 0.2616499518432379,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.53",
+          "Final price calculated: 1.53",
+          "Estimated profit margin: 1.31"
+        ]
+      },
+      {
+        "time_step": 3,
+        "features": {
+          "age": 71.24999999999999,
+          "income": 43944.680274042265,
+          "claim_history": 7,
+          "competitor_price": 1.1282025317468924
+        },
+        "score": 0.29143962353558484,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.68",
+          "Final price calculated: 1.68",
+          "Estimated profit margin: 1.46"
+        ]
+      },
+      {
+        "time_step": 4,
+        "features": {
+          "age": 71.33333333333331,
+          "income": 44281.20193722962,
+          "claim_history": 8,
+          "competitor_price": 0.9596906308499428
+        },
+        "score": 0.2708816737647635,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.58",
+          "Final price calculated: 1.58",
+          "Estimated profit margin: 1.35"
+        ]
+      },
+      {
+        "time_step": 5,
+        "features": {
+          "age": 71.41666666666664,
+          "income": 43391.7753369335,
+          "claim_history": 8,
+          "competitor_price": 1.1386730845963315
+        },
+        "score": 0.2932489948146263,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.68",
+          "Final price calculated: 1.68",
+          "Estimated profit margin: 1.47"
+        ]
+      },
+      {
+        "time_step": 6,
+        "features": {
+          "age": 71.49999999999997,
+          "income": 43608.099424583685,
+          "claim_history": 8,
+          "competitor_price": 1.0001685098176214
+        },
+        "score": 0.27641212175353086,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.60",
+          "Final price calculated: 1.60",
+          "Estimated profit margin: 1.38"
+        ]
+      },
+      {
+        "time_step": 7,
+        "features": {
+          "age": 71.5833333333333,
+          "income": 44415.57916994944,
+          "claim_history": 8,
+          "competitor_price": 0.9740500551146174
+        },
+        "score": 0.2724704274438047,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.58",
+          "Final price calculated: 1.58",
+          "Estimated profit margin: 1.36"
+        ]
+      },
+      {
+        "time_step": 8,
+        "features": {
+          "age": 71.66666666666663,
+          "income": 44991.12777410504,
+          "claim_history": 8,
+          "competitor_price": 1.0037897611741455
+        },
+        "score": 0.2754636435667924,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.60",
+          "Final price calculated: 1.60",
+          "Estimated profit margin: 1.38"
+        ]
+      },
+      {
+        "time_step": 9,
+        "features": {
+          "age": 71.74999999999996,
+          "income": 46025.04867347215,
+          "claim_history": 8,
+          "competitor_price": 1.0238929381831567
+        },
+        "score": 0.27684210390850666,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.61",
+          "Final price calculated: 1.61",
+          "Estimated profit margin: 1.38"
+        ]
+      },
+      {
+        "time_step": 10,
+        "features": {
+          "age": 71.83333333333329,
+          "income": 46619.57560992699,
+          "claim_history": 8,
+          "competitor_price": 0.9636118034177387
+        },
+        "score": 0.2690138408002017,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.58",
+          "Final price calculated: 1.58",
+          "Estimated profit margin: 1.35"
+        ]
+      },
+      {
+        "time_step": 11,
+        "features": {
+          "age": 71.91666666666661,
+          "income": 46887.6974947333,
+          "claim_history": 8,
+          "competitor_price": 0.9677134351770922
+        },
+        "score": 0.26923791472651776,
+        "reasoning": [
+          "Segment: old_low_income, price sensitivity: 0.60",
+          "Competitor price adjustment: 0.58",
+          "Final price calculated: 1.58",
+          "Estimated profit margin: 1.35"
+        ]
+      }
+    ]
+  },
+  {
+    "customer_id": 4,
+    "time_series": [
+      {
+        "time_step": 0,
+        "features": {
+          "age": 76,
+          "income": 52863.45533760414,
+          "claim_history": 8,
+          "competitor_price": 1.0234985660558327
+        },
+        "score": 0.2290164299468625,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.41",
+          "Final price calculated: 1.41",
+          "Estimated profit margin: 1.15"
+        ]
+      },
+      {
+        "time_step": 1,
+        "features": {
+          "age": 76.08333333333333,
+          "income": 54021.25076133824,
+          "claim_history": 8,
+          "competitor_price": 1.0345143651527575
+        },
+        "score": 0.22873989845088238,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.41",
+          "Final price calculated: 1.41",
+          "Estimated profit margin: 1.14"
+        ]
+      },
+      {
+        "time_step": 2,
+        "features": {
+          "age": 76.16666666666666,
+          "income": 53476.50342455225,
+          "claim_history": 8,
+          "competitor_price": 0.9382268598601726
+        },
+        "score": 0.22158164536426156,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.38",
+          "Final price calculated: 1.38",
+          "Estimated profit margin: 1.11"
+        ]
+      },
+      {
+        "time_step": 3,
+        "features": {
+          "age": 76.24999999999999,
+          "income": 54423.83470702268,
+          "claim_history": 8,
+          "competitor_price": 0.8628805195575922
+        },
+        "score": 0.2146066068575847,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.35",
+          "Final price calculated: 1.35",
+          "Estimated profit margin: 1.07"
+        ]
+      },
+      {
+        "time_step": 4,
+        "features": {
+          "age": 76.33333333333331,
+          "income": 56073.732818376135,
+          "claim_history": 8,
+          "competitor_price": 1.0922869259886052
+        },
+        "score": 0.23130922126071232,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.44",
+          "Final price calculated: 1.44",
+          "Estimated profit margin: 1.16"
+        ]
+      },
+      {
+        "time_step": 5,
+        "features": {
+          "age": 76.41666666666664,
+          "income": 54821.45109853046,
+          "claim_history": 8,
+          "competitor_price": 1.128556154576078
+        },
+        "score": 0.2354630412675558,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.45",
+          "Final price calculated: 1.45",
+          "Estimated profit margin: 1.18"
+        ]
+      },
+      {
+        "time_step": 6,
+        "features": {
+          "age": 76.49999999999997,
+          "income": 55441.870103525696,
+          "claim_history": 8,
+          "competitor_price": 1.0162843234124295
+        },
+        "score": 0.22586087576946867,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.41",
+          "Final price calculated: 1.41",
+          "Estimated profit margin: 1.13"
+        ]
+      },
+      {
+        "time_step": 7,
+        "features": {
+          "age": 76.5833333333333,
+          "income": 55711.11863561898,
+          "claim_history": 8,
+          "competitor_price": 1.147514578407043
+        },
+        "score": 0.23609004763694444,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.46",
+          "Final price calculated: 1.46",
+          "Estimated profit margin: 1.18"
+        ]
+      },
+      {
+        "time_step": 8,
+        "features": {
+          "age": 76.66666666666663,
+          "income": 55920.04045294421,
+          "claim_history": 8,
+          "competitor_price": 0.9372338526726947
+        },
+        "score": 0.21905866776087138,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.37",
+          "Final price calculated: 1.37",
+          "Estimated profit margin: 1.10"
+        ]
+      },
+      {
+        "time_step": 9,
+        "features": {
+          "age": 76.74999999999996,
+          "income": 56181.768013941626,
+          "claim_history": 8,
+          "competitor_price": 0.7928054629783752
+        },
+        "score": 0.2072426690243284,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.32",
+          "Final price calculated: 1.32",
+          "Estimated profit margin: 1.04"
+        ]
+      },
+      {
+        "time_step": 10,
+        "features": {
+          "age": 76.83333333333329,
+          "income": 56891.218717281314,
+          "claim_history": 8,
+          "competitor_price": 1.1302857512429796
+        },
+        "score": 0.23353164138215704,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.45",
+          "Final price calculated: 1.45",
+          "Estimated profit margin: 1.17"
+        ]
+      },
+      {
+        "time_step": 11,
+        "features": {
+          "age": 76.91666666666661,
+          "income": 56783.32283637072,
+          "claim_history": 8,
+          "competitor_price": 1.131841077904984
+        },
+        "score": 0.23376396339602795,
+        "reasoning": [
+          "Segment: old_high_income, price sensitivity: 0.40",
+          "Competitor price adjustment: 0.45",
+          "Final price calculated: 1.45",
+          "Estimated profit margin: 1.17"
+        ]
+      }
+    ]
+  }
+]
